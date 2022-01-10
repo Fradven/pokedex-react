@@ -5,7 +5,7 @@ interface Props {
 
 }
 
-const ListPokemon: React.FC<Props> = (name) => {
+const ListPokemon: React.FC<Props> = ({name}) => {
     return (
         <div>
             <h3 className="pokemon__name">{name}</h3>

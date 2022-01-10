@@ -3,9 +3,9 @@ import Fetch from './Fetch'
 
 export default function Pokedex() {
     return (
-        <div>
-            <h1>Hello</h1>
+        <>
+            <h1>Pokédex Online</h1>
             <Fetch />
-        </div>
+        </>
     )
 }
