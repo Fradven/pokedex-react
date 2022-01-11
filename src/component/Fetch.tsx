@@ -23,8 +23,7 @@ export default function Fetch() {
             <div className="pokemon">
 
             {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
-            <ListPokemon name={event.name} 
-            />)}
+            <ListPokemon name={event.name} key={event.name} />)}
             </div>
         </>
     )
