@@ -2,7 +2,6 @@ import React from 'react'
 
 interface Props {
     name: string
-
 }
 
 const ListPokemon: React.FC<Props> = ({name}) => {
