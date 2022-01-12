@@ -1,12 +1,16 @@
 import React from 'react'
 import Fetch from './Fetch'
+import logo from '../img/logo.svg';
 
 export default function Pokedex() {
-    /* const logo = new URL("../img/pokedex.png", import.meta.url); */
     return (
         <>
-            {/* <img src="{logo}" alt="" /> */}
+        <div className="pokedex-header">
+            <div className="pokedex-header__logo">
+                <img src={logo} />
+            </div>
             <h1>Pokédex Online</h1>
+        </div>
             <Fetch />
         </>
     )
