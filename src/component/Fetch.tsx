@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import  axios  from 'axios'
 import ListPokemon from './ListPokemon';
-import Pagination from './Pagination';
+import './ListPokemon.scss'
 
 
 export default function Fetch() {
@@ -30,17 +30,19 @@ export default function Fetch() {
     }
     function gotoPreviousPage () {
         setCurrentPage(previousPage)
+        return previousPage
     }
 
     return (
         <>
-            <h2 className="pokemon__title">Catch them all!</h2>
             <div className="pokemon">
-
-            {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
-            <ListPokemon name={event.name} key={event.name} />)}
+                {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
+                <ListPokemon name={event.name} key={event.name} />)}
             </div>
-            <Pagination next={gotoNextPage} previous={gotoPreviousPage} />
+            <div className='page-btn'>
+                { previousPage === null ? null : <button onClick={gotoPreviousPage}>Previous</button> }
+                { nextPage === null ? null : <button onClick={gotoNextPage}>Next</button> }            
+            </div>
         </>
     )
 }
