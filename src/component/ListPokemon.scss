@@ -1,4 +1,5 @@
 @import '../style/var';
+@import './types';
 
 .pokemon {
     display: flex;
@@ -10,8 +11,32 @@
         width: 220px;
         background-color: $skyBlue;
         margin: 3px 12px;
+        border-radius: 6px;
+    }
+
+    &__id {
+        text-align: left;
+        padding-top: 0.6rem;
+        padding-left: 0.6rem;
+    }
+
+    &__type {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
+        margin-bottom: 1.5em;
+        width: 80%;
+        
+        p {
+            padding: 0.1rem 0;
+            border-radius: 6px;
+            width: 5rem;
+            margin-left: 0.25rem;
+        }
     }
 }
+
 
 .page-btn {
     text-align: center;
