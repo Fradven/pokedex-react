@@ -1,0 +1,29 @@
+@import './style/reset';
+@import './style/var';
+
+
+body {
+
+    background-color: $champagne;
+}
+
+.pokedex-header {
+
+    &__title {
+        font-family: $intoLight;
+        font-size: 2rem;
+    }
+
+    &__logo {
+        width: 10rem;
+    }
+
+    &__img {
+        width: 100%;
+    }
+
+    @media only screen and (min-width: 600px) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
