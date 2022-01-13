@@ -9,7 +9,7 @@ function App() {
         <div className="pokedex-header">
             <h1 className='pokedex-header__title'>Pokédex Online</h1>
             <div className="pokedex-header__logo">
-                <img className='pokedex-header__img' src={logo} />
+                <img className='pokedex-header__img' src={logo} alt='logo' />
             </div>
             <div className="pokedex-header__search-ctn">
                 <label htmlFor="search">Search:</label>

@@ -104,7 +104,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
             <p className="pokemon__id">#{pokemon.id}</p>
 
             <div className="pokemon__sprite">
-                <img src={pokemon.sprites.front_default} />
+                <img src={pokemon.sprites.front_default} alt='sprite'/>
             </div>
 
             <h3 className="pokemon__name">{name}</h3>
