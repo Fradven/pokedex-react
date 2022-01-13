@@ -7,10 +7,14 @@ function App() {
   return (
     <>
         <div className="pokedex-header">
+            <h1 className='pokedex-header__title'>Pokédex Online</h1>
             <div className="pokedex-header__logo">
                 <img className='pokedex-header__img' src={logo} />
             </div>
-            <h1 className='pokedex-header__title'>Pokédex Online</h1>
+            <div className="pokedex-header__search-ctn">
+                <label htmlFor="search">Search:</label>
+                <input type="text" id='search' />
+            </div>
         </div>
             <Fetch />
         </>
