@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { axios } from './axios.js'
 import './ListPokemon.scss'
-import { switchType } from './javascript/switchType.js'
 
 interface Props {
     name: string
@@ -38,7 +37,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
 
             <div className="pokemon__type">
             {pokemon.types.map((element : {type: any}) =>
-                <p key={element.type.name} className={switchType(element.type.name)}>{element.type.name}</p>
+                <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
                 )}
             </div>
 
