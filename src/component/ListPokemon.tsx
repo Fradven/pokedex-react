@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { axios } from './axios.js'
+import loading from '../img/loading.gif'
 import './ListPokemon.scss'
 
 interface Props {
@@ -44,7 +45,10 @@ const ListPokemon: React.FC<Props> = ({name}) => {
             <button className="pokemon__detail">More Details</button>
 
         </div> 
-        : <div>Loading</div> } 
+        : <div className="pokemon__load-ctn">
+            <div className='pokemon__loading'><img src={loading}  alt="" /></div>
+        </div>
+            } 
          </>
     )
 }

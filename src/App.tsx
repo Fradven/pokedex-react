@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Fetch from './component/Fetch';
 import logo from './img/logo.svg';
 import './style.scss'
 
 function App() {
+    const [query, setQuery] = useState('')
+
+    const search = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+        setTimeout (function () {
+            setQuery(e.target.value)
+        }, 2000)
+    }
+
+    console.log(query)
   return (
     <>
         <div className="pokedex-header">
@@ -13,7 +22,7 @@ function App() {
             </div>
             <div className="pokedex-header__search-ctn">
                 <label htmlFor="search">Search:</label>
-                <input type="text" id='search' />
+                <input type="text" id='search' onChange={search} />
             </div>
         </div>
             <Fetch />
