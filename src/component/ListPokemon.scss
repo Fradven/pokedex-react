@@ -4,6 +4,7 @@
 .pokemon {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     padding: 2px 22px;
 
     &__card {
