@@ -1,47 +1,70 @@
 import React, { useState, useRef, useEffect } from 'react'
 
 type Props = {
-    onBottomHit: () => void;
-    isLoading: boolean;
-    hasMoreData: boolean;
-    loadOnMount: boolean;
+    onBottomHit: () => void; //the function where we fetch the information 
+    //isLoading: boolean; //set to see if is loiding or not
+    hasMoreData: boolean; //check if there's more data
+    loadOnMount: boolean; //load initial page
   };
 
-  function isBottom(ref: React.RefObject<HTMLDivElement>) {
+  /**
+   * Verify the postion of the user compared to ref div, if below return true
+   * @param ref 
+   * @returns boolean
+   */
+ /*  function isBottom(ref: React.RefObject<HTMLDivElement>) {
     if (!ref.current) {
+        console.log('coucou')
       return false;
     }
+    console.log('cou')
     return ref.current.getBoundingClientRect().bottom <= window.innerHeight;
-  }
+  } */
 
 const InfiniteScroll: React.FC<Props> = ({
     onBottomHit,
-    isLoading,
-    hasMoreData,
+    //isLoading,
+    //hasMoreData,
     children,
     loadOnMount
 }) =>{
     const [initialLoad, setInitialLoad] = useState(true);
-  const contentRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (loadOnMount && initialLoad) {
-      onBottomHit();
+      //onBottomHit();
       setInitialLoad(false);
     }
   }, [onBottomHit, loadOnMount, initialLoad]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const onScroll = () => {
       if (!isLoading && hasMoreData && isBottom(contentRef)) {
         onBottomHit();
+        console.log('bump')
       }
     };
     document.addEventListener('scroll', onScroll);
     return () => document.removeEventListener('scroll', onScroll);
-  }, [onBottomHit, isLoading, hasMoreData]);
+  }, []); */
+  const handleScroll = () => {
+    if (!contentRef.current) {
+      return false;
+    }
+    //@typescript-eslint/no-unused-expressions
+    if (contentRef.current.getBoundingClientRect().bottom <= window.innerHeight) onBottomHit()
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, {
+      passive: true
+    });
 
-  return <div ref={contentRef}>{children}</div>;
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  return <div className='pokemon' ref={contentRef}>{children}</div>;
 }
 
 export default InfiniteScroll
