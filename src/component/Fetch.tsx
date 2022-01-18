@@ -8,7 +8,7 @@ import './ListPokemon.scss'
 export default function Fetch() {
     const [events, setEvents] = useState<any >([]);
     const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon")
-    const [nextPage, setNextPage] = useState("")
+    const [nextPage, setNextPage] = useState<any>("")
     const [previousPage, setPreviousPage] = useState("")
     //const [loading, setLoading] = useState(false)
 
@@ -17,10 +17,6 @@ export default function Fetch() {
         
         const response = await axios.get(currentPage)
         const data = response.data;
-        const next = data.next;
-        const prev = data.previous;
-        setNextPage(next);
-        setPreviousPage(prev);
         
 
         //if (response && (await response).data.results) setEvents((await response).data.results);  //verify the response and input the data into "events"
@@ -34,13 +30,21 @@ export default function Fetch() {
     }, [])
 
     //function to input the "nextPage" into the "currentPage"
-    function gotoNextPage () {
+    const gotoNextPage = async() => {
+        const response = await axios.get(currentPage)
+        setNextPage(response.data.next);
         console.log("nextPage : " + nextPage)
+        
         setCurrentPage(nextPage)
         console.log("currentPage : " + currentPage)
     }
     //function to input the "PreviousPage" into "currentPage"
-    function gotoPreviousPage () {
+    const gotoPreviousPage = async() => {
+        const response = await axios.get(currentPage)
+        const data = response.data;
+        const previous = data.previous;
+        setPreviousPage(previous)
+
         setCurrentPage(previousPage)
     }
 
