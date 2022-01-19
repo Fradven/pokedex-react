@@ -4,6 +4,7 @@
 .pokemon {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     padding: 2px 22px;
 
     &__card {
@@ -47,7 +48,23 @@
             color: #f0efe7;
         }
     }
+
+    &__load-ctn {
+        min-width: 220px;
+        width: 220px;
+    }
+    &__loading {
+        width: 60px;
+        margin: 0 auto;
+        padding-top: 3rem;
+
+        img {
+            width: 100%;
+        }
+    }
 }
+
+
 
 
 .page-btn {

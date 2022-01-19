@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { axios } from './axios.js'
+import loading from '../img/loading.gif'
 import './ListPokemon.scss'
-import { switchType } from './javascript/switchType.js'
 
 interface Props {
     name: string
@@ -19,6 +19,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
     
     useEffect(() => {
         getPokemon()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     
@@ -38,14 +39,17 @@ const ListPokemon: React.FC<Props> = ({name}) => {
 
             <div className="pokemon__type">
             {pokemon.types.map((element : {type: any}) =>
-                <p key={element.type.name} className={switchType(element.type.name)}>{element.type.name}</p>
+                <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
                 )}
             </div>
 
             <button className="pokemon__detail">More Details</button>
 
         </div> 
-        : <div>Loading</div> } 
+        : <div className="pokemon__load-ctn">
+            <div className='pokemon__loading'><img src={loading}  alt="" /></div>
+        </div>
+            } 
          </>
     )
 }
