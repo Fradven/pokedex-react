@@ -10,6 +10,8 @@ export default function Fetch() {
     const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon")
     const [nextPage, setNextPage] = useState("")
     const [waitNext, setWaitNext] = useState(false)
+    const [loading, setLoading] = useState(false)
+
 
     //fetch the data from the current page of the api
     const getEvents = async() => {
@@ -23,6 +25,7 @@ export default function Fetch() {
         
         if (response && data.results) setEvents((prev: any)=>[...prev, ...data.results]);
         setWaitNext(false)
+        setLoading(false)
         
         //setLoading(false)
     }
@@ -72,7 +75,7 @@ export default function Fetch() {
         getEvents();
     }
 
-    //const hasMoreData = nextPage === null ? true : false
+    const hasMoreData = nextPage !== null ? true : false
     return (
         <>
         <div className='page-btn'>
@@ -80,6 +83,9 @@ export default function Fetch() {
             </div>
             <InfiniteScroll
                 onBottomHit={hitBottom}
+                hasMoreData={hasMoreData}
+                isLoading={loading}
+                loadOnMount={true}
     >
                 {/* If "events" is not empty, use ".map" to go through every result and display the, using "ListPokemon" */}
                 {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
