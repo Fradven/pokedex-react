@@ -1,37 +1,49 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 
 type Props = {
-    onBottomHit: () => void; //the function where we fetch the information 
-  };
+  onBottomHit: () => void;
+  isLoading: boolean;
+  hasMoreData: boolean;
+  loadOnMount: boolean;
+};
+
 
 const InfiniteScroll: React.FC<Props> = ({
-    onBottomHit,
-    children
-}) =>{
-    const contentRef = useRef<HTMLDivElement>(null);
+  onBottomHit,
+  isLoading,
+  hasMoreData,
+  loadOnMount,
+  children,
+}) => {
+  const [initialLoad, setInitialLoad] = useState(true);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
-    if (!contentRef.current) {
+  function isBottom(ref: React.RefObject<HTMLDivElement>) {
+    if (!ref.current) {
       return false;
     }
-    if (contentRef.current.getBoundingClientRect().bottom <= window.innerHeight) {
-      onBottomHit()
-    }
+    return ref.current.getBoundingClientRect().bottom <= window.innerHeight;
   }
+  
 
   useEffect(() => {
-    
-    window.addEventListener('scroll', handleScroll, {
-      passive: true
-    });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
+    if (loadOnMount && initialLoad) {
+      onBottomHit();
+      setInitialLoad(false);
+    }
+  }, [onBottomHit, loadOnMount, initialLoad]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!isLoading && hasMoreData && isBottom(contentRef)) {
+        onBottomHit();
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    document.addEventListener('scroll', onScroll);
+    return () => document.removeEventListener('scroll', onScroll);
+  }, [onBottomHit, isLoading, hasMoreData]);
 
   return <div className='pokemon' ref={contentRef}>{children}</div>;
-}
+};
 
 export default InfiniteScroll
