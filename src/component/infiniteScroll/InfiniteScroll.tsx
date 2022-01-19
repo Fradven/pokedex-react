@@ -28,6 +28,7 @@ const InfiniteScroll: React.FC<Props> = ({
 
   useEffect(() => {
     if (loadOnMount && initialLoad) {
+      window.scrollTo(0, 0)
       onBottomHit();
       setInitialLoad(false);
     }

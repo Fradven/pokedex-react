@@ -18,68 +18,64 @@ export default function Fetch() {
         
         const response = await axios.get(currentPage)
         const data = response.data;
-        const getNext = (await axios.get(currentPage)).data.next
-        console.log("nextPage :" + nextPage)
-        console.log("data.next: " + getNext)
-        console.log("current: " + currentPage)
+        /* const getNext = (await axios.get(currentPage)).data.next */
+        const next = data.next;
+        setLoading(true)
+        setNextPage(await next)
         
         if (response && data.results) setEvents((prev: any)=>[...prev, ...data.results]);
         setWaitNext(false)
         setLoading(false)
-        
-        //setLoading(false)
     }
-    
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        getEvents()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+
+    const checkNext = async() => {
+        const getNext = (await axios.get(currentPage)).data.next
+
+        if (getNext !== nextPage) {
+            console.log("uwu")
+            setWaitNext(false)
+        } else {
+            console.log("owo")
+            setWaitNext(true)
+        }
+
+    }
 
     useEffect (() => {
-        console.log("this next:" + nextPage)
-        setWaitNext(!waitNext)
+        console.log("next page in useEffect:" + nextPage)
+        checkNext()
         if (waitNext === true) {
-            
-            setWaitNext(true)
-            setCurrentPage(nextPage)
-            console.log("current effect: " + currentPage)
+            setWaitNext(false)
+            console.log("currentPage in useEffect: " + currentPage)
         }
     }, [nextPage])
 
     //function to input the "nextPage" into the "currentPage"
     const gotoNextPage = async() => { 
         setWaitNext(false)
-        const response = await axios.get(currentPage)
-        const data = response.data;
-        const next = data.next;
-        setNextPage(await next)
-            
+
         setCurrentPage(nextPage)
-        console.log("currentPage : " + currentPage)   
+        console.log("currentPage in gotoNext : " + currentPage)   
     }
-    //function to input the "PreviousPage" into "currentPage"
-    /* const gotoPreviousPage = async() => {
-        const response = await axios.get(currentPage)
-        const data = response.data;
-        const previous = data.previous;
-        setPreviousPage(previous)
-
-        setCurrentPage(previousPage)
-    } */
-
     
-
-    const hitBottom = () => {
-        gotoNextPage();
-        getEvents();
+    const hitBottom = async() => {
+        const getNext = (await axios.get(currentPage)).data.next
+        if (getNext !== nextPage) {
+            console.log("do it")
+            setCurrentPage(getNext)
+            getEvents()
+        } else {
+            console.log("do not")
+            gotoNextPage()
+            getEvents()
+        }
     }
 
     const hasMoreData = nextPage !== null ? true : false
     return (
         <>
         <div className='page-btn'>
-                { nextPage === null ? null : <button onClick={gotoNextPage}>Next</button> }            
+                {/*  nextPage === null ? null : <button onClick={gotoNextPage}>Next</button>  */}            
             </div>
             <InfiniteScroll
                 onBottomHit={hitBottom}
