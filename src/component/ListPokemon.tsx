@@ -19,6 +19,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
     
     useEffect(() => {
         getPokemon()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     
