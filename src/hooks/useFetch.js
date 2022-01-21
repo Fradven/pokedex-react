@@ -46,12 +46,13 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 exports.__esModule = true;
 var react_1 = require("react");
-var usePokemonFetch = function (src) {
+var useFetch = function (src) {
     var _a = (0, react_1.useState)([]), pokemons = _a[0], setPokemons = _a[1];
     var _b = (0, react_1.useState)(""), nextSrc = _b[0], setNextSrc = _b[1];
     var _c = (0, react_1.useState)(""), prevSrc = _c[0], setPrevSrc = _c[1];
     var _d = (0, react_1.useState)(true), loading = _d[0], setLoading = _d[1];
     var _e = (0, react_1.useState)(false), error = _e[0], setError = _e[1];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     var logic = function () { return __awaiter(void 0, void 0, void 0, function () {
         var data, dataJson_1, e_1;
         return __generator(this, function (_a) {
@@ -85,7 +86,7 @@ var usePokemonFetch = function (src) {
     }); };
     (0, react_1.useEffect)(function () {
         logic();
-    }, [src]);
+    }, [logic, src]);
     return { pokemons: pokemons, loading: loading, error: error, nextSrc: nextSrc, prevSrc: prevSrc };
 };
-exports["default"] = usePokemonFetch;
+exports["default"] = useFetch;

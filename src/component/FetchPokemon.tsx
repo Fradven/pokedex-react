@@ -1,14 +1,14 @@
-import { useState, useRef, useCallback } from "react";
-import useFetch from "./hooks/useFetch.js";
-import { pokemonStyle, infoStyle } from "./style";
-import "./style.scss"
+import React, { useState, useRef, useCallback } from "react";
+import ListPokemon from "./ListPokemon";
+import useFetch from "../hooks/useFetch.js";
+import './ListPokemon.scss'
 
 const App = () => {
     const [src, setSrc] = useState("https://pokeapi.co/api/v2/pokemon");
 
-    const { pokemons, loading, error, nextSrc, prevSrc } = useFetch(src);
+    const { pokemons, loading, error, nextSrc } = useFetch(src);
 
-    const observer = useRef();
+    const observer: any = useRef();
     const lastPokemon = useCallback(
     (node) => {
         if (loading) return;
@@ -24,19 +24,19 @@ const App = () => {
     );
 
     return (
-    <div>
-        <h1>Pokemons : </h1>
-        <div className="pokemon">
+    <>
+        <div className="pokemon-ctn">
         {pokemons.map((pokemon, index) => {
             if (pokemons.length === index + 1) {
             return (
-                <div ref={lastPokemon} key={pokemon.name} style={pokemonStyle}>
-                {pokemon.name}
+                <div ref={lastPokemon} className="pokemon">
+
+                <ListPokemon name={pokemon.name} key={pokemon.name} />
                 </div>
             );
         }
         return (
-            <div key={pokemon.name} style={pokemonStyle}>
+            <div key={pokemon.name}>
             {pokemon.name}
             </div>
             );
@@ -45,14 +45,14 @@ const App = () => {
     <div className="next-btn">
         <button>Next</button>
     </div>
-    <div style={infoStyle}>
+    <div>
         <p>loading : {loading.toString()}</p>
         <p>nextSrc : {nextSrc}</p>
         <p>Error : {error.toString()}</p>
     </div>
     {loading ? <div>Loading ... </div> : null}
     {error ? <div>Error</div> : null}
-    </div>
+    </>
     );
 };
 

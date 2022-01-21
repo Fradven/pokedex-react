@@ -24,7 +24,7 @@
     "noUnusedParameters": true, // Report errors on unused parameters
     "incremental": true, // Enable incremental compilation by reading/writing information from prior compilations to a file on disk
     "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement
-    "downlevelIteration": true
+    "downlevelIteration": true // Transpiling to an older version of JavaScript
   },
   "include": [
     "src/**/*" // *** The files TypeScript should type check ***

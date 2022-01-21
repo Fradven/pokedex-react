@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Fetch from './component/Fetch';
+import FetchPokemon from './component/FetchPokemon';
 import logo from './img/logo.svg';
 import './style.scss'
 
@@ -25,7 +25,7 @@ function App() {
                 <input type="text" id='search' onChange={search} />
             </div>
         </div>
-            <Fetch />
+            <FetchPokemon />
         </>
   );
 }
