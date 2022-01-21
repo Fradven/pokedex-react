@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, {useState} from 'react'
 import  axios  from 'axios'
 import InfiniteScroll from './infiniteScroll/InfiniteScroll';
 import ListPokemon from './ListPokemon';
@@ -15,21 +15,28 @@ export default function Fetch() {
     //fetch the data from the current page of the api and set the nextPage
     const getEvents = async() => {
         
+        setLoading(true)
         const response = await axios.get(currentPage) 
         const data = response.data;
         const next = data.next;
-        setLoading(true)
         setNextPage(await next) //add the value of the next page of the api to nextPage
         
         if (response && data.results) setEvents((prev: any)=>[...prev, ...data.results]); //check for response before adding results of the api to setEvents
-        setLoading(false)
+            setLoading(false)
     }
-    
+
+    const loadNextPage = () => {
+        setCurrentPage(nextPage)
+        console.log(nextPage)
+    }
     //set the current page to the new page and use then call getevents to fetch add more data
     const hitBottom = async() => {
+        console.log("coucou")
         const getNext = (await axios.get(currentPage)).data.next //get the link for the next page
+        
             setCurrentPage(getNext) //change the current page link into the next page from getNext
             getEvents() //fetch more data and add them to events
+        
         
     }
 
@@ -47,7 +54,9 @@ export default function Fetch() {
                 <ListPokemon name={event.name} key={event.name} />)}
             </InfiniteScroll>
 
-            
+            <div className="next-btn">
+                <button onClick={loadNextPage}>Load More</button>
+            </div>
         </>
     )
 }

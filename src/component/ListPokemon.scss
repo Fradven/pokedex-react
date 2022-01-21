@@ -5,7 +5,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 2px 22px;
+    padding: 0 22px;
+    
+    @media  screen and (min-width: 1080px) {
+        max-width: 1080px;
+        margin: 0 auto;
+        
+    }
 
     &__card {
         text-align: center;
