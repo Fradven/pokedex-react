@@ -69,7 +69,7 @@ var useFetch = function (src) {
                     return [4 /*yield*/, data.json()];
                 case 3:
                     dataJson_1 = _a.sent();
-                    setPokemons(function (prev) { return __spreadArray([], new Set(__spreadArray(__spreadArray([], prev, true), dataJson_1.results, true)), true); });
+                    setPokemons(function (prev) { return __spreadArray(__spreadArray([], prev, true), dataJson_1.results, true); });
                     if (dataJson_1.next)
                         setNextSrc(dataJson_1.next);
                     if (dataJson_1.previous)

@@ -14,7 +14,7 @@ const useFetch = (src: RequestInfo) => {
     try {
       const data = await fetch(src);
       const dataJson = await data.json();
-      setPokemons((prev) => [...new Set([...prev, ...dataJson.results])]);
+      setPokemons((prev) => [...prev, ...dataJson.results]);
       if (dataJson.next) setNextSrc(dataJson.next);
       if (dataJson.previous) setPrevSrc(dataJson.previous);
       setLoading(false);

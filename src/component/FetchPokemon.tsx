@@ -25,11 +25,11 @@ const App = () => {
 
     return (
     <>
-        <div className="pokemon-ctn">
+        <div className="pokemon">
         {pokemons.map((pokemon, index) => {
             if (pokemons.length === index + 1) {
             return (
-                <div ref={lastPokemon} className="pokemon">
+                <div ref={lastPokemon} className="pokemon__card">
 
                 <ListPokemon name={pokemon.name} key={pokemon.name} />
                 </div>
