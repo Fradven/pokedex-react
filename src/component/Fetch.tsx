@@ -38,6 +38,7 @@ export default function Fetch() {
     const hasMoreData = nextPage !== null ? true : false
     return (
         <>
+        <h2>Pokémon List</h2>
             <InfiniteScroll
                 onBottomHit={hitBottom}
                 hasMoreData={hasMoreData}
