@@ -24,11 +24,6 @@ export default function Fetch() {
         if (response && data.results) setEvents((prev: any)=>[...prev, ...data.results]); //check for response before adding results of the api to setEvents
             setLoading(false)
     }
-
-    const loadNextPage = () => {
-        setCurrentPage(nextPage)
-        console.log(nextPage)
-    }
     //set the current page to the new page and use then call getevents to fetch add more data
     const hitBottom = async() => {
         console.log("coucou")
@@ -53,10 +48,6 @@ export default function Fetch() {
                 {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
                 <ListPokemon name={event.name} key={event.name} />)}
             </InfiniteScroll>
-
-            <div className="next-btn">
-                <button onClick={loadNextPage}>Load More</button>
-            </div>
         </>
     )
 }

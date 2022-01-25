@@ -1,6 +1,9 @@
 @import './style/reset';
 @import './style/var';
 
+html {
+    scroll-behavior: smooth;
+}
 
 body {
 
