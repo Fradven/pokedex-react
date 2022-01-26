@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { axios } from './axios.js'
+import { axios } from './javascript/axios.js'
 import loading from '../img/loading.gif'
 import './ListPokemon.scss'
 
