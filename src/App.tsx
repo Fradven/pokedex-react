@@ -20,9 +20,15 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/pokedex' component={Fetch} />
-          <Route path='/movedex' component={MoveDex} />
+          <Route path='/'>
+            <Home />
+          </Route>
+          <Route path='/pokedex'>
+            <Fetch/>
+          </Route>
+          <Route path='/movedex'>
+            <MoveDex/>
+          </Route>
         </Switch>
       </Router>
     </>
