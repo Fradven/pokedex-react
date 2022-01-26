@@ -20,7 +20,7 @@ function App() {
       <Router>
         <Nav />
         <Switch>
-          <Route path='/'>
+          <Route exact path='/'>
             <Home />
           </Route>
           <Route path='/pokedex'>
