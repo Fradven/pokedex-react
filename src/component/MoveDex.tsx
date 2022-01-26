@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MoveList() {
+function MoveDex() {
     return (
     <>
         <h2>Move List</h2>
@@ -8,4 +8,4 @@ function MoveList() {
     )
 }
 
-export default MoveList;
+export default MoveDex;
