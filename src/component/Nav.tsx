@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {FaBars} from 'react-icons/fa'
 
 
 export default function Nav() {
@@ -9,8 +10,8 @@ export default function Nav() {
     return (
         <>
             <div className="nav-button">
-                <Link to="#" className='menu-bar' onClick={showSidebar}>
-
+                <Link to="#" className='menu-bar'>
+                <FaBars onClick={showSidebar} />
                 </Link>
             </div>
             <nav className={active ? 'sidebar' : 'sidebar active'}>

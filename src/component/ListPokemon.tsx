@@ -50,7 +50,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
             <div className='pokemon__loading'><img src={loading}  alt="" /></div>
         </div>
             } 
-         </>
+        </>
     )
 }
 
