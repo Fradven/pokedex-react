@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SidebarData } from './javascript/sidebarData';
 import { Link } from 'react-router-dom';
 import {FaBars} from 'react-icons/fa'
 
@@ -16,15 +17,18 @@ export default function Nav() {
             </div>
             <nav className={active ? 'sidebar' : 'sidebar active'}>
                 <ul className="sidebar__link-container">
-                    <li className="sidebar__link">
-                        
-                    </li>
-                    <li className="sidebar__link">
-                        
-                    </li>
-                    <li className="sidebar__link">
-                        
-                    </li>
+                    {
+                        SidebarData.map((data, index) => {
+                            return (
+                                <li key={index} className='sidebar__link'>
+                                    <Link to={data.path}>
+                                        {data.icon}
+                                        <span>{data.title}</span>
+                                    </Link>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </nav>
         </>

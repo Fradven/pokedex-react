@@ -1,15 +1,22 @@
+import { GiPokecog } from 'react-icons/gi'
+import { CgPokemon } from 'react-icons/cg'
+import { MdCatchingPokemon } from 'react-icons/md'
+
 export const SidebarData = [
     {   
         title: 'Home',
-        path: '/'
+        path: '/',
+        icon: <MdCatchingPokemon />
     },
     {   
         title: 'Pokedex',
-        path: '/pokedex'
+        path: '/pokedex',
+        icon: <CgPokemon />
     },
     {   
         title: 'Movedex',
-        path: '/movedex'
+        path: '/movedex',
+        icon: <GiPokecog />
     }
     
 ]
