@@ -6,14 +6,14 @@ import './nav.scss'
 
 export default function Nav() {
     const [active, setActive] = useState(false)
-    const [query, setQuery] = useState('')
+    /* const [query, setQuery] = useState('')
 
     const search = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setTimeout (function () {
             setQuery(e.target.value)
             console.log(query)
         }, 2000)
-    }
+    } */
 
     const showSidebar = () => setActive(!active)
     return (
@@ -25,10 +25,10 @@ export default function Nav() {
             </div>
 
             <nav className={active ? 'sidebar' : 'sidebar active'}>
-                <div className="pokedex-header__search-ctn">
+                {/* <div className="pokedex-header__search-ctn">
                     <label htmlFor="search">Search:</label>
                     <input type="text" id='search' onChange={search} />
-                </div>
+                </div> */}
                 <ul className="sidebar__link-container">
                     {
                         SidebarData.map((data, index) => {
