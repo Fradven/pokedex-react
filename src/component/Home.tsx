@@ -19,9 +19,6 @@ export default function Home() {
         getPokemon()
     }, [])
 
-    useEffect (() => {
-        console.log(listPokemon)
-    }, [listPokemon])
     return (
         <>
             <h2 className='page-name'>Select a Type of Pokémon</h2>
