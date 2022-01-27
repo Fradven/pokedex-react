@@ -2,12 +2,12 @@
 @import '../style/var';
 
 .nav-button {
-    background-color: #060b26;
     width: 250px;
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
+    padding: 8px 0px 8px 16px;
   }
   
   .menu-bars {
@@ -21,11 +21,21 @@
     width: 250px;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: -100%;
     transition: 850ms;
+
+    &__button {
+      width: 250px;
+      height: 80px;
+      display: flex;
+    justify-content: start;
+    align-items: center;
+      padding: 8px 0px 8px 16px;
+
+    }
   }
   
   .sidebar.active {
@@ -35,6 +45,7 @@
   
   .sidebar__link {
     display: flex;
+    flex-direction: column;
     justify-content: start;
     align-items: center;
     padding: 8px 0px 8px 16px;

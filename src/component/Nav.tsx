@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SidebarData } from './javascript/sidebarData';
 import { Link } from 'react-router-dom';
 import {FaBars} from 'react-icons/fa'
+import {ImCross} from 'react-icons/im'
 import './nav.scss'
 
 export default function Nav() {
@@ -25,6 +26,13 @@ export default function Nav() {
             </div>
 
             <nav className={active ? 'sidebar' : 'sidebar active'}>
+
+            <div className="sidebar__button-ctn">
+                <Link to="#" className='sidebar__button'>
+                <ImCross onClick={showSidebar} />
+                </Link>
+            </div>
+            
                 {/* <div className="pokedex-header__search-ctn">
                     <label htmlFor="search">Search:</label>
                     <input type="text" id='search' onChange={search} />

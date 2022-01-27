@@ -1,4 +1,4 @@
-import { GiPokecog } from 'react-icons/gi'
+import { GiPokecog, GiCompactDisc } from 'react-icons/gi'
 import { CgPokemon } from 'react-icons/cg'
 import { MdCatchingPokemon } from 'react-icons/md'
 
@@ -6,7 +6,7 @@ export const SidebarData = [
     {   
         title: 'Home',
         path: '/',
-        icon: <MdCatchingPokemon />
+        icon: <GiCompactDisc />
     },
     {   
         title: 'Pokedex',

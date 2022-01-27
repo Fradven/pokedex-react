@@ -11,14 +11,13 @@ function App() {
 
   return (
     <>
-        <div className="pokedex-header">
-            <h1 className='pokedex-header__title'>Pokédex Online</h1>
-            <div className="pokedex-header__logo">
-                <img className='pokedex-header__img' src={logo} alt='logo' />
-            </div>
-        </div>
       <Router>
-        <Nav />
+        <div className="header">
+          <Nav />
+          <div className="pokedex-header">
+              <h1 className='pokedex-header__title'><img className='pokedex-header__img' src={logo} alt='pokedex-logo' /></h1>
+          </div>
+        </div>
         <Switch>
           <Route exact path='/'>
             <Home />
