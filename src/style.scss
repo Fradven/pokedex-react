@@ -11,22 +11,22 @@ body {
 }
 .header {
     display: flex;
+    width: 100%;
+    @media only screen and (min-width: 480px) {
+        justify-content: space-around;
+    }
 }
 
 .pokedex-header {
-
     &__title {
-        width: 10rem;
+        width: 280px;
     }
     
     &__img {
         width: 100%;
     }
 
-    @media only screen and (min-width: 600px) {
-        display: flex;
-        justify-content: space-around;
-    }
+    
 }
 
 .page-name {
