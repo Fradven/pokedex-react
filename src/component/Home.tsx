@@ -24,7 +24,7 @@ export default function Home() {
     }, [listPokemon])
     return (
         <>
-            <h2 className='page-name'>Home</h2>
+            <h2 className='page-name'>Select a Type of Pokémon</h2>
             <div className="type-page">
                 {(type.length === 0) ? 'loading' : type.map((data: { name: string; })=> {
                     return (
@@ -35,7 +35,7 @@ export default function Home() {
                     )
                 })}
             </div>
-            <div className="list-by-type">
+            <div className="pokemon">
                 {(listPokemon.length === 0) ? 'loading' : listPokemon.map((data: { pokemon: any, name: string; })=> 
                     <ListPokemon name={data.pokemon.name} key={data.pokemon.name} />
                 )}
