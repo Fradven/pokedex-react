@@ -1,48 +1,55 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import  axios  from 'axios'
+import InfiniteScroll from './reusable/InfiniteScroll';
 import ListPokemon from './ListPokemon';
 import './ListPokemon.scss'
 
 
 export default function Fetch() {
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState<any>([]);
     const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon")
     const [nextPage, setNextPage] = useState("")
-    const [previousPage, setPreviousPage] = useState("")
+    const [loading, setLoading] = useState(false)
 
+
+    //fetch the data from the current page of the api and set the nextPage
     const getEvents = async() => {
-        const response = axios.get(currentPage)
         
-        setNextPage((await response).data.next)
-        setPreviousPage((await response).data.previous)
-
-        if (response && (await response).data.results) setEvents((await response).data.results);  
-    }
-    
-    useEffect(() => {
-        getEvents()
+        setLoading(true)
+        const response = await axios.get(currentPage) 
+        const data = response.data;
+        const next = data.next;
+        setNextPage(await next) //add the value of the next page of the api to nextPage
         
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage])
-
-    function gotoNextPage () {
-        setCurrentPage(nextPage)
+        if (response && data.results) setEvents((prev: any)=>[...prev, ...data.results]); //check for response before adding results of the api to setEvents
+            
+        setLoading(false)
     }
-    function gotoPreviousPage () {
-        setCurrentPage(previousPage)
-        return previousPage
+    //set the current page to the new page and use then call getevents to fetch add more data
+    const hitBottom = async() => {
+        console.log("coucou")
+        const getNext = (await axios.get(currentPage)).data.next //get the link for the next page
+        
+            setCurrentPage(getNext) //change the current page link into the next page from getNext
+            getEvents() //fetch more data and add them to events
+        
+        
     }
 
+    const hasMoreData = nextPage !== null ? true : false
     return (
         <>
-            <div className="pokemon">
+        <h2 className='page-name'>Pokémon List</h2>
+            <InfiniteScroll
+                onBottomHit={hitBottom}
+                hasMoreData={hasMoreData}
+                isLoading={loading}
+                loadOnMount={true}
+    >
+                {/* If "events" is not empty, use ".map" to go through every result and display the, using "ListPokemon" */}
                 {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
                 <ListPokemon name={event.name} key={event.name} />)}
-            </div>
-            <div className='page-btn'>
-                { previousPage === null ? null : <button onClick={gotoPreviousPage}>Previous</button> }
-                { nextPage === null ? null : <button onClick={gotoNextPage}>Next</button> }            
-            </div>
+            </InfiniteScroll>
         </>
     )
 }
