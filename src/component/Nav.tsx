@@ -25,7 +25,7 @@ export default function Nav() {
                 </Link>
             </div>
 
-            <nav className={active ? 'sidebar' : 'sidebar active'}>
+            <nav className={!active ? 'sidebar' : 'sidebar active'}>
 
             <div className="sidebar__button-ctn">
                 <Link to="#" className='sidebar__button'>

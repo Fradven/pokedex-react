@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import  axios  from 'axios'
-import InfiniteScroll from './infiniteScroll/InfiniteScroll';
+import InfiniteScroll from './reusable/InfiniteScroll';
 import ListPokemon from './ListPokemon';
 import './ListPokemon.scss'
 
@@ -22,7 +22,8 @@ export default function Fetch() {
         setNextPage(await next) //add the value of the next page of the api to nextPage
         
         if (response && data.results) setEvents((prev: any)=>[...prev, ...data.results]); //check for response before adding results of the api to setEvents
-            setLoading(false)
+            
+        setLoading(false)
     }
     //set the current page to the new page and use then call getevents to fetch add more data
     const hitBottom = async() => {
