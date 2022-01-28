@@ -42,7 +42,7 @@ export default function Nav() {
                         SidebarData.map((data, index) => {
                             return (
                                 <li key={index} className='sidebar__link'>
-                                    <Link to={data.path}>
+                                    <Link to={data.path} onClick={showSidebar}>
                                         {data.icon}
                                         <span>{data.title}</span>
                                     </Link>

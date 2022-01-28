@@ -11,15 +11,13 @@ body {
 }
 .header {
     display: flex;
-    width: 100%;
-    @media only screen and (min-width: 480px) {
-        justify-content: space-around;
-    }
+
+    
 }
 
 .pokedex-header {
     &__title {
-        width: 280px;
+        width: 220px;
     }
     
     &__img {
@@ -32,5 +30,12 @@ body {
 .page-name {
     text-align: center;
     font-family: $intoLight;
-    font-size: 3rem;
+    font-size: 1.5rem;
+    padding-bottom: 0.5em;
+}
+
+.back-to-top {
+    position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
