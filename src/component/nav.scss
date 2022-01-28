@@ -2,7 +2,6 @@
 @import '../style/var';
 
 .nav-button {
-    width: 250px;
     height: 80px;
     display: flex;
     justify-content: start;
@@ -24,7 +23,7 @@
     flex-direction: column;
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -110%;
     transition: 850ms;
 
     @media only screen and (min-width: 480px) {
