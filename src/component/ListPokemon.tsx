@@ -38,7 +38,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
             <h3 className="pokemon__name">{name}</h3>
 
             <div className="pokemon__type">
-            {pokemon.types.map((element : {type: any}) =>
+            {pokemon.types.map((element : {type: {name: string}}) =>
                 <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
                 )}
             </div>
@@ -47,7 +47,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
 
         </div> 
         : <div className="pokemon__load-ctn">
-            <div className='pokemon__loading'><img src={loading}  alt="" /></div>
+            <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
         </div>
             } 
         </>

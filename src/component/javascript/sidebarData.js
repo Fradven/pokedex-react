@@ -1,6 +1,5 @@
 import { GiPokecog, GiCompactDisc } from 'react-icons/gi'
 import { CgPokemon } from 'react-icons/cg'
-import { MdCatchingPokemon } from 'react-icons/md'
 
 export const SidebarData = [
     {   
