@@ -25,7 +25,7 @@ export default function Home() {
             <div className="type-page">
                 {(type.length === 0) ? 'loading' : type.map((data: { name: string; })=> {
                     return (
-                        <div key={data.name} className="pokemon__type">
+                        <div key={data.name} className="type-page__type">
                             <ButtonFetch link={link} name={data.name} setPokemon={setListPokemon} />
 
                         </div>
