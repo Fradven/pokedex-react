@@ -17,6 +17,11 @@ export const SidebarData = [
         title: 'Movedex',
         path: '/movedex',
         icon: <GiPokecog />
+    },
+    {   
+        title: 'Individual',
+        path: '/individual',
+        icon: <CgPokemon />
     }
     
 ]

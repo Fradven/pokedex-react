@@ -7,6 +7,7 @@ import Nav from './component/Nav';
 import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
+import IndividualPage from './component/IndividualPage';
 
 function App() {
   const [showButton, setShowButton] = useState(false)
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path='/movedex'>
             <MoveDex/>
+          </Route>
+          <Route path='/individual'>
+            <IndividualPage/>
           </Route>
         </Switch>
       </Router>
