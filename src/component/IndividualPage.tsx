@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axios } from './javascript/axios.js'
 import loading from '../img/loading.gif'
+import './individualPage.scss'
 
 function IndividualPage() {
     const [rdmPokemon, setRdmPokemon] = useState<any>([])
@@ -33,7 +34,7 @@ function IndividualPage() {
     <div className="individual-pokemon">
         <h2 className="individual-pokemon__name">{rdmPokemon.name}</h2>
 
-        <div className="pokemon__sprite">
+        <div className="individual-pokemon__sprite">
                 <img src={rdmPokemon.sprites?.front_default} alt='sprite'/>
         </div>
 
