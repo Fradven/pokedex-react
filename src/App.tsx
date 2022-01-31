@@ -7,7 +7,7 @@ import Nav from './component/Nav';
 import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
-import IndividualPage from './component/IndividualPage';
+import RandomSelector from './component/RandomSelector';
 
 function App() {
   const [showButton, setShowButton] = useState(false)
@@ -47,7 +47,7 @@ function App() {
             <MoveDex/>
           </Route>
           <Route path='/individual'>
-            <IndividualPage/>
+            <RandomSelector/>
           </Route>
         </Switch>
       </Router>

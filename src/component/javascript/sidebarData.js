@@ -18,8 +18,8 @@ export const SidebarData = [
         icon: <GiPokecog />
     },
     {   
-        title: 'Individual',
-        path: '/individual',
+        title: 'Random Pokémon',
+        path: '/rdmPokemon',
         icon: <CgPokemon />
     }
     
