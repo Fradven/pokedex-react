@@ -33,49 +33,62 @@ function IndividualPage() {
   :
     <div className="individual-pokemon">
         <h2 className="individual-pokemon__name">{rdmPokemon.name}</h2>
+        <div className="individual-pokemon__main-ctn">
 
-        <div className="pokemon__type">
-            {rdmPokemon.types?.map((element : {type: {name: string}}) =>
-                <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
-                )}
+            <div className="individual-pokemon__left-ctn">
+
+                <div className="pokemon__type">
+                    {rdmPokemon.types?.map((element : {type: {name: string}}) =>
+                        <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
+                        )}
+                    </div>
+
+                <div className="individual-pokemon__sprite">
+                        <img src={rdmPokemon.sprites?.front_default} alt='sprite'/>
+                </div>
+
+                <div className="individual-pokemon__physics">
+                    <p className="individual-pokemon__height">Height: {rdmPokemon.height}</p>
+                    <p className="individual-pokemon__weight">Weight: {rdmPokemon.weight}</p>
+                </div>
             </div>
 
-        <div className="individual-pokemon__sprite">
-                <img src={rdmPokemon.sprites?.front_default} alt='sprite'/>
-        </div>
+            <div className="individual-pokemon__right-ctn">
+                <div className="individual-pokemon__abilities">
+                    <h3>Abilities: </h3>
+                    <ul className="individual-pokemon__abilities-ctn">
 
-        <div className="individual-pokemon__physics">
-            <p className="individual-pokemon__height">Height: {rdmPokemon.height}</p>
-            <p className="individual-pokemon__weight">Weight: {rdmPokemon.weight}</p>
-        </div>
+                    {(rdmPokemon.lenght === 0) ? "loading" : rdmPokemon.abilities?.map((data: { ability: {name: string}, is_hidden: boolean }, index: React.Key | null | undefined) => {
+                        if (data.is_hidden === true) {
+                            return <li key={index} className="individual-pokemon__ability hidden">Hidden: {data.ability.name}</li>
+                        } else {
+                            return <li key={index} className="individual-pokemon__ability">{data.ability.name}</li>
+                        }
+                    })}
 
-        <div className="individual-pokemon__abilities">
-            <h3>Abilities: </h3>
-            <ul className="individual-pokemon__abilities-ctn">
+                    </ul>
+                </div>
 
-            {(rdmPokemon.lenght === 0) ? "loading" : rdmPokemon.abilities?.map((data: { ability: {name: string}, is_hidden: boolean }, index: React.Key | null | undefined) => {
-                if (data.is_hidden === true) {
-                    return <li key={index} className="individual-pokemon__ability hidden">{data.ability.name}</li>
-                } else {
-                    return <li key={index} className="individual-pokemon__ability">{data.ability.name}</li>
-                }
-            })}
+                <div className="individual-pokemon__stats">
 
-            </ul>
-        </div>
+                    <h3>Base Stats: </h3>
 
-        <div className="individual-pokemon__stats">
+                    <ul className="individual-pokemon__stat-ctn">
+                    {(rdmPokemon.lenght === 0) ? 'loading' : rdmPokemon.stats?.map((stat: { base_stat: number, stat: {name: string} })=> {
+                        if (stat.stat.name === 'special-defense') {
+                            return <li key={stat.stat.name}>sp.def: {stat.base_stat}</li>
+                        } else if (stat.stat.name === 'special-attack') {
+                            return <li key={stat.stat.name}>sp.atk: {stat.base_stat}</li>
+                        } else {
+                        return <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat}</li>
+                        }
+                    })}
+                    </ul>
 
-            <h3>Base Stats: </h3>
 
-            <ul className="individual-pokemon__stat-ctn">
-            {(rdmPokemon.lenght === 0) ? 'loading' : rdmPokemon.stats?.map((stat: { base_stat: number, stat: {name: string} })=> {
-                return <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat}</li>
-            })}
-            </ul>
 
-            
-
+                </div>
+            </div>
         </div>
     </div>
 }

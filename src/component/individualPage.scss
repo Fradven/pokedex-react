@@ -7,9 +7,30 @@
     margin-top: 15px;
     margin-bottom: 2em;
     max-width: 90%;
-    background-color: $skyBlue;
-    border-radius: 7px;
+    background-color: #ffbe08;
+    background-image: url(../img/ctn-background.svg);
+    background-position: center;
+        background-size: cover;
+    border-style: dashed double;
+    border-width: 7px;
+    border-radius: 5px;
+    border-color: #ff960b;
     font-family: $nameFont;
+
+    @media  screen and (min-width: 481px) {
+        max-width: 480px;
+
+        &__main-ctn {
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: 7px;
+        }
+
+        &__right-ctn, &__left-ctn {
+            max-width: 45%;
+            width: 45%;
+        }
+    }
 
     &__name {
         text-transform: capitalize;
@@ -23,9 +44,9 @@
         margin: 0 auto;
         margin-top: 0.8em;
         text-align: center;
-        background-image: url(../img/sprite-background.svg);
+        /* background-image: url(../img/sprite-background.svg);
         background-position: center;
-        background-size: cover;
+        background-size: cover; */
         width: 10rem;
         border-radius: 100%;
 
@@ -40,7 +61,11 @@
         max-width: 200px;
         margin: auto;
         padding-top: 0.8em;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
+
+        @media screen and (min-width: 481px) {
+            font-size: 1.7rem;
+        }
     }
 
     &__stats {
@@ -49,13 +74,22 @@
         padding-top: 0.8em;
         padding-bottom: 0.3em;
         text-transform: uppercase;
+
+        @media  screen and (min-width: 481px) {
+            padding-top: 1.2rem;
+        }
         
     }
 
     &__stat-ctn {
         display: grid;
         grid-template-columns: repeat(2,2fr);
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+
+        @media  screen and (min-width: 481px) {
+            font-size: 1.7rem;
+        }
     }
 
     &__abilities {
@@ -65,6 +99,7 @@
     }
     &__abilities-ctn {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         text-align: center;
     }
@@ -76,11 +111,16 @@
         font-size: 0.7rem;
         min-width: 80px;
         margin: 0 3px;
+        margin-top: 4px;
         text-transform: capitalize;
         border-style: solid;
         border-width: 2px;
         color: #f0efe7;
         background-color: #8BBD8B;
+
+        @media  screen and (min-width: 481px) {
+            font-size: 0.8rem;
+        }
     }
 
     &__ability.hidden {
