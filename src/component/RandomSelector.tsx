@@ -11,14 +11,12 @@ function RandomSelector() {
     }
     const getRandomPokemon = async() => {
         const res = await axios.get(`${randomNumber()}`)
-        console.log(res)
 
         if (res && res.data) setName(res.data)
     }
 
     useEffect (() => {
         getRandomPokemon()
-        console.log(name)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   return <IndividualPage name={name}/>;

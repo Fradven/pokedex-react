@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { axios } from './javascript/axios.js'
 import ButtonFetch from './reusable/ButtonFetch';
 import ListPokemon from './ListPokemon';
+import Carousel from 'react-bootstrap/Carousel';
 import './home.scss'
+import RandomSelector from './RandomSelector';
 
 export default function Home() {
     const [type, setType] = useState<any>([])
@@ -34,7 +36,19 @@ export default function Home() {
                 })}
             </div>
             <div className="pokemon">
-                {(listPokemon.length === 0) ? 'loading' : listPokemon.map((data: { pokemon: any, name: string; })=> 
+                {(listPokemon.length === 0) 
+                ? <Carousel>
+                    <Carousel.Item>
+                        <RandomSelector />
+                    </Carousel.Item> 
+                    <Carousel.Item>
+                        <RandomSelector />
+                    </Carousel.Item> 
+                    <Carousel.Item>
+                        <RandomSelector />
+                    </Carousel.Item> 
+                </Carousel>
+                : listPokemon.map((data: { pokemon: any, name: string; })=> 
                     <ListPokemon name={data.pokemon.name} key={data.pokemon.name} />
                 )}
             </div>
