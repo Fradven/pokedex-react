@@ -21,7 +21,7 @@ function RandomSelector() {
         console.log(name)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-  return (<IndividualPage name={name}/>);
+  return <IndividualPage name={name}/>;
 }
 
 export default RandomSelector;

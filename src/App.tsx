@@ -46,7 +46,7 @@ function App() {
           <Route path='/movedex'>
             <MoveDex/>
           </Route>
-          <Route path='/individual'>
+          <Route path='/rdmPokemon'>
             <RandomSelector/>
           </Route>
         </Switch>
