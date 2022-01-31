@@ -43,13 +43,28 @@ function IndividualPage() {
             <p className="individual-pokemon__weight">Weight: {rdmPokemon.weight}</p>
         </div>
 
+        <div className="individual-pokemon__abilities">
+            <h3>Abilities: </h3>
+            <ul className="individual__pokemon__abilities-ctn">
+
+            {(rdmPokemon.lenght === 0) ? "loading" : rdmPokemon.abilities?.map((data: { ability: {name: string}, is_hidden: boolean }) => {
+                if (data.is_hidden === true) {
+                    return <li className="individual-pokemon__ability hidden">{data.ability.name}</li>
+                } else {
+                    return <li className="individual-pokemon__ability hidden">{data.ability.name}</li>
+                }
+            })}
+
+            </ul>
+        </div>
+
         <div className="individual-pokemon__stats">
 
             <h3>Base Stats: </h3>
 
             <ul className="individual-pokemon__stat-ctn">
-            {(rdmPokemon.lenght === 0) ? 'loading' : rdmPokemon.stats?.map((statPk: { base_stat: number, stat: {name: string} })=> {
-                return <li key={statPk.stat.name}>{statPk.stat.name}: {statPk.base_stat}</li>
+            {(rdmPokemon.lenght === 0) ? 'loading' : rdmPokemon.stats?.map((stat: { base_stat: number, stat: {name: string} })=> {
+                return <li key={stat.stat.name}>{stat.stat.name}: {stat.base_stat}</li>
             })}
             </ul>
 
