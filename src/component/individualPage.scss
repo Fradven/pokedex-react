@@ -7,14 +7,14 @@
     margin-top: 15px;
     margin-bottom: 2em;
     max-width: 90%;
-    background-color: #ffbe08;
+    background-color: $bgcolor;
     background-image: url(../img/ctn-background.svg);
     background-position: center;
-        background-size: cover;
+    background-size: cover;
     border-style: dashed double;
     border-width: 7px;
     border-radius: 5px;
-    border-color: #ff960b;
+    border-color: $borderColor;
     font-family: $nameFont;
 
     @media  screen and (min-width: 481px) {
@@ -34,10 +34,15 @@
 
     &__name {
         text-transform: capitalize;
-        padding-top: 0.6em;
-        font-size: 2rem;
+        padding-top: 1.5rem;
+        font-size: 3rem;
         text-align: center;
+        background-color: $borderColor;
         font-weight: 600;
+    }
+
+    &__main-ctn {
+        padding-top: 1.5rem;
     }
 
     &__sprite {
@@ -86,9 +91,13 @@
         grid-template-columns: repeat(2,2fr);
         font-size: 1.5rem;
         font-weight: 600;
+        background-color: $borderColor;
+        border-style: dashed double;
+        border-width: 7px;
+        border-color: $bgcolor;
 
         @media  screen and (min-width: 481px) {
-            font-size: 1.7rem;
+            font-size: 1.6rem;
         }
     }
 
