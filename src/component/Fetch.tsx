@@ -50,6 +50,7 @@ export default function Fetch() {
                 {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
                 <ListPokemon name={event.name} key={event.name} />)}
             </InfiniteScroll>
+            <div className="end-page"></div>
         </>
     )
 }
