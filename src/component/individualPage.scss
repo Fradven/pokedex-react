@@ -5,6 +5,7 @@
 .individual-pokemon {
     margin: 0 auto;
     margin-top: 15px;
+    margin-bottom: 2em;
     max-width: 90%;
     background-color: $skyBlue;
     border-radius: 7px;
@@ -25,7 +26,7 @@
         background-image: url(../img/sprite-background.svg);
         background-position: center;
         background-size: cover;
-        width: 12rem;
+        width: 10rem;
         border-radius: 100%;
 
         img {
@@ -46,10 +47,9 @@
         max-width: 280px;
         margin: 0 auto;
         padding-top: 0.8em;
+        padding-bottom: 0.3em;
         text-transform: uppercase;
-        h3 {
-            font-size: 1.7rem;
-        }
+        
     }
 
     &__stat-ctn {
@@ -58,4 +58,41 @@
         font-size: 1.2rem;
     }
 
+    &__abilities {
+        max-width: 280px;
+        margin: 0 auto;
+        padding-top: 0.8em;
+    }
+    &__abilities-ctn {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &__ability {
+        padding: 0.2rem 0;
+        border-radius: 6px;
+        font-family: $typeFont;
+        font-size: 0.7rem;
+        min-width: 80px;
+        margin: 0 3px;
+        text-transform: capitalize;
+        border-style: solid;
+        border-width: 2px;
+        color: #f0efe7;
+        background-color: #8BBD8B;
+    }
+
+    &__ability.hidden {
+        background-color: gray;
+    }
+
+    .pokemon__type {
+        text-align: center;
+    }
+
+}
+
+h3 {
+    font-size: 1.7rem;
 }

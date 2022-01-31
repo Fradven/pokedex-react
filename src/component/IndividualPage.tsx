@@ -34,6 +34,12 @@ function IndividualPage() {
     <div className="individual-pokemon">
         <h2 className="individual-pokemon__name">{rdmPokemon.name}</h2>
 
+        <div className="pokemon__type">
+            {rdmPokemon.types?.map((element : {type: {name: string}}) =>
+                <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
+                )}
+            </div>
+
         <div className="individual-pokemon__sprite">
                 <img src={rdmPokemon.sprites?.front_default} alt='sprite'/>
         </div>
@@ -45,13 +51,13 @@ function IndividualPage() {
 
         <div className="individual-pokemon__abilities">
             <h3>Abilities: </h3>
-            <ul className="individual__pokemon__abilities-ctn">
+            <ul className="individual-pokemon__abilities-ctn">
 
-            {(rdmPokemon.lenght === 0) ? "loading" : rdmPokemon.abilities?.map((data: { ability: {name: string}, is_hidden: boolean }) => {
+            {(rdmPokemon.lenght === 0) ? "loading" : rdmPokemon.abilities?.map((data: { ability: {name: string}, is_hidden: boolean }, index: React.Key | null | undefined) => {
                 if (data.is_hidden === true) {
-                    return <li className="individual-pokemon__ability hidden">{data.ability.name}</li>
+                    return <li key={index} className="individual-pokemon__ability hidden">{data.ability.name}</li>
                 } else {
-                    return <li className="individual-pokemon__ability hidden">{data.ability.name}</li>
+                    return <li key={index} className="individual-pokemon__ability">{data.ability.name}</li>
                 }
             })}
 
@@ -68,11 +74,7 @@ function IndividualPage() {
             })}
             </ul>
 
-            <div className="pokemon__type">
-            {rdmPokemon.types?.map((element : {type: {name: string}}) =>
-                <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
-                )}
-            </div>
+            
 
         </div>
     </div>
