@@ -34,7 +34,7 @@ interface Props {
 const IndividualPage: React.FC<Props> = ({name}) => {
   return (
   <>
-  {!name 
+  {name.lenght === 0
   ? 
     <div className="pokemon__load-ctn">
         <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
@@ -67,7 +67,7 @@ const IndividualPage: React.FC<Props> = ({name}) => {
                     <h3>Abilities: </h3>
                     <ul className="individual-pokemon__abilities-ctn">
 
-                    {(name.lenght === 0) ? "loading" : name.abilities?.map(data => {
+                    {name.abilities?.map(data => {
                         if (data.is_hidden === true) {
                             return <li key={data.ability.name} className="individual-pokemon__ability hidden">Hidden: {data.ability.name}</li>
                         } else {
@@ -83,7 +83,7 @@ const IndividualPage: React.FC<Props> = ({name}) => {
                     <h3>Base Stats: </h3>
 
                     <ul className="individual-pokemon__stat-ctn">
-                    {(name.lenght === 0) ? 'loading' : name.stats?.map((stat)=> {
+                    {name.stats?.map((stat)=> {
                         if (stat.stat.name === 'special-defense') {
                             return <li key={stat.stat.name}>sp.def: {stat.base_stat}</li>
                         } else if (stat.stat.name === 'special-attack') {
