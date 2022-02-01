@@ -1,0 +1,46 @@
+@import '../style/reset';
+@import '../style/var';
+@import '../style/types';
+
+.type-page {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media only screen and (min-width: 460px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    @media only screen and (min-width: 620px) {
+        grid-template-columns: repeat(10, 0fr);
+        justify-content: center;
+    }
+    
+    &__type {
+        margin: 0 auto;
+
+    button {
+        text-decoration: none;
+        padding: 0.1rem 0;
+        border-radius: 6px;
+        width: 5rem;
+        margin-left: 0.25rem;
+        font-family: $typeFont;
+        text-transform: capitalize;
+        border-style: solid;
+        border-color: #f0efe7;
+        border-width: 2px;
+        color: #f0efe7;
+        opacity: 1;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+    }
+
+    p{
+        text-align: center;
+    }
+}
