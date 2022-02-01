@@ -37,7 +37,7 @@ export default function Home() {
             </div>
             <div className="pokemon">
                 {(listPokemon.length === 0) 
-                ? <Carousel>
+                ? <Carousel controls={false} fade>
                     <Carousel.Item>
                         <RandomSelector />
                     </Carousel.Item> 
