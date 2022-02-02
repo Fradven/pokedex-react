@@ -33,8 +33,14 @@ interface Props {
         }
 }
 
+interface Pokemon {
+    id: number,
+    sprites: any,
+    types: Array<TypeArray>
+}
+
 const ListPokemon: React.FC<Props> = ({name}) => {
-    const [pokemon, setPokemon] = useState<any>("") //data on a single pokemon
+    const [pokemon, setPokemon] = useState<Pokemon>() //data on a single pokemon
 
     //fetching data from individual page of pokmeon
     const getPokemon = async() => {
