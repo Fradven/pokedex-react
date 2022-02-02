@@ -2,9 +2,35 @@ import React, { useState, useEffect } from 'react'
 import { axios } from './javascript/axios.js'
 import loading from '../img/loading.gif'
 import './ListPokemon.scss'
+import IndividualPage from './IndividualPage'
+
+interface TypeArray {
+    type: {name: string},
+    element: {}
+}
+
+interface AbilityArray {
+    ability: {name: string}, 
+    is_hidden: boolean,
+    data: {}
+}
+
+interface StatsArray {
+    base_stat: number,
+    stat: {name: string}
+}
 
 interface Props {
-    name: string
+    name: {
+        name: string,
+        types: Array<TypeArray>,
+        sprites: any,
+        height: number,
+        weight: number,
+        lenght: {},
+        abilities: Array<AbilityArray>,
+        stats: Array<StatsArray>
+        }
 }
 
 const ListPokemon: React.FC<Props> = ({name}) => {
@@ -51,6 +77,9 @@ const ListPokemon: React.FC<Props> = ({name}) => {
             <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
         </div>
             } 
+        <div className="popup">
+            <IndividualPage name={name} />
+        </div>
         </>
     )
 }
