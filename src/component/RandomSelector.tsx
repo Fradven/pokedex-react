@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import IndividualPage from './IndividualPage';
 import { axios } from './javascript/axios.js'
+import loading from '../img/loading.gif'
 
 function RandomSelector() {
     const [name, setName] = useState<any>([])
@@ -19,7 +20,12 @@ function RandomSelector() {
         getRandomPokemon()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-  return <IndividualPage name={name}/>;
+  return (
+    <>
+    {name ?  <IndividualPage name={name}/>
+          : <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>}
+    </>
+  )
 }
 
 export default RandomSelector;
