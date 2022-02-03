@@ -4,7 +4,7 @@ import { axios } from './javascript/axios.js'
 import loading from '../img/loading.gif'
 
 function RandomSelector() {
-    const [name, setName] = useState<any>([])
+    const [name, setName] = useState<any>()
 
     const randomNumber = () => {
         let x = Math.floor((Math.random() * 1000) + 1)
@@ -13,7 +13,7 @@ function RandomSelector() {
     const getRandomPokemon = async() => {
         const res = await axios.get(`${randomNumber()}`)
 
-        if (res && res.data) setName(res.data)
+        if (res && res.data) setName(res.data.name)
     }
 
     useEffect (() => {
