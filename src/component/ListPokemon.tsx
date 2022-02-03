@@ -9,28 +9,10 @@ interface TypeArray {
     element: {}
 }
 
-interface AbilityArray {
-    ability: {name: string}, 
-    is_hidden: boolean,
-    data: {}
-}
-
-interface StatsArray {
-    base_stat: number,
-    stat: {name: string}
-}
-
 interface Props {
-    name: {
-        name: string,
-        types: Array<TypeArray>,
-        sprites: any,
-        height: number,
-        weight: number,
-        lenght: {},
-        abilities: Array<AbilityArray>,
-        stats: Array<StatsArray>
-        }
+
+        name?: string,
+
 }
 
 interface Pokemon {
@@ -41,6 +23,7 @@ interface Pokemon {
 
 const ListPokemon: React.FC<Props> = ({name}) => {
     const [pokemon, setPokemon] = useState<Pokemon>() //data on a single pokemon
+    const [popup, setPopup] = useState(false)
 
     //fetching data from individual page of pokmeon
     const getPokemon = async() => {
@@ -49,6 +32,10 @@ const ListPokemon: React.FC<Props> = ({name}) => {
         setPokemon(res.data);
     }
     
+    const popupOpen = () => {
+        setPopup(!popup)
+    }
+
     useEffect(() => {
         window.scrollTo(0, 0)
         getPokemon()
@@ -76,16 +63,19 @@ const ListPokemon: React.FC<Props> = ({name}) => {
                 )}
             </div>
 
-            <button className="pokemon__detail">More Details</button>
+            <button className="pokemon__detail" onClick={popupOpen}>More Details</button>
 
         </div> 
         : <div className="pokemon__load-ctn">
             <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
         </div>
             } 
+        {!popup && pokemon ? "" :
         <div className="popup">
             <IndividualPage name={name} />
+            <button onClick={popupOpen}></button> 
         </div>
+        }
         </>
     )
 }
