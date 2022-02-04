@@ -1,6 +1,6 @@
-@import '../style/reset';
-@import '../style/var';
-@import '../style/types';
+@import './reset';
+@import './var';
+@import './types';
 
 .pokemon {
     display: flex;

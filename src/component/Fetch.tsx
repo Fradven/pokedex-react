@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import  axios  from 'axios'
 import InfiniteScroll from './reusable/InfiniteScroll';
 import ListPokemon from './ListPokemon';
-import './ListPokemon.scss'
+import '../style/ListPokemon.scss'
 
 
 export default function Fetch() {

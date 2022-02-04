@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { axios } from './javascript/axios.js'
 import loading from '../img/loading.gif'
-import './ListPokemon.scss'
+import '../style/ListPokemon.scss'
 import IndividualPage from './IndividualPage'
 
 interface TypeArray {

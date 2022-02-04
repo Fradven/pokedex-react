@@ -3,7 +3,7 @@ import { axios } from './javascript/axios.js'
 import ButtonFetch from './reusable/ButtonFetch';
 import ListPokemon from './ListPokemon';
 import Carousel from 'react-bootstrap/Carousel';
-import './home.scss'
+import '../style/home.scss'
 import RandomSelector from './RandomSelector';
 
 export default function Home() {

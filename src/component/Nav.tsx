@@ -3,7 +3,7 @@ import { SidebarData } from './javascript/sidebarData';
 import { Link } from 'react-router-dom';
 import {FaBars} from 'react-icons/fa'
 import {ImCross} from 'react-icons/im'
-import './nav.scss'
+import '../style/nav.scss'
 
 export default function Nav() {
     const [active, setActive] = useState(false)
