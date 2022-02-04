@@ -13,7 +13,7 @@ const loadList = async() => {
     const res = await axios.get(`type/${name}`)
 
     if (item === "pokemon") setPokemon(res.data.pokemon)
-    if (item === "move") setPokemon(res.data.move)
+    if (item === "moves") setPokemon(res.data.moves)
     
 
 }
