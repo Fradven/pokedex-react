@@ -46,8 +46,6 @@ const ListPokemon: React.FC<Props> = ({name}) => {
     return (
         <>
         {/* ? : to wait for response for the data*/}
-        {!popup && pokemon ?
-        <div>
 
         {pokemon ? 
         <div className='pokemon__card'>
@@ -73,12 +71,12 @@ const ListPokemon: React.FC<Props> = ({name}) => {
             <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
         </div>
             } 
-            </div> :
+
         <div className="popup">
             <IndividualPage name={name} />
             <button onClick={popupOpen}>Show less</button> 
         </div>
-        }
+        
         </>
     )
 }
