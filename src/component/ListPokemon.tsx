@@ -3,6 +3,7 @@ import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
 import '../style/ListPokemon.scss'
 import IndividualPage from './IndividualPage'
+import Popup from './Popup'
 
 interface TypeArray {
     type: {name: string},
@@ -72,10 +73,13 @@ const ListPokemon: React.FC<Props> = ({name}) => {
         </div>
             } 
 
+        <Popup show={popup}>
+
         <div className="popup">
             <IndividualPage name={name} />
             <button onClick={popupOpen}>Show less</button> 
         </div>
+        </Popup>
         
         </>
     )
