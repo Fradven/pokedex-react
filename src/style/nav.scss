@@ -1,8 +1,7 @@
-@import '../style/reset';
-@import '../style/var';
+@import './reset';
+@import './var';
 
 .nav-button {
-    width: 250px;
     height: 80px;
     display: flex;
     justify-content: start;
@@ -18,14 +17,19 @@
   
   .sidebar {
     background-color: #060b26;
-    width: 250px;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -110%;
     transition: 850ms;
+
+    @media only screen and (min-width: 480px) {
+      width: 250px;
+      height: 100%;
+  }
 
     &__button {
       width: 250px;

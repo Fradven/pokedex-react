@@ -32,7 +32,6 @@ const InfiniteScroll: React.FC<Props> = ({
   //on intial laod, return to top of page and call function linked to onBottomHit() to load the data for the first time
   useEffect(() => {
     if (loadOnMount && initialLoad) {
-      window.scrollTo(0, 0)
       onBottomHit();
       setInitialLoad(false);
     }

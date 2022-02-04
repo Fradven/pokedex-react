@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import  axios  from 'axios'
-import InfiniteScroll from './reusable/InfiniteScroll';
-import ListPokemon from './ListPokemon';
-import './ListPokemon.scss'
+import InfiniteScroll from '../component/InfiniteScroll';
+import ListPokemon from '../component/ListPokemon';
+import '../style/ListPokemon.scss'
 
 
 export default function Fetch() {
@@ -47,9 +47,11 @@ export default function Fetch() {
                 loadOnMount={true}
     >
                 {/* If "events" is not empty, use ".map" to go through every result and display the, using "ListPokemon" */}
-                {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>
-                <ListPokemon name={event.name} key={event.name} />)}
+                {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>{
+                    const name = `${event.name}`
+                return <ListPokemon name={name} key={event.name} />})}
             </InfiniteScroll>
+            <div className="end-page"></div>
         </>
     )
 }

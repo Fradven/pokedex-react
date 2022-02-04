@@ -1,6 +1,5 @@
 import { GiPokecog, GiCompactDisc } from 'react-icons/gi'
 import { CgPokemon } from 'react-icons/cg'
-import { MdCatchingPokemon } from 'react-icons/md'
 
 export const SidebarData = [
     {   
@@ -17,6 +16,11 @@ export const SidebarData = [
         title: 'Movedex',
         path: '/movedex',
         icon: <GiPokecog />
+    },
+    {   
+        title: 'Random Pokémon',
+        path: '/rdmPokemon',
+        icon: <CgPokemon />
     }
     
 ]

@@ -1,6 +1,6 @@
-@import '../style/reset';
-@import '../style/var';
-@import '../style/types';
+@import './reset';
+@import './var';
+@import './types';
 
 .pokemon {
     display: flex;
@@ -18,7 +18,14 @@
         text-align: center;
         min-width: 220px;
         width: 220px;
-        background-color: $skyBlue;
+        background-color: $bgcolor;
+        background-image: url(../img/ctn-background.svg);
+        background-position: center;
+        background-size: cover;
+        border-style: dashed double;
+        border-width: 7px;
+        border-radius: 5px;
+        border-color: $borderColor;
         margin: 3px 12px;
         border-radius: 6px;
     }
@@ -51,7 +58,9 @@
 }
 
 
-
+.end-page {
+    height: 1px;
+}
 
 .page-btn {
     text-align: center;
