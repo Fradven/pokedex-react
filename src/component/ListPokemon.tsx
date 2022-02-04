@@ -26,7 +26,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
 
     //fetching data from individual page of pokmeon
     const getPokemon = async() => {
-        const res = await axios.get(`${name}`)
+        const res = await axios.get(`pokemon/${name}`)
 
         setPokemon(res.data);
     }

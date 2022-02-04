@@ -11,7 +11,7 @@ function RandomSelector() {
         return x
     }
     const getRandomPokemon = async() => {
-        const res = await axios.get(`${randomNumber()}`)
+        const res = await axios.get(`pokemon/${randomNumber()}`)
 
         if (res && res.data) setName(res.data.name)
     }
