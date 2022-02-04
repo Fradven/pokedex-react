@@ -2,15 +2,14 @@ import React from 'react';
 import { axios } from '../javascript/axios';
 
 interface Props {
-    link: string
     name: string
     setPokemon: any
 }
 
-const ButtonFetch: React.FC<Props> = ({link, name, setPokemon}) => {
+const ButtonFetch: React.FC<Props> = ({ name, setPokemon }) => {
   
 const loadList = async() => {
-    const res = await axios.get(link + name)
+    const res = await axios.get(`type/${name}`)
     setPokemon(res.data.pokemon)
 
 }
