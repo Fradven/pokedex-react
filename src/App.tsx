@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter  as Router, Route, Switch } from "react-router-dom";
-import Fetch from './component/Fetch';
-import Home from './component/Home';
-import MoveDex from './component/MoveDex';
+import Fetch from './pages/Fetch';
+import Home from './pages/Home';
+import MoveDex from './pages/MoveDex';
 import Nav from './component/Nav';
 import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';

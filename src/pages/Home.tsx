@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { axios } from './javascript/axios.js'
-import ButtonFetch from './reusable/ButtonFetch';
-import ListPokemon from './ListPokemon';
+import { axios } from '../javascript/axios.js'
+import ButtonFetch from '../component/ButtonFetch';
+import ListPokemon from '../component/ListPokemon';
 import Carousel from 'react-bootstrap/Carousel';
 import '../style/home.scss'
-import RandomSelector from './RandomSelector';
+import RandomSelector from '../component/RandomSelector';
 
 export default function Home() {
     const [type, setType] = useState<any>([])

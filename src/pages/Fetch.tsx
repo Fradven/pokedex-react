@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import  axios  from 'axios'
-import InfiniteScroll from './reusable/InfiniteScroll';
-import ListPokemon from './ListPokemon';
+import InfiniteScroll from '../component/InfiniteScroll';
+import ListPokemon from '../component/ListPokemon';
 import '../style/ListPokemon.scss'
 
 

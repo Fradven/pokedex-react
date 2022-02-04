@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import IndividualPage from './IndividualPage';
-import { axios } from './javascript/axios.js'
+import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
 
 function RandomSelector() {
