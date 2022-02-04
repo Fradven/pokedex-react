@@ -11,9 +11,7 @@ interface TypeArray {
 }
 
 interface Props {
-
-        name?: string,
-
+    name?: string,
 }
 
 interface Pokemon {
@@ -76,8 +74,7 @@ const ListPokemon: React.FC<Props> = ({name}) => {
         <Popup show={popup}>
 
         <div className="popup">
-            <IndividualPage name={name} />
-            <button onClick={popupOpen}>Show less</button> 
+            <IndividualPage name={name} show={popup} openPopup={popupOpen} />
         </div>
         </Popup>
         

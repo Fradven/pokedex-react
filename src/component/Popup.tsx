@@ -10,11 +10,8 @@ const Popup: React.FC<Props> = ({
     children
 }) => {
 
-  return <div style={{
-    visibility: show ? "visible": "hidden",
-    opacity: show ? "1" : "0"
-  }} 
-  className="visible">{children}</div>;
+  return <div 
+  className={!show ?"visible hidden" : "visible"}>{children}</div>;
 }
 
 export default Popup;

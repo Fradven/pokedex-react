@@ -21,6 +21,8 @@ interface StatsArray {
 
 interface Props {
     name: string | undefined
+    show?:  boolean
+    openPopup?: () => void
 }
 
 interface Pokemon {
@@ -35,7 +37,7 @@ interface Pokemon {
         stats?: Array<StatsArray>
         
 }
-const IndividualPage: React.FC<Props> = ({name}) => {
+const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
     const [pokemon, setPokemon] = useState<Pokemon>({}) //data on a single pokemon
 
     //fetching data from individual page of pokmeon
@@ -116,6 +118,13 @@ const IndividualPage: React.FC<Props> = ({name}) => {
                 </div>
             </div>
         </div>
+        <button 
+            style={{
+                visibility: show ? "visible": "hidden",
+                opacity: show ? "1" : "0"
+            }}
+            onClick={openPopup}
+        >Less</button>
     </div>
 }
   </>);
