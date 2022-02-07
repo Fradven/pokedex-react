@@ -7,7 +7,10 @@ interface Props {
 }
 
 interface FlavorText {
-    flavor_text: string
+    flavor_text: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined;
+    version_group: { name: string; }
+    language: { name: string; }
+    text: {}
 }
 
 interface Move {
@@ -26,7 +29,6 @@ const ListMoves: React.FC<Props> = ({name}) => {
     const getMove = async() => {
         const res = await axios.get(`move/${name}`)
         setMove(res.data);
-        console.log(res.data)
     }
 
     useEffect(() => {
@@ -34,7 +36,7 @@ const ListMoves: React.FC<Props> = ({name}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    let flavor = move?.flavor_text_entries[7]
+    let flavor = move?.flavor_text_entries
 
   return (
       <>
@@ -49,7 +51,11 @@ const ListMoves: React.FC<Props> = ({name}) => {
                 <p className="move__damage-class-type">{move.damage_class.name}</p>
             </div>
             <div className="move__flavor-text">
-                <p>{flavor?.flavor_text}</p>
+                {flavor?.map(text => {
+                    if (text.version_group.name === "sword-shield" && text.language.name === "en") {
+                        return <p>{text.flavor_text}</p>
+                    }
+                })}
             </div>
 
             <div className="move__power">

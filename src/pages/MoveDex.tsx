@@ -13,7 +13,7 @@ function MoveDex() {
     <>
         <h2 className='page-name'>Move List</h2>
         <TypeFetch setTopList={setList} item={item} />
-        <div className="pokemon">
+        <div className="move-dex">
                 {(list.length === 0) 
                 ? <Carousel controls={false} fade>
                     <Carousel.Item>
