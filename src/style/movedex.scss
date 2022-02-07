@@ -51,12 +51,24 @@
 .move.physical {
     background-color: coral;
     border-color: red;
+
+    .move__header {
+        background-color: red;
+    }
 }
 .move.special {
     background-color: lightblue;
     border-color: blue;
+
+    .move__header {
+        background-color: blue;
+    }
 }
 .move.status {
     background-color: grey;
     border-color: darkgrey;
+
+    .move__header {
+        background-color: darkgrey;
+    }
 }
