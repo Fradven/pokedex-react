@@ -6,43 +6,57 @@
     width: 320px;
     margin-bottom: 3px;
     font-family: $nameFont;
+    border: solid 5px ;
+    border-radius: 4px;
 
-    &__type {
-        padding: 0.1rem 0;
-        border-radius: 6px;
-        width: 5rem;
-        margin-left: 0.25rem;
-        font-family: $typeFont;
-        text-transform: capitalize;
-        text-align: center;
-        border-style: solid;
-        border-width: 2px;
-        color: #f0efe7;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5px;
+        padding-top: 8px;
+    }
+    &__type, &__damage-class {
+        
+        p{    
+            padding: 0.1rem 0;
+            border-radius: 6px;
+            width: 5rem;
+            margin-left: 0.25rem;
+            font-family: $typeFont;
+            text-transform: capitalize;
+            text-align: center;
+            border-style: solid;
+            border-width: 2px;
+            color: #f0efe7;
+        }
     }
 
     &__name {
         font-weight: 700;
-        font-size: 1.8em;
+        font-size: 1.6em;
         text-transform: uppercase;
     }
 
-    &__damage-class {
-        width: 5rem;
-        font-size: 1.4rem;
-        text-transform: capitalize;
-        border-style: solid;
-        border-width: 3px;
-        border-color: #f0efe7;
-        border-radius: 4px;
+    &__flavor-text {
+        p {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__stats {
+        font-size: 1.5rem;
     }
 }
 
 .move.physical {
     background-color: coral;
+    border-color: red;
 }
 .move.special {
     background-color: lightblue;
+    border-color: blue;
 }
 .move.status {
     background-color: grey;
+    border-color: darkgrey;
 }

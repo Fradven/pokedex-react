@@ -48,26 +48,30 @@ const ListMoves: React.FC<Props> = ({name}) => {
       <>
       {move 
         ? <div className={"move" + " " + move.damage_class.name}>
-            <h3 className="move__name">{name}</h3>
+            <div className="move__header">
+                <h3 className="move__name">{name}</h3>
+                <div className="move__damage-class">
+                    <p className="move__damage-class-type">{move.damage_class.name}</p>
+                </div>
+            </div>
             <div className="move__type">
                 <p className={move.type.name}>{move.type.name}</p>
             </div>
 
-            <div className="move__damage-class">
-                <p className="move__damage-class-type">{move.damage_class.name}</p>
-            </div>
             <div className="move__flavor-text">
                 {flavor?.map(englishFilter)}
             </div>
 
-            <div className="move__power">
-            {move.power === null ? <p>Power: - </p> : <p>power: {move.power}</p>}
-            </div>
-            <div className="move__accuracy">
-                {move.accuracy === null ? <p>Accuracy: - </p> : <p>Accuracy: {move.accuracy}</p>}                
-            </div>
-            <div className="move__pp">
-                <p>PP: {move.pp}</p>
+            <div className="move__stats">
+                <div className="move__power">
+                    {move.power === null ? <p>Power: - </p> : <p>power: {move.power}</p>}
+                </div>
+                <div className="move__accuracy">
+                    {move.accuracy === null ? <p>Accuracy: - </p> : <p>Accuracy: {move.accuracy}</p>}                
+                </div>
+                <div className="move__pp">
+                    <p>PP: {move.pp}</p>
+                </div>
             </div>
         </div> 
 
