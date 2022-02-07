@@ -9,7 +9,6 @@ function MoveDex() {
     const [list, setList] = useState([])
     const item = "moves"
 
-    console.log(list)
     return (
     <>
         <h2 className='page-name'>Move List</h2>
