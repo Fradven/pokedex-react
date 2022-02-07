@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import '../style/home.scss'
 import TypeFetch from '../component/TypeFetch';
 import ListMoves from '../component/ListMoves';
 import { Carousel } from 'react-bootstrap';
 import RandomSelector from '../component/RandomSelector';
+import '../style/movedex.scss'
 
 function MoveDex() {
     const [list, setList] = useState([])
