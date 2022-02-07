@@ -14,6 +14,9 @@ interface Move {
     type: {name: string}
     damage_class: {name: string}
     flavor_text_entries: Array<FlavorText>
+    power: number
+    pp: number
+    accuracy: number
 }
 
 const ListMoves: React.FC<Props> = ({name}) => {
@@ -47,6 +50,16 @@ const ListMoves: React.FC<Props> = ({name}) => {
             </div>
             <div className="move__flavor-text">
                 <p>{flavor?.flavor_text}</p>
+            </div>
+
+            <div className="move__power">
+            {move.power === null ? <p>Power: - </p> : <p>power: {move.power}</p>}
+            </div>
+            <div className="move__accuracy">
+                {move.accuracy === null ? <p>Accuracy: - </p> : <p>Accuracy: {move.accuracy}</p>}                
+            </div>
+            <div className="move__pp">
+                <p>PP: {move.pp}</p>
             </div>
         </div> 
 
