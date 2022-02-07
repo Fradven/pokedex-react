@@ -72,7 +72,7 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
                     </div>
 
                 <div className="individual-pokemon__sprite">
-                        <img src={pokemon.sprites?.front_default} alt='sprite'/>
+                        {pokemon.sprites?.length === 0 ? "loading" : <img src={pokemon.sprites?.front_default} alt='sprite'/>}
                 </div>
 
                 <div className="individual-pokemon__physics">
