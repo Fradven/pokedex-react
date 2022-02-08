@@ -83,7 +83,7 @@ const ListMoves: React.FC<Props> = ({name, setPage, setPokemon}) => {
                     </div>
                 </div>
                 <div className="move__button">
-                    <button onClick={loadPokemon}>Pokemon</button>
+                    <button onClick={loadPokemon}>Learned By...</button>
                 </div>
             </div>
         </div> 

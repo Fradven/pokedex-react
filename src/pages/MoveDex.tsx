@@ -31,9 +31,15 @@ function MoveDex() {
                         <RandomSelector />
                     </Carousel.Item> 
                 </Carousel>
-                : !page ?
-                list.map((data: { moves: any, name: string; })=> 
-                <ListMoves name={data.name} key={data.name} setPage={setPage} setPokemon={setPokemon} />)
+                : !page ? <div className="move-dex__list-page">
+                                <div className="move-dex__filter">
+                                    <button className="move-dex__physical"></button>
+                                    <button className="move-dex__special"></button>
+                                    <button className="move-dex__status"></button>
+                                </div>
+                                {list.map((data: { moves: any, name: string; })=> 
+                                <ListMoves name={data.name} key={data.name} setPage={setPage} setPokemon={setPokemon} />)}
+                            </div>
                 : <div className="move-dex__pokemon">
                     <button onClick={backToPage}>return</button>
                     {pokemon.map((pokes: { name: string | undefined; }) => 
