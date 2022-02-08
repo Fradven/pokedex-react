@@ -21,6 +21,7 @@ const SmallPokemonList: React.FC<Props> = ({ name }) => {
 
     useEffect (() => {
         getPokemon()
+        window.scrollTo(0, 0)
     }, [])
 
   return (

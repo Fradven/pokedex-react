@@ -3,12 +3,17 @@ import TypeFetch from '../component/TypeFetch';
 import ListMoves from '../component/ListMoves';
 import { Carousel } from 'react-bootstrap';
 import RandomSelector from '../component/RandomSelector';
+import SmallPokemonList from '../component/SmallPokemonList';
 import '../style/movedex.scss'
 
 function MoveDex() {
     const [list, setList] = useState([])
+    const [page, setPage] = useState(false)
+    const [pokemon, setPokemon] = useState([])
+
     const item = "moves"
 
+    const backToPage = () => setPage(false)
     return (
     <>
         <h2 className='page-name'>Move List</h2>
@@ -26,9 +31,15 @@ function MoveDex() {
                         <RandomSelector />
                     </Carousel.Item> 
                 </Carousel>
-                : list.map((data: { moves: any, name: string; })=> 
-                <ListMoves name={data.name} key={data.name} />
-                )}
+                : !page ?
+                list.map((data: { moves: any, name: string; })=> 
+                <ListMoves name={data.name} key={data.name} setPage={setPage} setPokemon={setPokemon} />)
+                : <div className="move-dex__pokemon">
+                    <button onClick={backToPage}>return</button>
+                    {pokemon.map((pokes: { name: string | undefined; }) => 
+                     <SmallPokemonList name={pokes.name} key={pokes.name} />)}
+                </div>
+            }
             </div>
     </>
     )

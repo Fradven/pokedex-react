@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
-import Popup from './Popup';
-import SmallPokemonList from './SmallPokemonList';
 
 interface Props {
     name:string
+    setPage: React.Dispatch<React.SetStateAction<boolean>>
+    setPokemon: React.Dispatch<any>
 }
 
 interface FlavorText {
@@ -25,10 +25,8 @@ interface Move {
     learned_by_pokemon: {}
 }
 
-const ListMoves: React.FC<Props> = ({name}) => {
+const ListMoves: React.FC<Props> = ({name, setPage, setPokemon}) => {
     const [move, setMove] = useState<Move>()
-    const [popup, setPopup] = useState(false)
-    const [pokemon, setPokemon] = useState<any>()
 
     //fetching data from individual page of moves
     const getMove = async() => {
@@ -51,13 +49,8 @@ const ListMoves: React.FC<Props> = ({name}) => {
 
     const loadPokemon = () => {
         setPokemon(move?.learned_by_pokemon)
-        setPopup(true)
+        setPage(true)
     }
-
-    useEffect (() => {
-        console.log(pokemon)
-    }, [pokemon])
-    const openPopup = () => setPopup(false)
 
 
   return (
@@ -100,16 +93,6 @@ const ListMoves: React.FC<Props> = ({name}) => {
         </div>
 
         }
-
-        {!pokemon ? ""
-        :<Popup show={popup}>
-            <div className="popup">
-                <button className="returnPopup" onClick={openPopup}>Return</button>
-                {pokemon.length === 0 ? "loading" : pokemon.map((data: { name: string | undefined; }) => {
-                return <SmallPokemonList name={data.name} />
-                })}
-            </div>
-        </Popup> }
       </>
   );
 }
