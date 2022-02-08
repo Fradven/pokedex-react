@@ -8,6 +8,7 @@
     font-family: $nameFont;
     border: solid 5px ;
     border-radius: 4px;
+    color: #f0efe7;
 
     &__header {
         display: flex;
@@ -17,7 +18,7 @@
     }
     &__type, &__damage-class {
         
-        p{    
+        p, h3{    
             padding: 0.1rem 0;
             border-radius: 6px;
             width: 5rem;
@@ -28,6 +29,11 @@
             border-style: solid;
             border-width: 2px;
             color: #f0efe7;
+        }
+
+        h3 {
+            width: auto;
+            min-width: 5rem;
         }
     }
 
@@ -49,26 +55,26 @@
 }
 
 .move.physical {
-    background-color: coral;
-    border-color: red;
+    background-color: #C92112;
+    border-color: #d96358;
 
     .move__header {
-        background-color: red;
+        background-color: #d96358;
     }
 }
 .move.special {
-    background-color: lightblue;
-    border-color: blue;
+    background-color: #4F5870;
+    border-color: #83899a;
 
     .move__header {
-        background-color: blue;
+        background-color: #83899a;
     }
 }
 .move.status {
-    background-color: grey;
-    border-color: darkgrey;
+    background-color: #8C888C;
+    border-color: #5b585b;
 
     .move__header {
-        background-color: darkgrey;
+        background-color: #5b585b;
     }
 }

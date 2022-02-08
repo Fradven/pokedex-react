@@ -37,6 +37,7 @@ const ListMoves: React.FC<Props> = ({name}) => {
     }, [])
 
     let flavor = move?.flavor_text_entries
+    
     const englishFilter = (text: { version_group: { name: string; }; language: { name: string; }; flavor_text: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
         if (text.version_group.name === "sword-shield" && text.language.name === "en") {
             return <p key={text.language.name}>{text.flavor_text}</p>
@@ -49,14 +50,14 @@ const ListMoves: React.FC<Props> = ({name}) => {
       {move 
         ? <div className={"move" + " " + move.damage_class.name}>
             <div className="move__header">
-                <h3 className="move__name">{name}</h3>
+            <div className="move__type">
+            <h3 className={move.type.name}>{name}</h3>
+            </div>
                 <div className="move__damage-class">
                     <p className="move__damage-class-type">{move.damage_class.name}</p>
                 </div>
             </div>
-            <div className="move__type">
-                <p className={move.type.name}>{move.type.name}</p>
-            </div>
+            
 
             <div className="move__flavor-text">
                 {flavor?.map(englishFilter)}
