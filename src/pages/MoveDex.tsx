@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TypeFetch from '../component/TypeFetch';
 import ListMoves from '../component/ListMoves';
 import { Carousel } from 'react-bootstrap';
@@ -14,10 +14,21 @@ function MoveDex() {
     const item = "moves"
 
     const backToPage = () => setPage(false)
+
+    useEffect (() => {
+        setPage(false)
+        console.log("hello")
+    }, [list])
+
+    const filterDamageClass = () => {
+        
+    }
     return (
     <>
         <h2 className='page-name'>Move List</h2>
+        
         <TypeFetch setTopList={setList} item={item} />
+
         <div className="move-dex">
                 {(list.length === 0) 
                 ? <Carousel controls={false} fade>
@@ -33,9 +44,9 @@ function MoveDex() {
                 </Carousel>
                 : !page ? <div className="move-dex__list-page">
                                 <div className="move-dex__filter">
-                                    <button className="move-dex__physical"></button>
-                                    <button className="move-dex__special"></button>
-                                    <button className="move-dex__status"></button>
+                                    <button className="move-dex__physical" onClick={filterDamageClass} >Physical</button>
+                                    <button className="move-dex__special" onClick={filterDamageClass} >Special</button>
+                                    <button className="move-dex__status" onClick={filterDamageClass} >Status</button>
                                 </div>
                                 {list.map((data: { moves: any, name: string; })=> 
                                 <ListMoves name={data.name} key={data.name} setPage={setPage} setPokemon={setPokemon} />)}
