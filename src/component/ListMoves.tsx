@@ -20,10 +20,13 @@ interface Move {
     power: number
     pp: number
     accuracy: number
+    learned_by_pokemon: {}
 }
 
 const ListMoves: React.FC<Props> = ({name}) => {
     const [move, setMove] = useState<Move>()
+    const [popup, setPopup] = useState(false)
+    const [pokemon, setPokemon] = useState({})
 
     //fetching data from individual page of moves
     const getMove = async() => {
@@ -41,6 +44,15 @@ const ListMoves: React.FC<Props> = ({name}) => {
     const englishFilter = (text: { version_group: { name: string; }; language: { name: string; }; flavor_text: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
         if (text.version_group.name === "sword-shield" && text.language.name === "en") {
             return <p key={text.language.name}>{text.flavor_text}</p>
+        }
+    }
+
+    const loadPokemon = () => {
+        if (move) {
+            setPokemon(move.learned_by_pokemon)
+            setPopup(true)
+            console.log(pokemon)
+            console.log(popup)
         }
     }
 
@@ -62,16 +74,20 @@ const ListMoves: React.FC<Props> = ({name}) => {
             <div className="move__flavor-text">
                 {flavor?.map(englishFilter)}
             </div>
-
-            <div className="move__stats">
-                <div className="move__power">
-                    {move.power === null ? <p>Power: - </p> : <p>power: {move.power}</p>}
+            <div className="move__lower">
+                <div className="move__stats">
+                    <div className="move__power">
+                        {move.power === null ? <p>Power: - </p> : <p>power: {move.power}</p>}
+                    </div>
+                    <div className="move__accuracy">
+                        {move.accuracy === null ? <p>Accuracy: - </p> : <p>Accuracy: {move.accuracy}</p>}                
+                    </div>
+                    <div className="move__pp">
+                        <p>PP: {move.pp}</p>
+                    </div>
                 </div>
-                <div className="move__accuracy">
-                    {move.accuracy === null ? <p>Accuracy: - </p> : <p>Accuracy: {move.accuracy}</p>}                
-                </div>
-                <div className="move__pp">
-                    <p>PP: {move.pp}</p>
+                <div className="move__button">
+                    <button onClick={loadPokemon}>Pokemon</button>
                 </div>
             </div>
         </div> 
