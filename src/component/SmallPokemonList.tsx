@@ -8,13 +8,14 @@ interface Props {
 
 interface Pokemon {
     sprites: any
+    length: {}
 }
 
 const SmallPokemonList: React.FC<Props> = ({ name }) => {
     const [pokemon, setPokemon] = useState<Pokemon>()
 
     const getPokemon = async() => {
-        const res = await axios.get(`move/${name}`)
+        const res = await axios.get(`pokemon/${name}`)
         setPokemon(res.data);
     }
 
@@ -24,12 +25,14 @@ const SmallPokemonList: React.FC<Props> = ({ name }) => {
 
   return (
       <>
-        <div className="move__pokemon">
+      {pokemon?.length === 0 ? "loading"
+        : <div className="move__pokemon">
             <div className="move__pokemon-sprtie">
                 {pokemon?.sprites.length === 0 ? "loading" : <img src={pokemon?.sprites.front_default} alt='sprite'/>}
             </div>
             <h3 className='move__pokemon-name'>{name}</h3>
         </div>
+}
       </>
   );
 }
