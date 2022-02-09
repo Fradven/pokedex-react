@@ -4,12 +4,15 @@ import ListMoves from '../component/ListMoves';
 import { Carousel } from 'react-bootstrap';
 import RandomSelector from '../component/RandomSelector';
 import SmallPokemonList from '../component/SmallPokemonList';
-import '../style/movedex.scss'
-import { axios } from '../javascript/axios';
+import '../style/movedex.scss'/* 
+import { axios } from '../javascript/axios'; */
 
 function MoveDex() {
     const [list, setList] = useState<any>([])
     const [page, setPage] = useState(false)
+    const [physicalType, setPhysicalType] = useState(false)
+    const [specialType, setSpecialType] = useState(false)
+    const [statusType, setStatusType] = useState(false)
     const [pokemon, setPokemon] = useState([])
 
     const item = "moves"
@@ -20,13 +23,18 @@ function MoveDex() {
         setPage(false)
     }, [list])
 
-    const filterDamageClass = () => {
+    /* const filterDamageClass = () => {
         list.map(async (move: { url: string; }) => {
             const result = await axios.get(move.url)
             console.log(result.data.damage_class)
 
         })
-    }
+    } */
+
+    const filterPhysical = () => setPhysicalType(!physicalType)
+    const filterSpecial = () => setSpecialType(!specialType)
+    const filterStatus = () => setStatusType(!statusType)
+
     return (
     <>
         <h2 className='page-name'>Move List</h2>
@@ -48,9 +56,9 @@ function MoveDex() {
                 </Carousel>
                 : !page ? <div className="move-dex__list-page">
                                 <div className="move-dex__filter">
-                                    <button className="move-dex__physical" onClick={filterDamageClass} >Physical</button>
-                                    <button className="move-dex__special" onClick={filterDamageClass} >Special</button>
-                                    <button className="move-dex__status" onClick={filterDamageClass} >Status</button>
+                                    <button className="move-dex__physical" onClick={filterPhysical} >Physical</button>
+                                    <button className="move-dex__special" onClick={filterSpecial} >Special</button>
+                                    <button className="move-dex__status" onClick={filterStatus} >Status</button>
                                 </div>
                                 {list.map((data: { moves: any, name: string; })=> 
                                 <ListMoves name={data.name} key={data.name} setPage={setPage} setPokemon={setPokemon} />)}
