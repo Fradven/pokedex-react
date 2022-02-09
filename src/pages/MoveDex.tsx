@@ -5,9 +5,10 @@ import { Carousel } from 'react-bootstrap';
 import RandomSelector from '../component/RandomSelector';
 import SmallPokemonList from '../component/SmallPokemonList';
 import '../style/movedex.scss'
+import { axios } from '../javascript/axios';
 
 function MoveDex() {
-    const [list, setList] = useState([])
+    const [list, setList] = useState<any>([])
     const [page, setPage] = useState(false)
     const [pokemon, setPokemon] = useState([])
 
@@ -17,11 +18,14 @@ function MoveDex() {
 
     useEffect (() => {
         setPage(false)
-        console.log("hello")
     }, [list])
 
     const filterDamageClass = () => {
-        
+        list.map(async (move: { url: string; }) => {
+            const result = await axios.get(move.url)
+            console.log(result.data.damage_class)
+
+        })
     }
     return (
     <>
