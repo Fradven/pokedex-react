@@ -11,17 +11,16 @@ function MoveDex() {
     const [list, setList] = useState<any>([])
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)
+    const [physicalLocke, setPhysicalLocke] = useState(false)
     const [specialType, setSpecialType] = useState(false)
+    const [specialLocke, setSpecialLocke] = useState(false)
     const [statusType, setStatusType] = useState(false)
+    const [statusLocke, setStatusLocke] = useState(false)
     const [pokemon, setPokemon] = useState([])
 
     const item = "moves"
 
     const backToPage = () => setPage(false)
-
-    useEffect (() => {
-        setPage(false)
-    }, [list])
 
     /* const filterDamageClass = () => {
         list.map(async (move: { url: string; }) => {
@@ -31,9 +30,86 @@ function MoveDex() {
         })
     } */
 
-    const filterPhysical = () => setPhysicalType(!physicalType)
-    const filterSpecial = () => setSpecialType(!specialType)
-    const filterStatus = () => setStatusType(!statusType)
+    /**
+     * Set all filter to false
+     */
+    const noFilter = () => {
+        setPhysicalLocke(false)
+        setSpecialLocke(false)
+        setStatusLocke(false)
+        setPhysicalType(false)
+        setSpecialType(false)
+        setStatusType(false)
+        console.log("no filter")
+    }
+
+    //filter to show physical attacks
+    const filterPhysical = () => {
+        setPhysicalLocke(!physicalLocke)           //set physical lock to opposite at each button press
+
+        if (specialLocke) {                         //if specialLock is true, only filter out status
+            setStatusType(true)
+            setPhysicalType(false)
+        } 
+        else if (statusLocke) {                     //if status is true, only filter out special
+            setSpecialType(true) 
+            setPhysicalType(false)
+        } else {                                   //else filter out special et status
+            setSpecialType(true)
+            setStatusType(true)
+        }
+    }
+
+    //filter to show special attack
+    const filterSpecial = () => {
+        setSpecialLocke(!specialLocke)
+
+        if (physicalLocke) {
+        setStatusType(true)
+        setSpecialType(false)
+        }
+        else if (statusLocke) {
+        setPhysicalType(true)
+        setSpecialType(false)
+        } else {
+            setPhysicalType(true)
+            setStatusType(true)
+        }
+    }
+
+    //filter to show status attack
+    const filterStatus = () => {
+        setStatusLocke(!statusLocke)
+        
+        if (specialLocke) {
+        setPhysicalType(true)
+        setStatusType(false)
+        }
+        else if (physicalLocke) {
+        setSpecialType(true)
+        setStatusType(false)
+        } else {
+            setSpecialType(true)
+            setPhysicalType(true)
+        }
+        console.log("status")
+    }
+
+    useEffect (() => {
+        setPage(false)
+        noFilter()
+    }, [list])
+
+    useEffect(() => {
+        console.log("physical: " + physicalType)
+        console.log("physical locke: " + physicalLocke)
+        console.log("special: " + specialType)
+        console.log("special locke: " + specialLocke)
+        console.log("status: " +statusType)
+        console.log("status locke: " +statusLocke)
+
+        if (physicalLocke && specialLocke && statusLocke) noFilter()
+    }, [physicalLocke, specialLocke, statusLocke])
 
     return (
     <>
