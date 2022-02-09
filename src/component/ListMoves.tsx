@@ -25,7 +25,11 @@ interface Move {
     learned_by_pokemon: {}
 }
 
-const ListMoves: React.FC<Props> = ({name, setPage, setPokemon}) => {
+const ListMoves: React.FC<Props> = ({
+    name, 
+    setPage, 
+    setPokemon
+    }) => {
     const [move, setMove] = useState<Move>()
 
     //fetching data from individual page of moves

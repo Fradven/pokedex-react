@@ -4,8 +4,8 @@ import ListMoves from '../component/ListMoves';
 import { Carousel } from 'react-bootstrap';
 import RandomSelector from '../component/RandomSelector';
 import SmallPokemonList from '../component/SmallPokemonList';
-import '../style/movedex.scss'/* 
-import { axios } from '../javascript/axios'; */
+import '../style/movedex.scss'
+import { axios } from '../javascript/axios';
 
 function MoveDex() {
     const [list, setList] = useState<any>([])
@@ -22,13 +22,13 @@ function MoveDex() {
 
     const backToPage = () => setPage(false)
 
-    /* const filterDamageClass = () => {
+    const getDamageClass = async() => {
         list.map(async (move: { url: string; }) => {
             const result = await axios.get(move.url)
             console.log(result.data.damage_class)
 
         })
-    } */
+    }
 
     /**
      * Set all filter to false
@@ -111,6 +111,61 @@ function MoveDex() {
         if (physicalLocke && specialLocke && statusLocke) noFilter()
     }, [physicalLocke, specialLocke, statusLocke])
 
+    /* const filterDamageClass = ((data: { damage_class: { name: string; }; name: any; }) => {
+        const damageClass = data.damage_class.name
+
+        if (!physicalType && specialType && statusType && damageClass === "physical") {
+            return <ListMoves 
+                        name={data.name} 
+                        key={data.name} 
+                        setPage={setPage} 
+                        setPokemon={setPokemon}
+                    />
+        } else if (!specialType && physicalType && statusType && damageClass === "special") {
+            return <ListMoves 
+                        name={data.name} 
+                        key={data.name} 
+                        setPage={setPage} 
+                        setPokemon={setPokemon}
+                    />
+        } else if (!statusType && physicalType && specialType && damageClass === "status") {
+            return <ListMoves 
+                        name={data.name} 
+                        key={data.name} 
+                        setPage={setPage} 
+                        setPokemon={setPokemon}
+                    />
+        } else if (!specialType && !physicalType && statusType && (damageClass === "special" || damageClass === "physical")) {
+            return <ListMoves 
+                        name={data.name} 
+                        key={data.name} 
+                        setPage={setPage} 
+                        setPokemon={setPokemon}
+                    />
+        } else if (!specialType && !statusType && physicalType && (damageClass === "special" || damageClass === "status")) {
+            return <ListMoves 
+                        name={data.name} 
+                        key={data.name} 
+                        setPage={setPage} 
+                        setPokemon={setPokemon}
+                    />
+        } else if (!physicalType && !statusType && specialType && (damageClass === "physical" || damageClass === "status")) {
+            return <ListMoves 
+                        name={data.name} 
+                        key={data.name} 
+                        setPage={setPage} 
+                        setPokemon={setPokemon}
+                    />
+        } else {
+            return <ListMoves 
+                        name={data.name} 
+                        key={data.name} 
+                        setPage={setPage} 
+                        setPokemon={setPokemon}
+                    />
+        }
+    }) */
+
     return (
     <>
         <h2 className='page-name'>Move List</h2>
@@ -135,9 +190,15 @@ function MoveDex() {
                                     <button className="move-dex__physical" onClick={filterPhysical} >Physical</button>
                                     <button className="move-dex__special" onClick={filterSpecial} >Special</button>
                                     <button className="move-dex__status" onClick={filterStatus} >Status</button>
+                                    <button className="move-dex__status" onClick={getDamageClass} >Damage</button>
                                 </div>
                                 {list.map((data: { moves: any, name: string; })=> 
-                                <ListMoves name={data.name} key={data.name} setPage={setPage} setPokemon={setPokemon} />)}
+                                <ListMoves 
+                                    name={data.name} 
+                                    key={data.name} 
+                                    setPage={setPage} 
+                                    setPokemon={setPokemon}
+                                />)}
                             </div>
                 : <div className="move-dex__pokemon">
                     <button onClick={backToPage}>return</button>
