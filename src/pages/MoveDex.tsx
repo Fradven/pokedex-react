@@ -9,6 +9,7 @@ import { axios } from '../javascript/axios';
 
 function MoveDex() {
     const [list, setList] = useState<any>([])
+    const [damageClass, setDamageclass] = useState("")
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)
     const [physicalLocke, setPhysicalLocke] = useState(false)
@@ -25,8 +26,7 @@ function MoveDex() {
     const getDamageClass = async() => {
         list.map(async (move: { url: string; }) => {
             const result = await axios.get(move.url)
-            console.log(result.data.damage_class)
-
+            console.log(result.data.damage_class.name)
         })
     }
 
@@ -100,71 +100,50 @@ function MoveDex() {
         noFilter()
     }, [list])
 
+    const getUrl = async(element: { damage_class?: { name: string; }; name?: any; url: any; }) => {
+        const result = await axios.get(element.url)
+        setDamageclass(result.data.damage_class.name)
+    }
+
+    const filterDamageClass = ((element: { damage_class: { name: string; }; name: any; url: string }) => {
+        getUrl(element)
+        console.log(element)
+
+        if (physicalType === false && specialType === true && statusType === true) {
+            return  damageClass === "physical"
+        }
+        
+         if (specialType === false && physicalType === true && statusType === true ) {
+            return damageClass === "special"
+        }
+        
+         if (statusType === false && physicalType === true && specialType === true) {          
+            return  damageClass === "status"
+        }
+        
+         if (specialType === false && physicalType === false && statusType === true ) {         
+            return (damageClass === "special" || damageClass === "physical")
+        }
+        
+         if (specialType === false && statusType === false && physicalType === true ) {            
+            return (damageClass === "special" || damageClass === "status")
+        }
+        
+         if (physicalType === false && statusType === false && specialType === true ) {
+            return (damageClass === "physical" || damageClass === "status")
+        }
+    })
+
     useEffect(() => {
-        console.log("physical: " + physicalType)
+        /* console.log("physical: " + physicalType)
         console.log("physical locke: " + physicalLocke)
         console.log("special: " + specialType)
         console.log("special locke: " + specialLocke)
         console.log("status: " +statusType)
-        console.log("status locke: " +statusLocke)
+        console.log("status locke: " +statusLocke) */
 
         if (physicalLocke && specialLocke && statusLocke) noFilter()
     }, [physicalLocke, specialLocke, statusLocke])
-
-    /* const filterDamageClass = ((data: { damage_class: { name: string; }; name: any; }) => {
-        const damageClass = data.damage_class.name
-
-        if (!physicalType && specialType && statusType && damageClass === "physical") {
-            return <ListMoves 
-                        name={data.name} 
-                        key={data.name} 
-                        setPage={setPage} 
-                        setPokemon={setPokemon}
-                    />
-        } else if (!specialType && physicalType && statusType && damageClass === "special") {
-            return <ListMoves 
-                        name={data.name} 
-                        key={data.name} 
-                        setPage={setPage} 
-                        setPokemon={setPokemon}
-                    />
-        } else if (!statusType && physicalType && specialType && damageClass === "status") {
-            return <ListMoves 
-                        name={data.name} 
-                        key={data.name} 
-                        setPage={setPage} 
-                        setPokemon={setPokemon}
-                    />
-        } else if (!specialType && !physicalType && statusType && (damageClass === "special" || damageClass === "physical")) {
-            return <ListMoves 
-                        name={data.name} 
-                        key={data.name} 
-                        setPage={setPage} 
-                        setPokemon={setPokemon}
-                    />
-        } else if (!specialType && !statusType && physicalType && (damageClass === "special" || damageClass === "status")) {
-            return <ListMoves 
-                        name={data.name} 
-                        key={data.name} 
-                        setPage={setPage} 
-                        setPokemon={setPokemon}
-                    />
-        } else if (!physicalType && !statusType && specialType && (damageClass === "physical" || damageClass === "status")) {
-            return <ListMoves 
-                        name={data.name} 
-                        key={data.name} 
-                        setPage={setPage} 
-                        setPokemon={setPokemon}
-                    />
-        } else {
-            return <ListMoves 
-                        name={data.name} 
-                        key={data.name} 
-                        setPage={setPage} 
-                        setPokemon={setPokemon}
-                    />
-        }
-    }) */
 
     return (
     <>
@@ -192,13 +171,14 @@ function MoveDex() {
                                     <button className="move-dex__status" onClick={filterStatus} >Status</button>
                                     <button className="move-dex__status" onClick={getDamageClass} >Damage</button>
                                 </div>
-                                {list.map((data: { moves: any, name: string; })=> 
-                                <ListMoves 
-                                    name={data.name} 
-                                    key={data.name} 
+                                {list.length === 0 ? "loading" : list.filter(filterDamageClass).map( (element: { name: string; }) => {
+                                    return <ListMoves 
+                                    name={element.name} 
+                                    key={element.name} 
                                     setPage={setPage} 
                                     setPokemon={setPokemon}
-                                />)}
+                                />
+                                })}
                             </div>
                 : <div className="move-dex__pokemon">
                     <button onClick={backToPage}>return</button>
