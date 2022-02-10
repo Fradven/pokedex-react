@@ -20,6 +20,7 @@ const TypeFetch: React.FC<Props> = ({ setTopList, item }) => {
 
     useEffect(() => {
         setTopList(list)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [list])
 
     useEffect (() => {

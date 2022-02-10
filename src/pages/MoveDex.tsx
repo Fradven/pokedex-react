@@ -9,7 +9,7 @@ import { axios } from '../javascript/axios';
 
 function MoveDex() {
     const [list, setList] = useState<any>([])
-    const [damageClass, setDamageclass] = useState("")
+    /* const [damageClass, setDamageclass] = useState("") */
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)
     const [physicalLocke, setPhysicalLocke] = useState(false)
@@ -100,16 +100,21 @@ function MoveDex() {
         noFilter()
     }, [list])
 
-    const getUrl = async(element: { damage_class?: { name: string; }; name?: any; url: any; }) => {
+    /* const getUrl = async(element: { damage_class?: { name: string; }; name?: any; url: any; }) => {
         const result = await axios.get(element.url)
         setDamageclass(result.data.damage_class.name)
-    }
+    } */
 
     const filterDamageClass = ((element: { damage_class: { name: string; }; name: any; url: string }) => {
-        getUrl(element)
-        console.log(element)
 
-        if (physicalType === false && specialType === true && statusType === true) {
+        return <ListMoves 
+                                    name={element.name} 
+                                    key={element.name} 
+                                    setPage={setPage} 
+                                    setPokemon={setPokemon}
+                                    />
+
+        /* if (physicalType === false && specialType === true && statusType === true) {
             return  damageClass === "physical"
         }
         
@@ -131,18 +136,19 @@ function MoveDex() {
         
          if (physicalType === false && statusType === false && specialType === true ) {
             return (damageClass === "physical" || damageClass === "status")
-        }
+        } */
     })
 
     useEffect(() => {
-        /* console.log("physical: " + physicalType)
+        console.log("physical: " + physicalType)
         console.log("physical locke: " + physicalLocke)
         console.log("special: " + specialType)
         console.log("special locke: " + specialLocke)
         console.log("status: " +statusType)
-        console.log("status locke: " +statusLocke) */
+        console.log("status locke: " +statusLocke)
 
         if (physicalLocke && specialLocke && statusLocke) noFilter()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [physicalLocke, specialLocke, statusLocke])
 
     return (
@@ -171,14 +177,7 @@ function MoveDex() {
                                     <button className="move-dex__status" onClick={filterStatus} >Status</button>
                                     <button className="move-dex__status" onClick={getDamageClass} >Damage</button>
                                 </div>
-                                {list.length === 0 ? "loading" : list.filter(filterDamageClass).map( (element: { name: string; }) => {
-                                    return <ListMoves 
-                                    name={element.name} 
-                                    key={element.name} 
-                                    setPage={setPage} 
-                                    setPokemon={setPokemon}
-                                />
-                                })}
+                                {list.length === 0 ? "loading" : list.map(filterDamageClass)}
                             </div>
                 : <div className="move-dex__pokemon">
                     <button onClick={backToPage}>return</button>
