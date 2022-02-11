@@ -7,10 +7,11 @@ import SmallPokemonList from '../component/SmallPokemonList';
 import '../style/movedex.scss'
 import { axios } from '../javascript/axios';
 
+
 function MoveDex() {
     const [list, setList] = useState<any>([])
     /* const [damageClass, setDamageclass] = useState("") */
-    const [moveList, setMoveLMist] = useState([])
+    const [moveList, setMoveList] = useState<any>([])
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)
     const [physicalLocke, setPhysicalLocke] = useState(false)
@@ -24,21 +25,30 @@ function MoveDex() {
 
     const backToPage = () => setPage(false)
 
-    const pokemonMove = async() => {
-        setMoveLMist(
-            list.map(async (move: { url: string; }) => {
-                const result = await axios.get(move.url)
-                return result
-            })
-        )
+
+    const pokesMove = async(attack: { url: string; }) => {
+        const result = await axios.get(attack.url)
+        return result.data}
+
+    const pokemonInMove = async() => {
+        console.log("coucou")
+        const getPokes = await Promise.all(list.map(pokesMove))
+            console.log(await getPokes)
+        
+        setMoveList(getPokes)
     }
 
     useEffect (()=> {
-        pokemonMove()
-        if (!moveList) return
+        pokemonInMove()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [list])
+
+    /* useEffect (()=> {
+        console.log(list)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [list]) */
 
     /**
      * Set all filter to false
@@ -115,47 +125,40 @@ function MoveDex() {
         setDamageclass(result.data.damage_class.name)
     } */
 
-    const filterDamageClass = ((element: { damage_class: { name: string; }; name: any; url: string }) => {
+    const filterDamageClass = ((element: { damage_class: { name: string; }}) => {
 
-        return <ListMoves 
-                                    name={element.name} 
-                                    key={element.name} 
-                                    setPage={setPage} 
-                                    setPokemon={setPokemon}
-                                    />
-
-        /* if (physicalType === false && specialType === true && statusType === true) {
-            return  damageClass === "physical"
+        if (physicalType === false && specialType === true && statusType === true) {
+            return  element.damage_class.name === "physical"
         }
         
          if (specialType === false && physicalType === true && statusType === true ) {
-            return damageClass === "special"
+            return element.damage_class.name === "special"
         }
         
          if (statusType === false && physicalType === true && specialType === true) {          
-            return  damageClass === "status"
+            return  element.damage_class.name === "status"
         }
         
          if (specialType === false && physicalType === false && statusType === true ) {         
-            return (damageClass === "special" || damageClass === "physical")
+            return (element.damage_class.name === "special" || element.damage_class.name === "physical")
         }
         
          if (specialType === false && statusType === false && physicalType === true ) {            
-            return (damageClass === "special" || damageClass === "status")
+            return (element.damage_class.name === "special" || element.damage_class.name === "status")
         }
         
          if (physicalType === false && statusType === false && specialType === true ) {
-            return (damageClass === "physical" || damageClass === "status")
-        } */
+            return (element.damage_class.name === "physical" || element.damage_class.name === "status")
+        }
     })
 
     useEffect(() => {
-        console.log("physical: " + physicalType)
+        /* console.log("physical: " + physicalType)
         console.log("physical locke: " + physicalLocke)
         console.log("special: " + specialType)
         console.log("special locke: " + specialLocke)
         console.log("status: " +statusType)
-        console.log("status locke: " +statusLocke)
+        console.log("status locke: " +statusLocke) */
 
         if (physicalLocke && specialLocke && statusLocke) noFilter()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -186,7 +189,14 @@ function MoveDex() {
                                     <button className="move-dex__special" onClick={filterSpecial} >Special</button>
                                     <button className="move-dex__status" onClick={filterStatus} >Status</button>
                                 </div>
-                                {list.length === 0 ? "loading" : list.map(filterDamageClass)}
+                                {moveList.length === 0 ? "loading" : moveList.filter(filterDamageClass).map((element: { name: string }) => 
+                                    <ListMoves 
+                                    name={element.name} 
+                                    key={element.name} 
+                                    setPage={setPage} 
+                                    setPokemon={setPokemon}
+                                    />
+                                    )}
                             </div>
                 : <div className="move-dex__pokemon">
                     <button onClick={backToPage}>return</button>
