@@ -31,10 +31,7 @@ function MoveDex() {
         return result.data}
 
     const pokemonInMove = async() => {
-        console.log("coucou")
         const getPokes = await Promise.all(list.map(pokesMove))
-            console.log(await getPokes)
-        
         setMoveList(getPokes)
     }
 
@@ -43,12 +40,6 @@ function MoveDex() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [list])
-
-    /* useEffect (()=> {
-        console.log(list)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [list]) */
 
     /**
      * Set all filter to false
@@ -60,7 +51,6 @@ function MoveDex() {
         setPhysicalType(false)
         setSpecialType(false)
         setStatusType(false)
-        console.log("no filter")
     }
 
     //filter to show physical attacks
@@ -69,12 +59,12 @@ function MoveDex() {
         if (specialLocke) {                         //if specialLock is true, only filter out status
             setStatusType(true)
             setPhysicalType(false)
-            if (physicalLocke) setStatusType(false)
+            if (physicalLocke) setPhysicalType(true)
         } 
         else if (statusLocke) {                     //if status is true, only filter out special
             setSpecialType(true) 
             setPhysicalType(false)
-            if (physicalLocke) setSpecialType(false)
+            if (physicalLocke) setPhysicalType(true)
         } else {                                   //else filter out special et status
             setSpecialType(true)
             setStatusType(true)
@@ -92,12 +82,12 @@ function MoveDex() {
         if (physicalLocke) {
         setStatusType(true)
         setSpecialType(false)
-        if (specialLocke) setStatusType(false)
+        if (specialLocke) setSpecialType(true)
         }
         else if (statusLocke) {
         setPhysicalType(true)
         setSpecialType(false)
-        if (specialLocke) setPhysicalType(false)
+        if (specialLocke) setSpecialType(true)
         } else {
             setPhysicalType(true)
             setStatusType(true)
@@ -112,16 +102,15 @@ function MoveDex() {
     //filter to show status attack
     const filterStatus = () => {
         
-        
         if (specialLocke) {
         setPhysicalType(true)
         setStatusType(false)
-        if (statusLocke) setPhysicalLocke(false)
+        if (statusLocke) setStatusType(true)
         }
         else if (physicalLocke) {
         setSpecialType(true)
         setStatusType(false)
-        if (statusLocke) setPhysicalLocke(false)
+        if (statusLocke) setStatusType(true)
         } else {
             setSpecialType(true)
             setPhysicalType(true)
@@ -170,13 +159,6 @@ function MoveDex() {
     })
 
     useEffect(() => {
-        /* console.log("physical: " + physicalType)
-        console.log("physical locke: " + physicalLocke)
-        console.log("special: " + specialType)
-        console.log("special locke: " + specialLocke)
-        console.log("status: " +statusType)
-        console.log("status locke: " +statusLocke) */
-
         if (physicalLocke && specialLocke && statusLocke) noFilter()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [physicalLocke, specialLocke, statusLocke])
