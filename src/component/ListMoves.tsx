@@ -25,7 +25,11 @@ interface Move {
     learned_by_pokemon: {}
 }
 
-const ListMoves: React.FC<Props> = ({name, setPage, setPokemon}) => {
+const ListMoves: React.FC<Props> = ({
+    name, 
+    setPage, 
+    setPokemon
+    }) => {
     const [move, setMove] = useState<Move>()
 
     //fetching data from individual page of moves
@@ -56,6 +60,7 @@ const ListMoves: React.FC<Props> = ({name, setPage, setPokemon}) => {
   return (
       <>
       {move 
+        // eslint-disable-next-line no-useless-concat
         ? <div className={"move" + " " + move.damage_class.name}>
             <div className="move__header">
             <div className="move__type">
@@ -83,7 +88,7 @@ const ListMoves: React.FC<Props> = ({name, setPage, setPokemon}) => {
                     </div>
                 </div>
                 <div className="move__button">
-                    <button onClick={loadPokemon}>Pokemon</button>
+                    <button onClick={loadPokemon}>Learned By...</button>
                 </div>
             </div>
         </div> 
