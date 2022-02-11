@@ -36,6 +36,7 @@ const ListMoves: React.FC<Props> = ({
     const getMove = async() => {
         const res = await axios.get(`move/${name}`)
         setMove(res.data);
+        console.log(res.data)
     }
 
     useEffect(() => {
@@ -60,6 +61,7 @@ const ListMoves: React.FC<Props> = ({
   return (
       <>
       {move 
+        // eslint-disable-next-line no-useless-concat
         ? <div className={"move" + " " + move.damage_class.name}>
             <div className="move__header">
             <div className="move__type">

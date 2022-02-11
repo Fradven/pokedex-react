@@ -10,6 +10,7 @@ import { axios } from '../javascript/axios';
 function MoveDex() {
     const [list, setList] = useState<any>([])
     /* const [damageClass, setDamageclass] = useState("") */
+    const [moveList, setMoveLMist] = useState([])
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)
     const [physicalLocke, setPhysicalLocke] = useState(false)
@@ -23,12 +24,21 @@ function MoveDex() {
 
     const backToPage = () => setPage(false)
 
-    const getDamageClass = async() => {
-        list.map(async (move: { url: string; }) => {
-            const result = await axios.get(move.url)
-            console.log(result.data.damage_class.name)
-        })
+    const pokemonMove = async() => {
+        setMoveLMist(
+            list.map(async (move: { url: string; }) => {
+                const result = await axios.get(move.url)
+                return result
+            })
+        )
     }
+
+    useEffect (()=> {
+        pokemonMove()
+        if (!moveList) return
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     /**
      * Set all filter to false
@@ -175,7 +185,6 @@ function MoveDex() {
                                     <button className="move-dex__physical" onClick={filterPhysical} >Physical</button>
                                     <button className="move-dex__special" onClick={filterSpecial} >Special</button>
                                     <button className="move-dex__status" onClick={filterStatus} >Status</button>
-                                    <button className="move-dex__status" onClick={getDamageClass} >Damage</button>
                                 </div>
                                 {list.length === 0 ? "loading" : list.map(filterDamageClass)}
                             </div>
