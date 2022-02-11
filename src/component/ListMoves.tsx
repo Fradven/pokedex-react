@@ -60,6 +60,7 @@ const ListMoves: React.FC<Props> = ({
   return (
       <>
       {move 
+        // eslint-disable-next-line no-useless-concat
         ? <div className={"move" + " " + move.damage_class.name}>
             <div className="move__header">
             <div className="move__type">
