@@ -64,66 +64,80 @@ function MoveDex() {
     }
 
     //filter to show physical attacks
-    const filterPhysical = () => {
-        setPhysicalLocke(!physicalLocke)           //set physical lock to opposite at each button press
+    const filterPhysical = () => {          //set physical lock to opposite at each button press
 
         if (specialLocke) {                         //if specialLock is true, only filter out status
             setStatusType(true)
             setPhysicalType(false)
+            if (physicalLocke) setStatusType(false)
         } 
         else if (statusLocke) {                     //if status is true, only filter out special
             setSpecialType(true) 
             setPhysicalType(false)
+            if (physicalLocke) setSpecialType(false)
         } else {                                   //else filter out special et status
             setSpecialType(true)
             setStatusType(true)
+            if (physicalLocke) {
+                setSpecialType(false)
+                setStatusType(false)
+            }
         }
+        setPhysicalLocke(!physicalLocke) 
     }
 
     //filter to show special attack
     const filterSpecial = () => {
-        setSpecialLocke(!specialLocke)
 
         if (physicalLocke) {
         setStatusType(true)
         setSpecialType(false)
+        if (specialLocke) setStatusType(false)
         }
         else if (statusLocke) {
         setPhysicalType(true)
         setSpecialType(false)
+        if (specialLocke) setPhysicalType(false)
         } else {
             setPhysicalType(true)
             setStatusType(true)
+            if (specialLocke) {
+                setPhysicalType(false)
+                setStatusType(false)
+            }
         }
+        setSpecialLocke(!specialLocke)
     }
 
     //filter to show status attack
     const filterStatus = () => {
-        setStatusLocke(!statusLocke)
+        
         
         if (specialLocke) {
         setPhysicalType(true)
         setStatusType(false)
+        if (statusLocke) setPhysicalLocke(false)
         }
         else if (physicalLocke) {
         setSpecialType(true)
         setStatusType(false)
+        if (statusLocke) setPhysicalLocke(false)
         } else {
             setSpecialType(true)
             setPhysicalType(true)
+            if (statusLocke) {
+                setSpecialType(false)
+                setPhysicalType(false)
+            }
         }
-        console.log("status")
+
+        setStatusLocke(!statusLocke)
     }
 
     useEffect (() => {
         setPage(false)
         noFilter()
     }, [list])
-
-    /* const getUrl = async(element: { damage_class?: { name: string; }; name?: any; url: any; }) => {
-        const result = await axios.get(element.url)
-        setDamageclass(result.data.damage_class.name)
-    } */
 
     const filterDamageClass = ((element: { damage_class: { name: string; }}) => {
 
@@ -149,6 +163,9 @@ function MoveDex() {
         
          if (physicalType === false && statusType === false && specialType === true ) {
             return (element.damage_class.name === "physical" || element.damage_class.name === "status")
+        }
+         if (physicalType === false && statusType === false && specialType === false ) {
+            return (element.damage_class.name === "physical" || element.damage_class.name === "status" || element.damage_class.name === "special")
         }
     })
 

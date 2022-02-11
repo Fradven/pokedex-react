@@ -36,7 +36,6 @@ const ListMoves: React.FC<Props> = ({
     const getMove = async() => {
         const res = await axios.get(`move/${name}`)
         setMove(res.data);
-        console.log(res.data)
     }
 
     useEffect(() => {
