@@ -94,6 +94,27 @@
     &__stats {
         font-size: 1.5rem;
     }
+
+    &__pokemon {
+        margin: 0 auto;
+        margin-top: 15px;
+        max-width: 150px;
+        background-color: $bgcolor;
+        background-image: url(../img/ctn-background-reverse.svg);
+        background-position: center;
+        background-size: cover;
+        border-style: dashed double;
+        border-width: 7px;
+        border-radius: 5px;
+        border-color: $borderColor;
+        font-family: $nameFont;
+        text-align: center;
+
+        h3 {
+            text-transform: capitalize;
+            font-size: 1.8rem;
+        }
+    }
 }
 
 .move.physical {

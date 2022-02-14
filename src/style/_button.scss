@@ -12,27 +12,27 @@
         button {
             width: 80px;
             min-width: 70px;
-          border-width: 0;
-          border-radius: 4px;
-          color: #f0efe7;
-          cursor: pointer;
-          display: inline-block;
-          font-family: $typeFont;
-          font-size: 14px;
-          font-weight: 500;
-          opacity: 1;
-          outline: 0;
-          padding: 0.4em .3em;
-          position: relative;
-          text-decoration: none;
-          text-rendering: geometricprecision;
-          text-transform: uppercase;
-          transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
-          user-select: none;
-          -webkit-user-select: none;
-          touch-action: manipulation;
-          vertical-align: baseline;
-          white-space: nowrap;
+            border-width: 0;
+            border-radius: 4px;
+            color: #f0efe7;
+            cursor: pointer;
+            display: inline-block;
+            font-family: $typeFont;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 1;
+            outline: 0;
+            padding: 0.4em .3em;
+            position: relative;
+            text-decoration: none;
+            text-rendering: geometricprecision;
+            text-transform: uppercase;
+            transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: baseline;
+            white-space: nowrap;
         }
     
         button:before {

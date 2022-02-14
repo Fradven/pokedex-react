@@ -207,7 +207,7 @@ function MoveDex() {
                                     )}
                             </div>
                 : <div className="move-dex__pokemon">
-                    <button onClick={backToPage}>return</button>
+                    <button className='move-dex__return-btn' onClick={backToPage}>return</button>
                     {pokemon.map((pokes: { name: string | undefined; }) => 
                      <SmallPokemonList name={pokes.name} key={pokes.name} />)}
                 </div>
