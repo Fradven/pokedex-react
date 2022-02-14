@@ -184,9 +184,18 @@ function MoveDex() {
                 </Carousel>
                 : !page ? <div className="move-dex__list-page">
                                 <div className="move-dex__filter">
-                                    <button className="move-dex__physical" onClick={filterPhysical} >Physical</button>
-                                    <button className="move-dex__special" onClick={filterSpecial} >Special</button>
-                                    <button className="move-dex__status" onClick={filterStatus} >Status</button>
+                                    <button 
+                                    className={!physicalLocke ? "move-dex__physical" : "move-dex__physicalLock"} 
+                                    onClick={filterPhysical}
+                                    >Physical</button>
+                                    <button 
+                                    className={!specialLocke ? "move-dex__special" : "move-dex__specialLock"} 
+                                    onClick={filterSpecial} 
+                                    >Special</button>
+                                    <button 
+                                    className={!statusLocke ? "move-dex__status" : "move-dex__statusLock"} 
+                                    onClick={filterStatus} 
+                                    >Status</button>
                                 </div>
                                 {moveList.length === 0 ? "loading" : moveList.filter(filterDamageClass).map((element: { name: string }) => 
                                     <ListMoves 
