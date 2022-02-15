@@ -6,6 +6,7 @@ import RandomSelector from '../component/RandomSelector';
 import SmallPokemonList from '../component/SmallPokemonList';
 import '../style/movedex.scss'
 import { axios } from '../javascript/axios';
+import loading from '../img/loading.gif'
 
 
 function MoveDex() {
@@ -197,14 +198,18 @@ function MoveDex() {
                                     onClick={filterStatus} 
                                     >Status</button>
                                 </div>
-                                {moveList.length === 0 ? "loading" : moveList.filter(filterDamageClass).map((element: { name: string }) => 
+                                {moveList.length === 0 
+                                ? <div className="pokemon__load-ctn">
+                                    <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
+                                </div>
+                                : moveList.filter(filterDamageClass).map((element: { name: string }) => 
                                     <ListMoves 
                                     name={element.name} 
                                     key={element.name} 
                                     setPage={setPage} 
                                     setPokemon={setPokemon}
                                     />
-                                    )}
+                                )}
                             </div>
                 : <div className="move-dex__pokemon">
                     <button className='move-dex__return-btn' onClick={backToPage}>return</button>

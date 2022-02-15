@@ -7,7 +7,7 @@ function RandomSelector() {
     const [name, setName] = useState<any>()
 
     const randomNumber = () => {
-        let x = Math.floor((Math.random() * 1000) + 1)
+        let x = Math.floor((Math.random() * 810) + 1)
         return x
     }
     const getRandomPokemon = async() => {
