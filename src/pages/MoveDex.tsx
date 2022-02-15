@@ -10,8 +10,7 @@ import loading from '../img/loading.gif'
 
 
 function MoveDex() {
-    const [list, setList] = useState<any>([])
-    /* const [damageClass, setDamageclass] = useState("") */
+    const [list, setList] = useState([])
     const [moveList, setMoveList] = useState<any>([])
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)

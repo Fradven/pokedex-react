@@ -14,10 +14,7 @@ const loadList = async() => {
 
     if (item === "pokemon") setPokemon(res.data.pokemon)
     if (item === "moves") setPokemon(res.data.moves)
-    
-
-}
-  
+}  
     return <button className={name} onClick={loadList}>{name}</button>;
 }
 

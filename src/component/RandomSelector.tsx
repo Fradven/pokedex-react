@@ -4,7 +4,7 @@ import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
 
 function RandomSelector() {
-    const [name, setName] = useState<any>()
+    const [name, setName] = useState()
 
     const randomNumber = () => {
         let x = Math.floor((Math.random() * 810) + 1)
