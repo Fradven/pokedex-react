@@ -6,11 +6,11 @@ import RandomSelector from '../component/RandomSelector';
 import SmallPokemonList from '../component/SmallPokemonList';
 import '../style/movedex.scss'
 import { axios } from '../javascript/axios';
+import loading from '../img/loading.gif'
 
 
 function MoveDex() {
-    const [list, setList] = useState<any>([])
-    /* const [damageClass, setDamageclass] = useState("") */
+    const [list, setList] = useState([])
     const [moveList, setMoveList] = useState<any>([])
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)
@@ -128,6 +128,11 @@ function MoveDex() {
         noFilter()
     }, [list])
 
+    /**
+     * filterout move list based on their class and active locks
+     * @param element : {damage_class : {name: string}}
+     * @returns filtered list based on attack class
+     */
     const filterDamageClass = ((element: { damage_class: { name: string; }}) => {
 
         if (physicalType === false && specialType === true && statusType === true) {
@@ -197,14 +202,18 @@ function MoveDex() {
                                     onClick={filterStatus} 
                                     >Status</button>
                                 </div>
-                                {moveList.length === 0 ? "loading" : moveList.filter(filterDamageClass).map((element: { name: string }) => 
+                                {moveList.length === 0 
+                                ? <div className="pokemon__load-ctn">
+                                    <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
+                                </div>
+                                : moveList.filter(filterDamageClass).map((element: { name: string }) => 
                                     <ListMoves 
                                     name={element.name} 
                                     key={element.name} 
                                     setPage={setPage} 
                                     setPokemon={setPokemon}
                                     />
-                                    )}
+                                )}
                             </div>
                 : <div className="move-dex__pokemon">
                     <button className='move-dex__return-btn' onClick={backToPage}>return</button>

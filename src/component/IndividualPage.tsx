@@ -2,41 +2,35 @@ import React, { useState, useEffect } from "react";
 import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
 import '../style/individualPage.scss'
-
 interface TypeArray {
     type: {name: string},
     element: {}
 }
-
 interface AbilityArray {
     ability: {name: string}, 
     is_hidden: boolean,
     data: {}
 }
-
 interface StatsArray {
     base_stat: number,
     stat: {name: string}
 }
-
 interface Props {
     name: string | undefined
     show?:  boolean
     openPopup?: () => void
 }
-
 interface Pokemon {
-
-        name?: string,
-        types?: Array<TypeArray>,
-        sprites?: any,
-        height?: number,
-        weight?: number,
-        lenght?: {},
-        abilities?: Array<AbilityArray>,
-        stats?: Array<StatsArray>
-        
+    name?: string,
+    types?: Array<TypeArray>,
+    sprites?: any,
+    height?: number,
+    weight?: number,
+    lenght?: {},
+    abilities?: Array<AbilityArray>,
+    stats?: Array<StatsArray>
 }
+
 const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
     const [pokemon, setPokemon] = useState<Pokemon>({}) //data on a single pokemon
 

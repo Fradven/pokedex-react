@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter  as Router, Route, Switch } from "react-router-dom";
-import Fetch from './pages/Fetch';
-import Home from './pages/Home';
-import MoveDex from './pages/MoveDex';
+import SuspenseElement from './component/SuspenseElement';
 import Nav from './component/Nav';
 import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
-import RandomSelector from './component/RandomSelector';
+
+const Fetch = React.lazy(() => import ('./pages/Fetch'));
+const Home = React.lazy(() => import ('./pages/Home'));
+const MoveDex = React.lazy(() => import ('./pages/MoveDex'));
+const RandomSelector = React.lazy(() => import ('./component/RandomSelector'));
+
+
 
 function App() {
   const [showButton, setShowButton] = useState(false)
@@ -38,16 +42,19 @@ function App() {
         }
         <Switch>
           <Route exact path='/'>
-            <Home />
+            <SuspenseElement children={<Home />} />            
           </Route>
           <Route path='/pokedex'>
-            <Fetch/>
+          <SuspenseElement children={<Fetch/>} />
+            
           </Route>
           <Route path='/movedex'>
-            <MoveDex/>
+          <SuspenseElement children={<MoveDex/>} />
+            
           </Route>
           <Route path='/rdmPokemon'>
-            <RandomSelector/>
+          <SuspenseElement children={<RandomSelector/>} />
+            
           </Route>
         </Switch>
       </Router>
