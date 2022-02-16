@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import  axios  from 'axios'
-import InfiniteScroll from '../component/InfiniteScroll';
+import SuspenseElement from '../component/SuspenseElement';
 import ListPokemon from '../component/ListPokemon';
 import '../style/ListPokemon.scss'
+
+const InfiniteScroll = React.lazy(() => import ('../component/InfiniteScroll'));
 
 
 export default function Fetch() {
@@ -40,18 +42,23 @@ export default function Fetch() {
     return (
         <>
         <h2 className='page-name'>Pokémon List</h2>
+        {/* Load InfinteScroll only when data had been fetched */ }
+        <SuspenseElement children={
             <InfiniteScroll
                 onBottomHit={hitBottom}
                 hasMoreData={hasMoreData}
                 isLoading={loading}
                 loadOnMount={true}
-    >
+            >
                 {/* If "events" is not empty, use ".map" to go through every result and display the, using "ListPokemon" */}
-                {(events.length === 0) ? 'loading' : events.map((event: { name: string; })=>{
-                    const name = `${event.name}`
+                {(events.length === 0) ? 'loading' 
+                : events.map((event: { name: string; })=>{
+                const name = `${event.name}`
                 return <ListPokemon name={name} key={event.name} />})}
             </InfiniteScroll>
-            <div className="end-page"></div>
+        }/>
+            
+        <div className="end-page"></div>
         </>
     )
 }

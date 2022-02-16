@@ -43,7 +43,6 @@ const ListPokemon: React.FC<Props> = ({name}) => {
     }
 
     useEffect(() => {
-        window.scrollTo(0, 0)
         getPokemon()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
