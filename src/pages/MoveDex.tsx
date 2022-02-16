@@ -128,6 +128,11 @@ function MoveDex() {
         noFilter()
     }, [list])
 
+    /**
+     * filterout move list based on their class and active locks
+     * @param element : {damage_class : {name: string}}
+     * @returns filtered list based on attack class
+     */
     const filterDamageClass = ((element: { damage_class: { name: string; }}) => {
 
         if (physicalType === false && specialType === true && statusType === true) {

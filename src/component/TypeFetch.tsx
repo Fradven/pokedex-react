@@ -7,6 +7,9 @@ interface Props {
     item: string
 }
 
+/**
+ * fetch list of types and dipley them as buttons
+ */
 const TypeFetch: React.FC<Props> = ({ setTopList, item }) => {
     const [type, setType] = useState([])
     const [list, setList] = useState([])
