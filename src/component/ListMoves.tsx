@@ -25,6 +25,10 @@ interface Move {
     learned_by_pokemon: {}
 }
 
+/**
+ * fetch data and display specific info of a move 
+ * @returns move's inforamtions card
+ */
 const ListMoves: React.FC<Props> = ({
     name, 
     setPage, 
@@ -45,6 +49,7 @@ const ListMoves: React.FC<Props> = ({
 
     let flavor = move?.flavor_text_entries
     
+    //filter out non english flavor text
     const englishFilter = (text: { version_group: { name: string; }; language: { name: string; }; flavor_text: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
         if (text.version_group.name === "sword-shield" && text.language.name === "en") {
             return <p key={text.language.name}>{text.flavor_text}</p>
