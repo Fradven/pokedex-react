@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import loading from '../img/loading.gif'
 
-const SuspenseElement: React.FC = (children) => {
+const SuspenseElement: React.FC = ({children}) => {
   return (
     <Suspense
     fallback= {
