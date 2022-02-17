@@ -189,18 +189,20 @@ function MoveDex() {
                 </Carousel>
                 : !page ? <div className="move-dex__list-page">
                                 <div className="move-dex__filter">
-                                    <button 
-                                    className={!physicalLocke ? "move-dex__physical" : "move-dex__physicalLock"} 
-                                    onClick={filterPhysical}
-                                    >Physical</button>
-                                    <button 
-                                    className={!specialLocke ? "move-dex__special" : "move-dex__specialLock"} 
-                                    onClick={filterSpecial} 
-                                    >Special</button>
-                                    <button 
-                                    className={!statusLocke ? "move-dex__status" : "move-dex__statusLock"} 
-                                    onClick={filterStatus} 
-                                    >Status</button>
+                                    <div className="move-dex__filter-container">
+                                        <button 
+                                        className={!physicalLocke ? "move-dex__physical" : "move-dex__physicalLock"} 
+                                        onClick={filterPhysical}
+                                        >Physical</button>
+                                        <button 
+                                        className={!specialLocke ? "move-dex__special" : "move-dex__specialLock"} 
+                                        onClick={filterSpecial} 
+                                        >Special</button>
+                                        <button 
+                                        className={!statusLocke ? "move-dex__status" : "move-dex__statusLock"} 
+                                        onClick={filterStatus} 
+                                        >Status</button>
+                                    </div>
                                 </div>
                                 <div className="move-dex__move-container">
                                 {moveList.length === 0 
