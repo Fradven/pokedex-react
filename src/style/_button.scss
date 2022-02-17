@@ -3,9 +3,7 @@
 .move-dex {
     &__filter {
         display: flex;
-        justify-content: space-around;
-        min-width: 320px;
-        width: 320px;
+        justify-content: space-evenly;
         text-align: center;
         margin: 0.8em 0;
 
@@ -60,6 +58,7 @@
 
         button span {
           z-index: 1;
+          position: relative;
         }
     }
 
