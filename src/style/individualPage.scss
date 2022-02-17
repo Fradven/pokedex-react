@@ -5,6 +5,7 @@
 .individual-pokemon {
     margin: 0 auto;
     margin-top: 15px;
+    min-width: 320px;
     max-width: 90%;
     background-color: $bgcolor;
     background-image: url(../img/ctn-background-reverse.svg);
@@ -135,15 +136,6 @@
         text-align: center;
     }
 
-}
-
-.popup {
-    position: absolute;
-    left: 25%;
-    right: 25%;
-    top: 25%;
-    bottom: 25%;
-    margin: auto;
 }
 
 h3 {
