@@ -22,6 +22,8 @@
     }
     
     &__move-container {
+        max-width: 1380px;
+        margin: auto;
         @media screen and (min-width: 1380px) {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
