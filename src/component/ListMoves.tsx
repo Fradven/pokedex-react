@@ -69,7 +69,7 @@ const ListMoves: React.FC<Props> = ({
         ? <div className={"move" + " " + move.damage_class.name}>
             <div className="move__header">
             <div className="move__type">
-            <h3 className={move.type.name}>{name}</h3>
+                <h3 className={move.type.name}>{name}</h3>
             </div>
                 <div className="move__damage-class">
                     <p className="move__damage-class-type">{move.damage_class.name}</p>

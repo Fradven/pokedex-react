@@ -202,6 +202,7 @@ function MoveDex() {
                                     onClick={filterStatus} 
                                     >Status</button>
                                 </div>
+                                <div className="move-dex__move-container">
                                 {moveList.length === 0 
                                 ? <div className="pokemon__load-ctn">
                                     <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
@@ -213,13 +214,13 @@ function MoveDex() {
                                     setPage={setPage} 
                                     setPokemon={setPokemon}
                                     />
-                                )}
+                                )}</div>
                             </div>
-                : <div className="move-dex__pokemon">
-                    <button className='move-dex__return-btn' onClick={backToPage}>return</button>
-                    {pokemon.map((pokes: { name: string | undefined; }) => 
-                     <SmallPokemonList name={pokes.name} key={pokes.name} />)}
-                </div>
+                        : <div className="move-dex__pokemon">
+                            <button className='move-dex__return-btn' onClick={backToPage}>return</button>
+                            {pokemon.map((pokes: { name: string | undefined; }) => 
+                             <SmallPokemonList name={pokes.name} key={pokes.name} />)}
+                        </div>
             }
             </div>
     </>
