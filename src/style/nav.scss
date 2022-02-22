@@ -13,6 +13,13 @@
       font-size: 2rem;
       background: none;
     }
+
+    span {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: $typeFont;
+      padding-top: 2px;
+    }
   }
   
   
