@@ -176,7 +176,7 @@ function MoveDex() {
 
         <div className="move-dex">
                 {(list.length === 0) 
-                ? <Carousel controls={false} fade>
+                ? <Carousel variant="dark" controls={false} touch>
                     <Carousel.Item>
                         <RandomSelector />
                     </Carousel.Item> 
