@@ -176,7 +176,7 @@ function MoveDex() {
 
         <div className="move-dex">
                 {(list.length === 0) 
-                ? <Carousel controls={false} fade>
+                ? <Carousel variant="dark" controls={false} touch>
                     <Carousel.Item>
                         <RandomSelector />
                     </Carousel.Item> 
@@ -189,19 +189,22 @@ function MoveDex() {
                 </Carousel>
                 : !page ? <div className="move-dex__list-page">
                                 <div className="move-dex__filter">
-                                    <button 
-                                    className={!physicalLocke ? "move-dex__physical" : "move-dex__physicalLock"} 
-                                    onClick={filterPhysical}
-                                    >Physical</button>
-                                    <button 
-                                    className={!specialLocke ? "move-dex__special" : "move-dex__specialLock"} 
-                                    onClick={filterSpecial} 
-                                    >Special</button>
-                                    <button 
-                                    className={!statusLocke ? "move-dex__status" : "move-dex__statusLock"} 
-                                    onClick={filterStatus} 
-                                    >Status</button>
+                                    <div className="move-dex__filter-container">
+                                        <button 
+                                        className={!physicalLocke ? "move-dex__physical" : "move-dex__physicalLock"} 
+                                        onClick={filterPhysical}
+                                        >Physical</button>
+                                        <button 
+                                        className={!specialLocke ? "move-dex__special" : "move-dex__specialLock"} 
+                                        onClick={filterSpecial} 
+                                        >Special</button>
+                                        <button 
+                                        className={!statusLocke ? "move-dex__status" : "move-dex__statusLock"} 
+                                        onClick={filterStatus} 
+                                        >Status</button>
+                                    </div>
                                 </div>
+                                <div className="move-dex__move-container">
                                 {moveList.length === 0 
                                 ? <div className="pokemon__load-ctn">
                                     <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
@@ -213,13 +216,13 @@ function MoveDex() {
                                     setPage={setPage} 
                                     setPokemon={setPokemon}
                                     />
-                                )}
+                                )}</div>
                             </div>
-                : <div className="move-dex__pokemon">
-                    <button className='move-dex__return-btn' onClick={backToPage}>return</button>
-                    {pokemon.map((pokes: { name: string | undefined; }) => 
-                     <SmallPokemonList name={pokes.name} key={pokes.name} />)}
-                </div>
+                        : <div className="move-dex__pokemon">
+                            <button className='move-dex__return-btn' onClick={backToPage}>return</button>
+                            {pokemon.map((pokes: { name: string | undefined; }) => 
+                             <SmallPokemonList name={pokes.name} key={pokes.name} />)}
+                        </div>
             }
             </div>
     </>
