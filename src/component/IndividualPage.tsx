@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
-import '../style/individualPage.scss'
 import TypeChart from "./TypeChart";
+import '../style/individualPage.scss'
 interface TypeArray {
     type: {name: string},
     element: {}
