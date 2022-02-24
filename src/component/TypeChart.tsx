@@ -229,19 +229,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
     
     useEffect(() => {
         applyWeakness()
-        console.log(normal)
-        console.log(fire)
-        console.log(water)
-        console.log(grass)
-        console.log(electric)
-        console.log(steel)
-        console.log(ghost)
-        console.log(ice)
-        console.log(rock)
-        console.log(ground)
-        console.log(fighting)
-
-    }, [])
+    }, [primary,secondary])
 
   return (
     <>
