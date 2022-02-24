@@ -22,7 +22,6 @@ export default function Nav() {
             <div className="nav-button">
                 <Link to="#" className='menu-bar'>
                 <FaBars onClick={showSidebar} />
-                <span>Menu</span>
                 </Link>
             </div>
 
@@ -31,7 +30,6 @@ export default function Nav() {
             <div className="sidebar__button-ctn">
                 <Link to="#" className='sidebar__button'>
                 <ImCross onClick={showSidebar} />
-                <span>Close</span>
                 </Link>
             </div>
             
