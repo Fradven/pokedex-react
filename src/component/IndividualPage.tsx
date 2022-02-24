@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
 import '../style/individualPage.scss'
+import TypeChart from "./TypeChart";
 interface TypeArray {
     type: {name: string},
     element: {}
@@ -33,11 +34,16 @@ interface Pokemon {
 
 const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
     const [pokemon, setPokemon] = useState<Pokemon>({}) //data on a single pokemon
+    const [primeType, setPrimeType] = useState('')
+    const [secondType, setSecondType] = useState('')
 
     //fetching data from individual page of pokmeon
     const getPokemon = async() => {
         const res = await axios.get(`pokemon/${name}`)
-
+        res.data.types.map((e: { slot: number; type: { name: React.SetStateAction<string>; }; }) => {
+            if (e.slot === 1) setPrimeType(e.type.name)
+            if (e.slot === 2) setSecondType(e.type.name)
+        })
         setPokemon(res.data);
     }
 
@@ -60,10 +66,9 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
             <div className="individual-pokemon__left-ctn">
 
                 <div className="pokemon__type">
-                    {pokemon.types?.map((element) =>
-                        <p key={element.type.name} className={element.type.name}>{element.type.name}</p>
-                        )}
-                    </div>
+                    <p className={primeType}>{primeType}</p>
+                    {secondType === '' ? null : <p className={secondType}>{secondType}</p>}        
+                </div>
 
                 <div className="individual-pokemon__sprite">
                         {pokemon.sprites?.length === 0 ? "loading" : <img src={pokemon.sprites?.front_default} alt='sprite'/>}
@@ -106,9 +111,10 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
                         }
                     })}
                     </ul>
+                </div>
 
-
-
+                <div className="weakness">
+                    <TypeChart primary={primeType} secondary={secondType} />
                 </div>
             </div>
         </div>

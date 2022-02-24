@@ -1,74 +1,74 @@
 export const typeChart = [
     {
         type: 'normal',
-        value: 1
+        value: normal
     },
     {
         type: 'fire',
-        value: 1
+        value: fire
     },
     {
         type: 'water',
-        value: 1
+        value: water
     },
     {
         type: 'grass',
-        value: 1
+        value: grass
     },
     {
         type: 'electric',
-        value: 1
+        value: electric
     },
     {
         type: 'ice',
-        value: 1
+        value: ice
     },
     {
         type: 'fighting',
-        value: 1
+        value: fighting
     },
     {
         type: 'poison',
-        value: 1
+        value: poison
     },
     {
         type: 'ground',
-        value: 1
+        value: ground
     },
     {
         type: 'flying',
-        value: 1
+        value: flying
     },
     {
         type: 'psychic',
-        value: 1
+        value: psychic
     },
     {
         type: 'bug',
-        value: 1
+        value: bug
     },
     {
         type: 'rock',
-        value: 1
+        value: rock
     },
     {
         type: 'ghost',
-        value: 1
+        value: ghost
     },
     {
         type: 'dragon',
-        value: 1
+        value: dragon
     },
     {
         type: 'dark',
-        value: 1
+        value: dark
     },
     {
         type: 'steel',
-        value: 1
+        value: steel
     },
     {
         type: 'fairy',
-        value: 1
+        value: fairy
     },
 ]
