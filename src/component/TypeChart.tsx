@@ -3,7 +3,7 @@ import TypeTable from './TypeTable'
 
 interface Props {
     primary: string
-    secondary: string
+    secondary: string | null
 }
 const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
     const [normal, setNormal] = useState(1)
@@ -33,7 +33,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setRock(rock / 2)
             setSteel(steel / 2)
             //no damage from
-            setGhost(0)
+            setGhost(ghost * 0)
         }
         if (primary === 'fire') {
             //weak to:
@@ -94,7 +94,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             //weak to:
             setNormal(normal * 2)
             //no damage from
-            setGhost(0)
+            setGhost(ghost * 0)
         }
         if (primary === 'poison') {
             //weak to:
@@ -104,7 +104,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setPoison(poison / 2)
             setFighting(fighting / 2)
             setBug(bug / 2)
-            setGrass(grass /2)
+            setGrass(grass / 2)
             setFairy(fairy / 2)
         }
         if (primary === 'ground') {
@@ -116,7 +116,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setPoison(poison / 2)
             setRock(rock / 2)
             //no damage from
-            setElectric(0)
+            setElectric(electric * 0)
         }
         if (primary === 'flying') {
             //weak to:
@@ -128,7 +128,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setBug(bug / 2)
             setGrass(grass / 2)
             //no damage from
-            setGround(0)
+            setGround(ground * 0)
         }
         if (primary === 'psychic') {
             //weak to:
@@ -170,8 +170,8 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setPoison(poison / 2)
             setBug(bug / 2)
             //no damage from
-            setNormal(0)
-            setFighting(0)
+            setNormal(normal * 0)
+            setFighting(fighting * 0)
         }
         if (primary === 'dragon') {
             //weak to:
@@ -193,7 +193,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setGhost(ghost / 2)
             setDark(dark / 2)
             //no damage from
-            setPsychic(0)
+            setPsychic(psychic * 0)
         }
         if (primary === 'steel') {
             //weak to:
@@ -212,7 +212,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setDragon(dragon / 2)
             setFairy(fairy / 2)
             //no damage from
-            setPoison(0)
+            setPoison(poison * 0)
         }
         if (primary === 'fairy') {
             //weak to:
@@ -223,15 +223,221 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setBug(bug / 2)
             setDark(dark / 2)
             //no damage from
-            setDragon(0)
+            setDragon(dragon * 0)
+        }
+    }
+
+    const applySecondWeakness = () => {
+        if (secondary === 'normal') {
+            //weak to:
+            setFighting(fighting * 2)
+            //resitant to:
+            setRock(rock / 2)
+            setSteel(steel / 2)
+            //no damage from
+            setGhost(ghost * 0)
+        }
+        if (secondary === 'fire') {
+            //weak to:
+            setGround(ground * 2)
+            setWater(water * 2)
+            setRock(rock * 2)
+            //resitant to:
+            setBug(bug / 2)
+            setSteel(steel / 2)
+            setFire(fire / 2)
+            setGrass(grass / 2)
+            setFairy(fairy / 2)
+            setIce(ice / 2)
+        }
+        if (secondary === 'water') {
+            //weak to:
+            setElectric(electric * 2)
+            setGrass(grass * 2)
+            //resitant to:
+            setFire(fire / 2)
+            setWater(water / 2)
+            setSteel(steel / 2)
+            setIce(ice / 2)
+
+        }
+        if (secondary === 'grass') {
+            //weak to:
+            setFire(fire * 2)
+            setBug(bug * 2)
+            setFlying(flying * 2)
+            setIce(ice * 2)
+            setPoison(poison * 2)
+            //resitant to:
+            setGround(ground / 2)
+            setElectric(electric / 2)
+            setGrass(grass / 2)
+            setWater(water / 2)
+
+        }
+        if (secondary === 'electric') {
+            //weak to:
+            setGround(ground * 2)
+            //resitant to:
+            setFlying(flying / 2)
+            setSteel(steel / 2)
+            setElectric(electric /2)
+        }
+        if (secondary === 'ice') {
+            //weak to:
+            setFire(fire * 2)
+            setFighting(fighting * 2)
+            setRock(rock * 2)
+            setSteel(steel * 2)
+            //resitant to:
+            setIce(ice / 2)
+        }
+        if (secondary === 'fighting') {
+            //weak to:
+            setNormal(normal * 2)
+            //no damage from
+            setGhost(ghost * 0)
+        }
+        if (secondary === 'poison') {
+            //weak to:
+            setGround(ground * 2)
+            setPsychic(psychic * 2)
+            //resitant to:
+            setPoison(poison / 2)
+            setFighting(fighting / 2)
+            setBug(bug / 2)
+            setGrass(grass / 2)
+            setFairy(fairy / 2)
+        }
+        if (secondary === 'ground') {
+            //weak to:
+            setWater(water * 2)
+            setGrass(grass * 2)
+            setIce(ice * 2)
+            //resitant to:
+            setPoison(poison / 2)
+            setRock(rock / 2)
+            //no damage from
+            setElectric(electric * 0)
+        }
+        if (secondary === 'flying') {
+            //weak to:
+            setRock(rock * 2)
+            setElectric(electric * 2)
+            setIce(ice * 2)
+            //resitant to:
+            setFighting(fighting / 2)
+            setBug(bug / 2)
+            setGrass(grass / 2)
+            //no damage from
+            setGround(ground * 0)
+        }
+        if (secondary === 'psychic') {
+            //weak to:
+            setGhost(ghost * 2)
+            setBug(bug * 2)
+            setDark(dark * 2)
+            //resitant to:
+            setFighting(fighting / 2)
+            setPsychic(psychic / 2)
+        }
+        if (secondary === 'bug') {
+            //weak to:
+            setFlying(flying * 2)
+            setFire(fire * 2)
+            setRock(rock * 2)
+            //resitant to:
+            setFighting(fighting / 2)
+            setGrass(grass / 2)
+            setGround(ground / 2)
+        }
+        if (secondary === 'rock') {
+            //weak to:
+            setFighting(fighting * 2)
+            setGround(ground * 2)
+            setSteel(steel * 2)
+            setWater(water * 2)
+            setGrass(grass * 2)
+            //resitant to:
+            setNormal(normal / 2)
+            setFlying(flying / 2)
+            setPoison(poison / 2)
+            setFire(fire / 2)
+        }
+        if (secondary === 'ghost') {
+            //weak to:
+            setGhost(ghost * 2)
+            setDark(dark * 2)
+            //resitant to:
+            setPoison(poison / 2)
+            setBug(bug / 2)
+            //no damage from
+            setNormal(normal * 0)
+            setFighting(fighting * 0)
+        }
+        if (secondary === 'dragon') {
+            //weak to:
+            setIce(ice * 2)
+            setDragon(dragon * 2)
+            setFairy(fairy * 2)
+            //resitant to:
+            setFire(fire / 2)
+            setWater(water / 2)
+            setGrass(grass / 2)
+            setElectric(electric / 2)
+        }
+        if (secondary === 'dark') {
+            //weak to:
+            setFighting(fighting * 2)
+            setFairy(fairy * 2)
+            setBug(bug * 2)
+            //resitant to:
+            setGhost(ghost / 2)
+            setDark(dark / 2)
+            //no damage from
+            setPsychic(psychic * 0)
+        }
+        if (secondary === 'steel') {
+            //weak to:
+            setFighting(fighting * 2)
+            setGround(ground * 2)
+            setFire(fire * 2)
+            //resitant to:
+            setNormal(normal / 2)
+            setFlying(flying / 2)
+            setRock(rock / 2)
+            setBug(bug / 2)
+            setSteel(steel / 2)
+            setGrass(grass / 2)
+            setPsychic(psychic / 2)
+            setIce(ice / 2)
+            setDragon(dragon / 2)
+            setFairy(fairy / 2)
+            //no damage from
+            setPoison(poison * 0)
+        }
+        if (secondary === 'fairy') {
+            //weak to:
+            setPoison(poison * 2)
+            setSteel(steel * 2)
+            //resitant to:
+            setFighting(fighting / 2)
+            setBug(bug / 2)
+            setDark(dark / 2)
+            //no damage from
+            setDragon(dragon * 0)
         }
     }
     
     useEffect(() => {
         if (!primary) return
         applyFirstWeakness()
-        console.log(secondary)
     }, [primary])
+
+    useEffect(()=> {
+        if (!secondary) return
+        applySecondWeakness()
+    }, [secondary])
 
   return (
     <>

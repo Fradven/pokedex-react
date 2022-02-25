@@ -51,6 +51,8 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
         getPokemon()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    let secondary = secondType !== '' ? secondType : null
   return (
   <>
   {pokemon.lenght === 0
@@ -115,7 +117,7 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
             </div>
             
             <div className="weakness">
-                    <TypeChart primary={primeType} secondary={secondType} />
+                    <TypeChart primary={primeType} secondary={secondary} />
                 </div>
         </div>
         <button 
