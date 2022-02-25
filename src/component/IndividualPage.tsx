@@ -112,11 +112,11 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
                     })}
                     </ul>
                 </div>
-
-                <div className="weakness">
+            </div>
+            
+            <div className="weakness">
                     <TypeChart primary={primeType} secondary={secondType} />
                 </div>
-            </div>
         </div>
         <button 
             style={{

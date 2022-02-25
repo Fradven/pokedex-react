@@ -25,8 +25,8 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
     const [steel, setSteel] = useState(1)
     const [fairy, setFairy] = useState(1)
 
-    const applyWeakness = () => {
-        if (primary || secondary === 'normal') {
+    const applyFirstWeakness = () => {
+        if (primary === 'normal') {
             //weak to:
             setFighting(fighting * 2)
             //resitant to:
@@ -35,7 +35,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             //no damage from
             setGhost(0)
         }
-        if (primary || secondary === 'fire') {
+        if (primary === 'fire') {
             //weak to:
             setGround(ground * 2)
             setWater(water * 2)
@@ -48,7 +48,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setFairy(fairy / 2)
             setIce(ice / 2)
         }
-        if (primary || secondary === 'water') {
+        if (primary === 'water') {
             //weak to:
             setElectric(electric * 2)
             setGrass(grass * 2)
@@ -59,7 +59,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setIce(ice / 2)
 
         }
-        if (primary || secondary === 'grass') {
+        if (primary === 'grass') {
             //weak to:
             setFire(fire * 2)
             setBug(bug * 2)
@@ -73,7 +73,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setWater(water / 2)
 
         }
-        if (primary || secondary === 'electric') {
+        if (primary === 'electric') {
             //weak to:
             setGround(ground * 2)
             //resitant to:
@@ -81,7 +81,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setSteel(steel / 2)
             setElectric(electric /2)
         }
-        if (primary || secondary === 'ice') {
+        if (primary === 'ice') {
             //weak to:
             setFire(fire * 2)
             setFighting(fighting * 2)
@@ -90,13 +90,13 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             //resitant to:
             setIce(ice / 2)
         }
-        if (primary || secondary === 'fighthing') {
+        if (primary === 'fighting') {
             //weak to:
             setNormal(normal * 2)
             //no damage from
             setGhost(0)
         }
-        if (primary || secondary === 'posion') {
+        if (primary === 'poison') {
             //weak to:
             setGround(ground * 2)
             setPsychic(psychic * 2)
@@ -107,7 +107,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setGrass(grass /2)
             setFairy(fairy / 2)
         }
-        if (primary || secondary === 'ground') {
+        if (primary === 'ground') {
             //weak to:
             setWater(water * 2)
             setGrass(grass * 2)
@@ -118,7 +118,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             //no damage from
             setElectric(0)
         }
-        if (primary || secondary === 'flying') {
+        if (primary === 'flying') {
             //weak to:
             setRock(rock * 2)
             setElectric(electric * 2)
@@ -130,7 +130,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             //no damage from
             setGround(0)
         }
-        if (primary || secondary === 'psychic') {
+        if (primary === 'psychic') {
             //weak to:
             setGhost(ghost * 2)
             setBug(bug * 2)
@@ -139,7 +139,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setFighting(fighting / 2)
             setPsychic(psychic / 2)
         }
-        if (primary || secondary === 'bug') {
+        if (primary === 'bug') {
             //weak to:
             setFlying(flying * 2)
             setFire(fire * 2)
@@ -149,7 +149,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setGrass(grass / 2)
             setGround(ground / 2)
         }
-        if (primary || secondary === 'rock') {
+        if (primary === 'rock') {
             //weak to:
             setFighting(fighting * 2)
             setGround(ground * 2)
@@ -162,7 +162,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setPoison(poison / 2)
             setFire(fire / 2)
         }
-        if (primary || secondary === 'ghost') {
+        if (primary === 'ghost') {
             //weak to:
             setGhost(ghost * 2)
             setDark(dark * 2)
@@ -173,7 +173,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setNormal(0)
             setFighting(0)
         }
-        if (primary || secondary === 'dragon') {
+        if (primary === 'dragon') {
             //weak to:
             setIce(ice * 2)
             setDragon(dragon * 2)
@@ -184,7 +184,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             setGrass(grass / 2)
             setElectric(electric / 2)
         }
-        if (primary || secondary === 'dark') {
+        if (primary === 'dark') {
             //weak to:
             setFighting(fighting * 2)
             setFairy(fairy * 2)
@@ -195,7 +195,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             //no damage from
             setPsychic(0)
         }
-        if (primary || secondary === 'steel') {
+        if (primary === 'steel') {
             //weak to:
             setFighting(fighting * 2)
             setGround(ground * 2)
@@ -214,7 +214,7 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
             //no damage from
             setPoison(0)
         }
-        if (primary || secondary === 'fairy') {
+        if (primary === 'fairy') {
             //weak to:
             setPoison(poison * 2)
             setSteel(steel * 2)
@@ -228,8 +228,10 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
     }
     
     useEffect(() => {
-        applyWeakness()
-    }, [primary,secondary])
+        if (!primary) return
+        applyFirstWeakness()
+        console.log(secondary)
+    }, [primary])
 
   return (
     <>
