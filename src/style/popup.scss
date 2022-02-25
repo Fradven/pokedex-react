@@ -1,0 +1,26 @@
+@import "./var";
+
+.popup {
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
+    margin: auto;
+
+    @media screen and (min-width: 481px) {
+        left: 25%;
+        right: 25%;
+    }
+}
+.visible {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+}
+
+.visible.hidden {
+    display: none;
+}

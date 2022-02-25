@@ -1,0 +1,144 @@
+
+//move-dex filter button
+.move-dex {
+    &__filter {
+        text-align: center;
+        margin: 0.8em 0;
+
+        button {
+            width: 80px;
+            min-width: 70px;
+            border-width: 0;
+            border-radius: 4px;
+            color: #f0efe7;
+            cursor: pointer;
+            display: inline-block;
+            font-family: $typeFont;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 1;
+            outline: 0;
+            padding: 0.4em .3em;
+            position: relative;
+            text-decoration: none;
+            text-rendering: geometricprecision;
+            text-transform: uppercase;
+            transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: baseline;
+            white-space: nowrap;
+        }
+    
+        button:before {
+            border-radius: 4px;
+            animation: opacityFallbackOut .5s step-end forwards;
+            clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+            height: 100%;
+            left: 0;
+            position: absolute;
+            padding-top: 0.4em;
+            top: 0;
+            transform: translateZ(0);
+            transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+            width: 100%;
+        }
+
+        button:hover:before {
+          animation: opacityFallbackIn 0s step-start forwards;
+          clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+        }
+
+        button:after {
+          background-color: darken($color: #000000, $amount: 0);
+        }
+
+        button span {
+          z-index: 1;
+          position: relative;
+        }
+    }
+
+    &__physical {
+        background-color: #cb3e03;
+    }
+    &__physical:before {
+        background-color: darken($color: #cb3e03, $amount: 20%);
+        content: "Physical";
+    }
+
+    &__special {
+        background-color: #2976e8;
+    }
+    &__special:before {
+        background-color: darken($color: #2976e8, $amount: 20%);
+        content: "Special";
+    }
+
+    &__status {
+        background-color: #a9a878;
+    }
+    &__status:before {
+        background-color: darken($color: #a9a878, $amount: 20%);
+        content: "Status";
+    }
+
+    &__physicalLock {
+        background-color: darken($color: #cb3e03, $amount: 20%);
+    }
+    &__specialLock {
+        background-color: darken($color: #2976e8, $amount: 20%);
+    }
+    &__statusLock {
+        background-color: darken($color: #a9a878, $amount: 20%);
+    }
+}
+
+//move-dex individual move card button
+.move {
+    &__button {
+        margin-bottom: 5px;
+
+        button {
+            background-color: #e1ecf4;
+            border-radius: 3px;
+            border: 1px solid #7aa7c7;
+            box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+            box-sizing: border-box;
+            color: #39739d;
+            cursor: pointer;
+            display: inline-block;
+            font-family: $typeFont;
+            font-size: 0.8em;
+            font-weight: 400;
+            line-height: 1.15385;
+            margin: 0;
+            outline: none;
+            padding: 8px .8em;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: baseline;
+            white-space: nowrap;
+          }
+          
+          button:hover,
+          button:focus {
+            background-color: #b3d3ea;
+            color: #2c5777;
+          }
+          
+          button:focus {
+            box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+          }
+          
+          button:active {
+            background-color: #a0c7e4;
+            box-shadow: none;
+            color: #2c5777;
+          }
+    }
+}

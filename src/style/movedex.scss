@@ -1,0 +1,165 @@
+@import './var';
+@import './types.scss';
+@import './button';
+
+
+.move-dex {
+    &__filter {
+        min-width: 320px;
+        width: 100%;
+        padding: 0.4em 0;
+        background-color: $bgcolor;
+        border-style: dashed double;
+        border-width: 4px;
+        border-color: $borderColor;
+    }
+
+    &__filter-container {
+        max-width: 320px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    &__move-container {
+        max-width: 1380px;
+        margin: auto;
+        @media screen and (min-width: 1380px) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+.move {
+    margin: auto;
+    max-width: 320px;
+    width: 320px;
+    height: 300px;
+    margin-bottom: 1em;
+    font-family: $nameFont;
+    border: solid 5px ;
+    border-radius: 4px;
+    color: #f0efe7;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5px;
+        padding-top: 8px;
+    }
+    &__type, &__damage-class {
+        
+        p, h3{    
+            padding: 0.1rem 0;
+            border-radius: 6px;
+            width: 5rem;
+            margin-left: 0.25rem;
+            font-family: $typeFont;
+            text-transform: capitalize;
+            text-align: center;
+            border-style: solid;
+            border-width: 2px;
+            color: #f0efe7;
+        }
+
+        h3 {
+            width: auto;
+            min-width: 5rem;
+            font-size: 1rem;
+        }
+    }
+
+    &__name {
+        font-weight: 700;
+        font-size: 1.6em;
+        text-transform: uppercase;
+    }
+
+    &__flavor-text, &__stats {
+        text-shadow: 
+        0 0 2px #000,
+        0 0 2px #000,
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000, 
+        0 0 2px #000;
+    }
+
+    &__flavor-text {
+        padding: 0 0.6em;
+        padding-top: 3vh;
+        p {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__lower {
+        padding: 0 0.6em;
+        padding-top: 3vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__stats {
+        font-size: 1.5rem;
+    }
+
+    &__pokemon {
+        margin: 0 auto;
+        margin-top: 15px;
+        max-width: 150px;
+        background-color: $bgcolor;
+        background-image: url(../img/ctn-background-reverse.svg);
+        background-position: center;
+        background-size: cover;
+        border-style: dashed double;
+        border-width: 7px;
+        border-radius: 5px;
+        border-color: $borderColor;
+        font-family: $nameFont;
+        text-align: center;
+
+        h3 {
+            text-transform: capitalize;
+            font-size: 1.8rem;
+        }
+    }
+}
+
+.move.physical {
+    background-color: #fe4e05;
+    border-color: #cb3e03;
+    background-image: url(../img/physical.svg);
+    background-position: center;
+    background-size: cover;
+}
+.move.special {
+    background-color: #2976e8;
+    background-image: url(../img/special.svg);
+    background-position: center;
+    background-size: cover;
+    border-color: #1f5cb4;
+}
+.move.status {
+    background-color: #a9a878;
+    border-color: #5c5b41;
+    background-image: url(../img/status.svg);
+    background-position: center;
+    background-size: cover;
+}
+

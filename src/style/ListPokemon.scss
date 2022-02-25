@@ -1,0 +1,67 @@
+@import './reset';
+@import './var';
+@import './types';
+
+.pokemon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 22px;
+    
+    @media  screen and (min-width: 1080px) {
+        max-width: 1080px;
+        margin: 0 auto;
+        
+    }
+
+    &__card {
+        text-align: center;
+        min-width: 220px;
+        width: 220px;
+        background-color: $bgcolor;
+        background-image: url(../img/ctn-background.svg);
+        background-position: center;
+        background-size: cover;
+        border-style: dashed double;
+        border-width: 7px;
+        border-radius: 5px;
+        border-color: $borderColor;
+        margin: 3px 12px;
+        border-radius: 6px;
+    }
+
+    &__id {
+        text-align: left;
+        padding-top: 0.6rem;
+        padding-left: 0.6rem;
+    }
+
+    &__name, &__id {
+        font-family: $nameFont;
+        text-transform: uppercase;
+        font-size: 1.8rem;
+    }
+
+    &__load-ctn {
+        min-width: 220px;
+        width: 220px;
+    }
+    &__loading {
+        width: 60px;
+        margin: 0 auto;
+        padding-top: 3rem;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+
+.end-page {
+    height: 1px;
+}
+
+.page-btn {
+    text-align: center;
+}
