@@ -42,3 +42,10 @@ body {
     bottom: 20px;
     right: 20px;
 }
+
+.pokemon__carousel {
+    position: absolute;
+    /* @media screen and (max-width: 481px) {
+        display: none;
+    } */
+}

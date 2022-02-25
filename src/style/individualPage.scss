@@ -6,7 +6,7 @@
     margin: 0 auto;
     margin-top: 15px;
     min-width: 320px;
-    max-width: 90%;
+    max-width: 320px;
     background-color: $bgcolor;
     background-image: url(../img/ctn-background-reverse.svg);
     background-position: center;
@@ -23,6 +23,7 @@
 
         &__main-ctn {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
             padding-bottom: 7px;
         }
@@ -44,8 +45,6 @@
 
     &__main-ctn {
         padding-top: 1.5rem;
-        display: flex;
-        flex-wrap: wrap;
     }
 
     &__sprite {
@@ -139,7 +138,8 @@
     }
 
     .weakness {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
 
         &__table {
             border: 1px solid $borderColor;
@@ -151,6 +151,10 @@
                 background-color: $borderColor;
                 margin-top: -6px;
             }
+        }
+
+        @media screen and (min-width: 481px) {
+            grid-template-columns: repeat(18, 1fr)
         }
     }
 
