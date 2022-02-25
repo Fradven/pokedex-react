@@ -6,7 +6,7 @@
     margin: 0 auto;
     margin-top: 15px;
     min-width: 320px;
-    max-width: 90%;
+    max-width: 320px;
     background-color: $bgcolor;
     background-image: url(../img/ctn-background-reverse.svg);
     background-position: center;
@@ -23,6 +23,7 @@
 
         &__main-ctn {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
             padding-bottom: 7px;
         }
@@ -134,6 +135,27 @@
 
     .pokemon__type {
         text-align: center;
+    }
+
+    .weakness {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+
+        &__table {
+            border: 1px solid $borderColor;
+            text-align: center;
+            min-width: 25px;
+            font-size: 1.2rem;
+
+            p {
+                background-color: $borderColor;
+                margin-top: -6px;
+            }
+        }
+
+        @media screen and (min-width: 481px) {
+            grid-template-columns: repeat(18, 1fr)
+        }
     }
 
 }

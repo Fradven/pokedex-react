@@ -3,8 +3,8 @@ import '../style/home.scss'
 import TypeFetch from '../component/TypeFetch';
 import ListPokemon from '../component/ListPokemon';
 import Carousel from 'react-bootstrap/Carousel';
-import '../style/home.scss'
 import RandomSelector from '../component/RandomSelector';
+import '../style/home.scss'
 
 export default function Home() {
     const [list, setList] = useState([])
@@ -16,17 +16,19 @@ export default function Home() {
             <TypeFetch setTopList={setList} item={item} />
             <div className="pokemon">
                 {(list.length === 0) 
-                ? <Carousel variant="dark" controls={false} touch>
-                    <Carousel.Item>
-                        <RandomSelector />
-                    </Carousel.Item> 
-                    <Carousel.Item>
-                        <RandomSelector />
-                    </Carousel.Item> 
-                    <Carousel.Item>
-                        <RandomSelector />
-                    </Carousel.Item> 
-                </Carousel>
+                ? <div className="pokemon__carousel">
+                    <Carousel variant="dark" controls={false} touch>
+                        <Carousel.Item>
+                            <RandomSelector />
+                        </Carousel.Item> 
+                        <Carousel.Item>
+                            <RandomSelector />
+                        </Carousel.Item> 
+                        <Carousel.Item>
+                            <RandomSelector />
+                        </Carousel.Item> 
+                    </Carousel>
+                    </div>
                 : list.map((data: { pokemon: any, name: string; })=> 
                 <ListPokemon name={data.pokemon.name} key={data.pokemon.name} />
                 )}
