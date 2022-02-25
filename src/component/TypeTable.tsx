@@ -153,8 +153,8 @@ const TypeTable: React.FC<Props> = ({
   return (
     <>
         {typeChart.map(element => {
-            return <div  key={element.type} className="weakness-table">
-                <div className="weakness-table__icon">
+            return <div  key={element.type} className="weakness__table">
+                <div className="weakness__icon">
                     <img src={element.icon} alt={element.type} />
                 </div>
                 <p>{element.value}</p>
