@@ -14,6 +14,9 @@ interface Pokemon {
 const SmallPokemonList: React.FC<Props> = ({ name }) => {
     const [pokemon, setPokemon] = useState<Pokemon>()
 
+    /**
+     * fetch pokemon data using the name given
+     */
     const getPokemon = async() => {
         const res = await axios.get(`pokemon/${name}`)
         setPokemon(res.data);
@@ -22,6 +25,7 @@ const SmallPokemonList: React.FC<Props> = ({ name }) => {
     useEffect (() => {
         getPokemon()
         window.scrollTo(0, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
   return (

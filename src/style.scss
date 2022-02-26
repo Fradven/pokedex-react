@@ -6,13 +6,10 @@ html {
 }
 
 body {
-
     background-color: $champagne;
 }
 .header {
     display: flex;
-
-    
 }
 
 .pokedex-header {
@@ -25,19 +22,30 @@ body {
     &__img {
         width: 100%;
     }
-
-    
 }
 
 .page-name {
     text-align: center;
     font-family: $intoLight;
-    font-size: 1.5rem;
+    font-weight: 400;
+    font-size: 1.8rem;
+    padding-top: 1.2rem;
     padding-bottom: 0.5em;
+
+    @media screen and (min-width: 481px) {
+     padding-bottom: 0.9em;   
+    }
 }
 
 .back-to-top {
     position: fixed;
-  bottom: 20px;
-  right: 20px;
+    bottom: 20px;
+    right: 20px;
+}
+
+.pokemon__carousel {
+    position: absolute;
+    /* @media screen and (max-width: 481px) {
+        display: none;
+    } */
 }

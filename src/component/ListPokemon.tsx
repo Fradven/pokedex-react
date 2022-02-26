@@ -20,6 +20,12 @@ interface Pokemon {
     types: Array<TypeArray>
 }
 
+
+/**
+ * get a pokemon name and fetch their info from api to display in a card
+ * @param name: string 
+ * @returns card diplaying info about pokemon
+ */
 const ListPokemon: React.FC<Props> = ({name}) => {
     const [pokemon, setPokemon] = useState<Pokemon>() //data on a single pokemon
     const [popup, setPopup] = useState(false)
@@ -31,12 +37,12 @@ const ListPokemon: React.FC<Props> = ({name}) => {
         setPokemon(res.data);
     }
     
+    //Pop-up on/off
     const popupOpen = () => {
         setPopup(!popup)
     }
 
     useEffect(() => {
-        window.scrollTo(0, 0)
         getPokemon()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

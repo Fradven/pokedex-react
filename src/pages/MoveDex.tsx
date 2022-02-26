@@ -6,11 +6,11 @@ import RandomSelector from '../component/RandomSelector';
 import SmallPokemonList from '../component/SmallPokemonList';
 import '../style/movedex.scss'
 import { axios } from '../javascript/axios';
+import loading from '../img/loading.gif'
 
 
 function MoveDex() {
-    const [list, setList] = useState<any>([])
-    /* const [damageClass, setDamageclass] = useState("") */
+    const [list, setList] = useState([])
     const [moveList, setMoveList] = useState<any>([])
     const [page, setPage] = useState(false)
     const [physicalType, setPhysicalType] = useState(false)
@@ -128,6 +128,11 @@ function MoveDex() {
         noFilter()
     }, [list])
 
+    /**
+     * filterout move list based on their class and active locks
+     * @param element : {damage_class : {name: string}}
+     * @returns filtered list based on attack class
+     */
     const filterDamageClass = ((element: { damage_class: { name: string; }}) => {
 
         if (physicalType === false && specialType === true && statusType === true) {
@@ -171,7 +176,7 @@ function MoveDex() {
 
         <div className="move-dex">
                 {(list.length === 0) 
-                ? <Carousel controls={false} fade>
+                ? <Carousel variant="dark" controls={false} touch>
                     <Carousel.Item>
                         <RandomSelector />
                     </Carousel.Item> 
@@ -184,33 +189,40 @@ function MoveDex() {
                 </Carousel>
                 : !page ? <div className="move-dex__list-page">
                                 <div className="move-dex__filter">
-                                    <button 
-                                    className={!physicalLocke ? "move-dex__physical" : "move-dex__physicalLock"} 
-                                    onClick={filterPhysical}
-                                    >Physical</button>
-                                    <button 
-                                    className={!specialLocke ? "move-dex__special" : "move-dex__specialLock"} 
-                                    onClick={filterSpecial} 
-                                    >Special</button>
-                                    <button 
-                                    className={!statusLocke ? "move-dex__status" : "move-dex__statusLock"} 
-                                    onClick={filterStatus} 
-                                    >Status</button>
+                                    <div className="move-dex__filter-container">
+                                        <button 
+                                        className={!physicalLocke ? "move-dex__physical" : "move-dex__physicalLock"} 
+                                        onClick={filterPhysical}
+                                        >Physical</button>
+                                        <button 
+                                        className={!specialLocke ? "move-dex__special" : "move-dex__specialLock"} 
+                                        onClick={filterSpecial} 
+                                        >Special</button>
+                                        <button 
+                                        className={!statusLocke ? "move-dex__status" : "move-dex__statusLock"} 
+                                        onClick={filterStatus} 
+                                        >Status</button>
+                                    </div>
                                 </div>
-                                {moveList.length === 0 ? "loading" : moveList.filter(filterDamageClass).map((element: { name: string }) => 
+                                <div className="move-dex__move-container">
+                                {moveList.length === 0 
+                                ? <div className="pokemon__load-ctn">
+                                    <div className='pokemon__loading'><img src={loading}  alt="loading" /></div>
+                                </div>
+                                : moveList.filter(filterDamageClass).map((element: { name: string }) => 
                                     <ListMoves 
                                     name={element.name} 
                                     key={element.name} 
                                     setPage={setPage} 
                                     setPokemon={setPokemon}
                                     />
-                                    )}
+                                )}</div>
                             </div>
-                : <div className="move-dex__pokemon">
-                    <button className='move-dex__return-btn' onClick={backToPage}>return</button>
-                    {pokemon.map((pokes: { name: string | undefined; }) => 
-                     <SmallPokemonList name={pokes.name} key={pokes.name} />)}
-                </div>
+                        : <div className="move-dex__pokemon">
+                            <button className='move-dex__return-btn' onClick={backToPage}>return</button>
+                            {pokemon.map((pokes: { name: string | undefined; }) => 
+                             <SmallPokemonList name={pokes.name} key={pokes.name} />)}
+                        </div>
             }
             </div>
     </>
