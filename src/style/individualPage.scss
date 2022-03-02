@@ -156,6 +156,7 @@
         }
 
         @media screen and (min-width: 481px) {
+            width: 100%;
             grid-template-columns: repeat(18, 1fr)
         }
     }
