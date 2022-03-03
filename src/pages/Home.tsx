@@ -13,10 +13,11 @@ export default function Home() {
     return (
         <>
             <h2 className='page-name'>Select a Type of Pokémon</h2>
+            
             <div className="type-container">
-            <TypeFetch setTopList={setList} item={item} />
-
+                <TypeFetch setTopList={setList} item={item} />
             </div>
+            
             <div className="pokemon">
                 {(list.length === 0) 
                 ? <div className="pokemon__carousel">
