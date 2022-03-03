@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { axios } from '../javascript/axios.js'
 import loading from '../img/loading.gif'
-import '../style/ListPokemon.scss'
 import IndividualPage from './IndividualPage'
 import Popup from './Popup'
+import '../style/ListPokemon.scss'
 
 interface TypeArray {
     type: {name: string},
