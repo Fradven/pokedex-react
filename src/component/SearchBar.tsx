@@ -38,8 +38,8 @@ function SearchBar() {
             <input type="text" id='search' onChange={search} />
         </div>
         {
-            pokeName.map((e: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined) => {
-                return <div className="test">{e}</div>
+            pokeName.map((e: [string], index: React.Key | null | undefined) => {
+                return <div key={index} className="test">{e}</div>
             })
         } 
       </>
