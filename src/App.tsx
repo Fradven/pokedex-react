@@ -5,6 +5,7 @@ import Nav from './component/Nav';
 import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
+import SearchBar from './component/SearchBar';
 
 const Fetch = React.lazy(() => import ('./pages/Fetch'));
 const Home = React.lazy(() => import ('./pages/Home'));
@@ -44,18 +45,23 @@ function App() {
           <Route exact path='/'>
             <SuspenseElement children={<Home />} />            
           </Route>
+
           <Route path='/pokedex'>
-          <SuspenseElement children={<Fetch/>} />
-            
+            <SuspenseElement children={<Fetch/>} />  
           </Route>
+
           <Route path='/movedex'>
-          <SuspenseElement children={<MoveDex/>} />
-            
+            <SuspenseElement children={<MoveDex/>} />  
           </Route>
+
           <Route path='/rdmPokemon'>
-          <SuspenseElement children={<RandomSelector/>} />
-            
+            <SuspenseElement children={<RandomSelector/>} />
           </Route>
+
+          <Route path='/searchBar'>
+            <SuspenseElement children={<SearchBar />} />
+          </Route>
+
         </Switch>
       </Router>
     </>
