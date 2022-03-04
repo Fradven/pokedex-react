@@ -4,24 +4,20 @@ import { axios } from '../javascript/axios'
 function SearchBar() {
     const [pokeName, setPokeName] =useState<any>([])
     const [nameHolder, setNameHolder] = useState([])
-    const [nextPage, setNextPage] = useState("")
+    const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon")
     const [query, setQuery] = useState('')
 
     const getPokes = async() => {
-        const response = await axios.get('pokemon') 
+        const response = await axios.get(currentPage) 
         const data = response.data.results;
         const next = response.data.next
-
         setNameHolder(data.map((e: { name: string }) => {
             return e.name
         }))
-        setNextPage(next)
 
         if (response && next !== null) {
-            setNextPage(next)
+            setCurrentPage(next)
             setPokeName((prev: any)=>[...prev, ...nameHolder])
-            console.log(nextPage)
-            console.log(pokeName)
         } 
     }
 
@@ -34,7 +30,7 @@ function SearchBar() {
 
     useEffect(() => {
         getPokes()
-    }, [nextPage])
+    }, [currentPage])
   return (
       <>
         <div className="pokedex-header__search-ctn">
