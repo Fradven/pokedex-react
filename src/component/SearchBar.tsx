@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { axios } from '../javascript/axios'
 
 function SearchBar() {
-    const [pokeName, setPokeName] =useState<any>([])
+    const [pokeName, setPokeName] =useState<string[]>([])
     const [nameHolder, setNameHolder] = useState([])
+    const [filteredList, setFilteredList] = useState<string[]>([])
     const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon")
     const [query, setQuery] = useState('')
 
@@ -17,14 +18,16 @@ function SearchBar() {
 
         if (response && next !== null) {
             setCurrentPage(next)
-            setPokeName((prev: any)=>[...prev, ...nameHolder])
+            setPokeName((prev: string[])=>[...prev, ...nameHolder])
         } 
     }
 
     const search = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setTimeout (function () {
             setQuery(e.target.value)
-            console.log(query)
+            setFilteredList(pokeName.filter((name: string | string[]) => name.includes(query)).map(filtered => {
+                return filtered
+            }))
         }, 2000)
     }
 
@@ -38,7 +41,7 @@ function SearchBar() {
             <input type="text" id='search' onChange={search} />
         </div>
         {
-            pokeName.map((e: [string], index: React.Key | null | undefined) => {
+            filteredList.map((e: string, index: React.Key | null | undefined) => {
                 return <div key={index} className="test">{e}</div>
             })
         } 
