@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { axios } from '../javascript/axios'
+import ListPokemon from './ListPokemon'
 
 function SearchBar() {
     const [pokeName, setPokeName] =useState<string[]>([])
@@ -24,16 +25,20 @@ function SearchBar() {
 
     const search = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setTimeout (function () {
-            setQuery(e.target.value)
-            setFilteredList(pokeName.filter((name: string | string[]) => name.includes(query)).map(filtered => {
-                return filtered
-            }))
+            setQuery(e.target.value)         
         }, 2000)
     }
 
     useEffect(() => {
         getPokes()
     }, [currentPage])
+
+    useEffect(() => {
+        if(query.length >= 3){
+        setFilteredList(pokeName.filter((name: string | string[]) => name.includes(query)).map(filtered => {
+            return filtered
+        }))}
+    }, [query])
   return (
       <>
         <div className="pokedex-header__search-ctn">
@@ -42,7 +47,7 @@ function SearchBar() {
         </div>
         {
             filteredList.map((e: string, index: React.Key | null | undefined) => {
-                return <div key={index} className="test">{e}</div>
+                return <ListPokemon key={index} name={e}/>
             })
         } 
       </>
