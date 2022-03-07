@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { axios } from '../javascript/axios'
 import ListPokemon from '../component/ListPokemon'
+import Carousel from 'react-bootstrap/Carousel';
+import RandomSelector from '../component/RandomSelector';
+import { FiSearch } from 'react-icons/fi'
 import '../style/searchbar.scss'
 
 function SearchBar() {
@@ -44,16 +47,28 @@ function SearchBar() {
       <>
       <h2 className='page-name'>Search for Pokémon</h2>
         <div className="searchbar">
-            <label htmlFor="search">Search:</label>
-            <input type="text" id='search' onChange={search} />
+            <label htmlFor="search">{<FiSearch/>}</label>
+            <input type="text" id='search' placeholder='Enter Pokémon name...' onChange={search} />
         </div>
         <div className="pokemon">
-        {
-            filteredList.map((e: string, index: React.Key | null | undefined) => {
-                return <ListPokemon key={index} name={e}/>
-            })
-        } 
-        </div>
+                {(filteredList.length === 0) 
+                ? <div className="pokemon__carousel">
+                    <Carousel variant="dark" controls={false} touch>
+                        <Carousel.Item>
+                            <RandomSelector />
+                        </Carousel.Item> 
+                        <Carousel.Item>
+                            <RandomSelector />
+                        </Carousel.Item> 
+                        <Carousel.Item>
+                            <RandomSelector />
+                        </Carousel.Item> 
+                    </Carousel>
+                    </div>
+                : filteredList.map((e: string, index: React.Key | null | undefined) => {
+                    return <ListPokemon key={index} name={e}/>
+                })}
+            </div>
       </>
     
   )
