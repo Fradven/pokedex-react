@@ -41,6 +41,8 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    background-color: $bgcolor;
+    border-radius: 5px;
 }
 
 .pokemon__carousel {

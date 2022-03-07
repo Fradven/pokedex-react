@@ -142,3 +142,41 @@
           }
     }
 }
+
+.pokemon {
+    &__detail {
+        background: $fireOpal;
+        border: 1px solid $fireOpal;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: #FFFFFF;
+        cursor: pointer;
+        display: inline-block;
+        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+        font-size: 0.7rem;
+        font-weight: 800;
+        line-height: 16px;
+        min-height: 10px;
+        outline: 0;
+        padding: 2px 6px;
+        text-align: center;
+        text-rendering: geometricprecision;
+        text-transform: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+      }
+      
+      &__detail:hover,
+      &__detail:active {
+        background-color: $borderColor;
+        background-position: 0 0;
+        color: #FFFFFF;
+      }
+      
+      &__detail:active {
+        opacity: .5;
+      }
+}

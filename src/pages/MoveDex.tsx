@@ -172,7 +172,9 @@ function MoveDex() {
     <>
         <h2 className='page-name'>Move List</h2>
         
-        <TypeFetch setTopList={setList} item={item} />
+        <div className="type-container">
+            <TypeFetch setTopList={setList} item={item} />
+        </div>
 
         <div className="move-dex">
                 {(list.length === 0) 

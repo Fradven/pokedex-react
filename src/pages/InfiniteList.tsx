@@ -29,7 +29,6 @@ export default function Fetch() {
     }
     //set the current page to the new page and use then call getevents to fetch add more data
     const hitBottom = async() => {
-        console.log("coucou")
         const getNext = (await axios.get(currentPage)).data.next //get the link for the next page
         
             setCurrentPage(getNext) //change the current page link into the next page from getNext
