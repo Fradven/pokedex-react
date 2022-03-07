@@ -50,7 +50,7 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
     useEffect(() => {
         getPokemon()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [name])
 
     let secondary = secondType !== '' ? secondType : null
   return (
