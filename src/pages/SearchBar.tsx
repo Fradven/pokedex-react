@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { axios } from '../javascript/axios'
-import ListPokemon from './ListPokemon'
+import ListPokemon from '../component/ListPokemon'
+import '../style/searchbar.scss'
 
 function SearchBar() {
     const [pokeName, setPokeName] =useState<string[]>([])
@@ -41,15 +42,18 @@ function SearchBar() {
     }, [query])
   return (
       <>
-        <div className="pokedex-header__search-ctn">
+      <h2 className='page-name'>Search for Pokémon</h2>
+        <div className="searchbar">
             <label htmlFor="search">Search:</label>
             <input type="text" id='search' onChange={search} />
         </div>
+        <div className="pokemon">
         {
             filteredList.map((e: string, index: React.Key | null | undefined) => {
                 return <ListPokemon key={index} name={e}/>
             })
         } 
+        </div>
       </>
     
   )

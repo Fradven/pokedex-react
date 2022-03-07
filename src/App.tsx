@@ -5,7 +5,7 @@ import Nav from './component/Nav';
 import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
-import SearchBar from './component/SearchBar';
+import SearchBar from './pages/SearchBar';
 
 const Fetch = React.lazy(() => import ('./pages/Fetch'));
 const Home = React.lazy(() => import ('./pages/Home'));

@@ -1,5 +1,6 @@
 import { GiPokecog, GiCompactDisc } from 'react-icons/gi'
 import { CgPokemon } from 'react-icons/cg'
+import { FiSearch } from 'react-icons/fi'
 
 export const SidebarData = [
     {   
@@ -8,7 +9,12 @@ export const SidebarData = [
         icon: <GiCompactDisc />
     },
     {   
-        title: 'Pokedex',
+        title: 'Search',
+        path: '/searchBar',
+        icon: <FiSearch />
+    },
+    {   
+        title: 'Infinite List',
         path: '/pokedex',
         icon: <CgPokemon />
     },

@@ -7,14 +7,6 @@ import '../style/nav.scss'
 
 export default function Nav() {
     const [active, setActive] = useState(false)
-    const [query, setQuery] = useState('')
-
-    const search = (e: { target: { value: React.SetStateAction<string>; }; }) => {
-        setTimeout (function () {
-            setQuery(e.target.value)
-            console.log(query)
-        }, 2000)
-    }
 
     const showSidebar = () => setActive(!active)
     return (
@@ -34,12 +26,6 @@ export default function Nav() {
             </div>
             
                 <ul className="sidebar__link-container">
-                    <li>
-                        <Link to='/searchBar'>
-                        <label htmlFor="search">Search:</label>
-                        <input type="text" id='search' onChange={search} />
-                        </Link>
-                    </li>
                     {
                         SidebarData.map((data, index) => {
                             return (
