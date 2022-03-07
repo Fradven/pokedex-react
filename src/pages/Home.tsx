@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import '../style/home.scss'
 import TypeFetch from '../component/TypeFetch';
 import ListPokemon from '../component/ListPokemon';
 import Carousel from 'react-bootstrap/Carousel';
 import RandomSelector from '../component/RandomSelector';
-import '../style/home.scss'
 
 export default function Home() {
     const [list, setList] = useState([])

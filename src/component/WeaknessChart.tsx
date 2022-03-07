@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import TypeTable from './TypeTable'
+import TypeTable from './WeaknessTable'
 
 interface Props {
     primary: string
@@ -230,11 +230,13 @@ const TypeChart: React.FC<Props> = ({ primary, secondary }) => {
     useEffect(() => {
         if (!primary) return
         applyWeakness(primary)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [primary])
 
     useEffect(()=> {
         if (!secondary) return
         applyWeakness(secondary)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [secondary])
 
   return (
