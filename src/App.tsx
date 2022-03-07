@@ -6,7 +6,7 @@ import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
 
-const Fetch = React.lazy(() => import ('./pages/Fetch'));
+const Fetch = React.lazy(() => import ('./pages/InfiniteList'));
 const Home = React.lazy(() => import ('./pages/Home'));
 const MoveDex = React.lazy(() => import ('./pages/MoveDex'));
 const SearchBar = React.lazy(() => import ('./pages/SearchBar'));
