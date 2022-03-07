@@ -5,12 +5,11 @@ import Nav from './component/Nav';
 import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
-import SearchBar from './pages/SearchBar';
 
 const Fetch = React.lazy(() => import ('./pages/Fetch'));
 const Home = React.lazy(() => import ('./pages/Home'));
 const MoveDex = React.lazy(() => import ('./pages/MoveDex'));
-const RandomSelector = React.lazy(() => import ('./component/RandomSelector'));
+const SearchBar = React.lazy(() => import ('./pages/SearchBar'));
 
 
 
@@ -52,10 +51,6 @@ function App() {
 
           <Route path='/movedex'>
             <SuspenseElement children={<MoveDex/>} />  
-          </Route>
-
-          <Route path='/rdmPokemon'>
-            <SuspenseElement children={<RandomSelector/>} />
           </Route>
 
           <Route path='/searchBar'>
