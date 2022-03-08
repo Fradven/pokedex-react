@@ -18,8 +18,6 @@ interface StatsArray {
 }
 interface Props {
     name: string | undefined
-    show?:  boolean
-    openPopup?: () => void
 }
 interface Pokemon {
     name?: string,
@@ -32,7 +30,7 @@ interface Pokemon {
     stats?: Array<StatsArray>
 }
 
-const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
+const IndividualPage: React.FC<Props> = ({ name }) => {
     const [pokemon, setPokemon] = useState<Pokemon>({}) //data on a single pokemon
     const [primeType, setPrimeType] = useState('')
     const [secondType, setSecondType] = useState('')
@@ -120,13 +118,6 @@ const IndividualPage: React.FC<Props> = ({ name, show, openPopup }) => {
                     <TypeChart primary={primeType} secondary={secondary} />
                 </div>
         </div>
-        <button 
-            style={{
-                visibility: show ? "visible": "hidden",
-                opacity: show ? "1" : "0"
-            }}
-            onClick={openPopup}
-        >Less</button>
     </div>
 }
   </>);

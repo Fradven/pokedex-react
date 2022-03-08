@@ -77,10 +77,10 @@ const ListPokemon: React.FC<Props> = ({name}) => {
         </div>
             } 
 
-        <Popup show={popup}>
+        <Popup show={popup} setShow={setPopup} >
 
         <div className="popup">
-            <IndividualPage name={name} show={popup} openPopup={popupOpen} />
+            <IndividualPage name={name} />
         </div>
         </Popup>
         
