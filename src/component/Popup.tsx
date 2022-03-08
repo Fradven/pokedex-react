@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "../style/popup.scss"
 
 interface Props {
@@ -16,14 +16,29 @@ const Popup: React.FC<Props> = ({
     setShow(!show)
   }
 
-  const escapePopup = (event: { keyCode: number; }) => {
-    if (event.keyCode === 27) setShow(show = false)
-  }
+  const handleKeyPress = (e: KeyboardEvent) => {
+    //@ts-ignore
+    if (e.code === "Escape") setShow(show = false);
+    //@ts-ignore
+    if (e.code === "Enter") e.preventDefault();
+  };
+useEffect(() => {
+    console.log("mounted game");
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+      console.log("unmounted game");
+    };
+  }, []);
+
+  /* const escapePopup = (event: KeyboardEvent) => {
+    if (event.key === "Escape") setShow(show = false)
+  } */
 
   return <div 
           className={!show ?"visible hidden" : "visible"}
-          tabIndex={0} 
-          onKeyPress={escapePopup}>
+          /* tabIndex={0} 
+          onKeyPress={escapePopup} */>
             <div className="visible__background" onClick={closePopup} ></div>
             {children}
         </div>;
