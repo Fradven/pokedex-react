@@ -12,17 +12,24 @@ const Popup: React.FC<Props> = ({
     children
 }) => {
 
+  //close popup
   const closePopup = () => {
-    setShow(!show)
+    setShow(show = false)
   }
 
+  /**
+   * detect key press and handle key element
+   * @param e 
+   */
   const handleKeyPress = (e: KeyboardEvent) => {
     //@ts-ignore
-    if (e.code === "Escape") setShow(show = false);
+    if (e.code === "Escape") setShow(show = false); //on "Escape" close the popup
     //@ts-ignore
-    if (e.code === "Enter") e.preventDefault();
+    if (e.code === "Enter") e.preventDefault(); // prevent "Enter" from opening and closing Individual page
   };
-useEffect(() => {
+
+  //activate handleKeyPress() 
+  useEffect(() => {
     console.log("mounted game");
     document.addEventListener("keydown", handleKeyPress);
     return () => {
@@ -31,14 +38,8 @@ useEffect(() => {
     };
   }, []);
 
-  /* const escapePopup = (event: KeyboardEvent) => {
-    if (event.key === "Escape") setShow(show = false)
-  } */
-
   return <div 
-          className={!show ?"visible hidden" : "visible"}
-          /* tabIndex={0} 
-          onKeyPress={escapePopup} */>
+          className={!show ?"visible hidden" : "visible"}>
             <div className="visible__background" onClick={closePopup} ></div>
             {children}
         </div>;
