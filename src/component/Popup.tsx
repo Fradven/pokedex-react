@@ -16,11 +16,17 @@ const Popup: React.FC<Props> = ({
     setShow(!show)
   }
 
+  const escapePopup = (event: { keyCode: number; }) => {
+    if (event.keyCode === 27) setShow(show = false)
+  }
+
   return <div 
-  className={!show ?"visible hidden" : "visible"} >
-    <div className="visible__background" onClick={closePopup} ></div>
-    {children}
-    </div>;
+          className={!show ?"visible hidden" : "visible"}
+          tabIndex={0} 
+          onKeyPress={escapePopup}>
+            <div className="visible__background" onClick={closePopup} ></div>
+            {children}
+        </div>;
 }
 
 export default Popup;

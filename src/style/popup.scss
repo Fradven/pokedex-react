@@ -1,9 +1,10 @@
 @import "./var";
 
 .popup {
-    position: absolute;/* 
-    top: 25%;
-    bottom: 25%; */
+    position: absolute;
+    top: 5%;
+    left: 18%;
+    bottom: 25%;
     margin: auto;
 
     @media screen and (min-width: 481px) {
@@ -28,6 +29,10 @@
         margin: auto;
         background-color: rgba(0,0,0, 0.5);
 
+    }
+
+    .individual-pokemon {
+        position: fixed;
     }
 }
 
