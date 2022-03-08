@@ -39,7 +39,7 @@ function SearchBar() {
 
     useEffect(() => {
         if(query.length >= 3){
-        setFilteredList(pokeName.filter((name: string | string[]) => name.includes(query)).map(filtered => {
+        setFilteredList(pokeName.filter((name: string | string[]) => name.includes(query.toLowerCase())).map(filtered => {
             return filtered
         }))}
     }, [query])
