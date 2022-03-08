@@ -30,11 +30,9 @@ const Popup: React.FC<Props> = ({
 
   //activate handleKeyPress() 
   useEffect(() => {
-    console.log("mounted game");
     document.addEventListener("keydown", handleKeyPress);
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
-      console.log("unmounted game");
     };
   }, []);
 
