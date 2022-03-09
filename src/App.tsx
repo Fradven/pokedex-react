@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter  as Router, Route, Switch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import SuspenseElement from './component/SuspenseElement';
 import Nav from './component/Nav';
-import {MdOutlineKeyboardArrowUp} from 'react-icons/md'
+import { MdOutlineKeyboardArrowUp } from 'react-icons/md'
 import logo from './img/logo.svg';
 import './style.scss'
 
-const Fetch = React.lazy(() => import ('./pages/InfiniteList'));
-const Home = React.lazy(() => import ('./pages/Home'));
-const MoveDex = React.lazy(() => import ('./pages/MoveDex'));
-const SearchBar = React.lazy(() => import ('./pages/SearchBar'));
+const Fetch = React.lazy(() => import('./pages/InfiniteList'));
+const Home = React.lazy(() => import('./pages/Home'));
+const MoveDex = React.lazy(() => import('./pages/MoveDex'));
+const SearchBar = React.lazy(() => import('./pages/SearchBar'));
 
 
 
@@ -30,35 +30,29 @@ function App() {
 
   return (
     <>
-      <Router>
-        <div className="header">
-          <Nav />
-          <div className="pokedex-header">
-              <h1 className='pokedex-header__title'><img className='pokedex-header__img' src={logo} alt='pokedex-logo' /></h1>
-          </div>
+      <div className="header">
+        <Nav />
+        <div className="pokedex-header">
+          <h1 className='pokedex-header__title'><img className='pokedex-header__img' src={logo} alt='pokedex-logo' /></h1>
         </div>
-        {
-          showButton ? <button className="back-to-top" onClick={scrollTop}><MdOutlineKeyboardArrowUp /></button> : null
-        }
-        <Switch>
-          <Route exact path='/'>
-            <SuspenseElement children={<Home />} />            
-          </Route>
+      </div>
+      {
+        showButton ? <button className="back-to-top" onClick={scrollTop}><MdOutlineKeyboardArrowUp /></button> : null
+      }
+      <Routes>
+        
+        <Route path='/pokedex' element={<SuspenseElement children={<Fetch />} />} />
 
-          <Route path='/pokedex'>
-            <SuspenseElement children={<Fetch/>} />  
-          </Route>
+        <Route path='/movedex' element={<SuspenseElement children={<MoveDex />} />} />
 
-          <Route path='/movedex'>
-            <SuspenseElement children={<MoveDex/>} />  
-          </Route>
+        <Route path='/searchBar' element={<SuspenseElement children={<SearchBar />} />} />
 
-          <Route path='/searchBar'>
-            <SuspenseElement children={<SearchBar />} />
-          </Route>
+        <Route path='/' element={<SuspenseElement children={<Home />} />} />
 
-        </Switch>
-      </Router>
+      </Routes>
+
+
+
     </>
   );
 }
